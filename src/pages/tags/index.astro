@@ -1,0 +1,33 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const allArticles = await getCollection('articles');
+const uniqueTags = [...new Set(allArticles.map((article) => article.data.tags).flat())];
+---
+<Layout title="Tags">
+    <h1>All Tags</h1>
+    <div class="tags-list">
+        {uniqueTags.map(tag => (
+            <a href={`/tags/${tag}`} class="tag">#{tag}</a>
+        ))}
+    </div>
+</Layout>
+<style>
+    .tags-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    .tag {
+        background: #eee;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        font-size: 1.2rem;
+        color: #333;
+        text-decoration: none;
+    }
+    .tag:hover {
+        background: #ddd;
+    }
+</style>
