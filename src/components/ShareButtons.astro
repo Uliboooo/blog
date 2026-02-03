@@ -1,0 +1,183 @@
+---
+interface Props {
+  title: string;
+  url: string | URL;
+}
+
+const { title, url } = Astro.props;
+
+const urlString = url.toString();
+const encodedUrl = encodeURIComponent(urlString);
+const encodedTitle = encodeURIComponent(title);
+
+// Hatena Bookmark Logic
+const hatenaUrl = `https://b.hatena.ne.jp/entry/s/${urlString.replace(/^https:\/\//, "")}`;
+
+const xUrl = `https://x.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`;
+---
+
+<div class="share-buttons">
+  {/* X (Twitter) */}
+  <a
+    href={xUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="share-link"
+    aria-label="Share on X"
+  >
+    X
+  </a>
+
+  <span class="separator">/</span>
+
+  {/* Hatena Bookmark */}
+  <a
+    href={hatenaUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="share-link"
+    aria-label="Bookmark on Hatena"
+  >
+    Hatena
+  </a>
+
+  <span class="separator">/</span>
+
+  {/* Copy Link */}
+  <button
+    id="copy-button"
+    class="share-link copy-button"
+    aria-label="Copy Link"
+    data-url={urlString}
+  >
+    <span class="text-default">Copy Link</span>
+    <span class="text-success">Copied!</span>
+  </button>
+
+  {/* Web Share (Mobile) */}
+  <span class="system-share-wrapper">
+    <span class="separator">/</span>
+    <button
+      id="web-share-button"
+      class="share-link"
+      aria-label="System Share"
+      data-title={title}
+      data-url={urlString}
+      hidden
+    >
+      Share
+    </button>
+  </span>
+</div>
+
+<style>
+  .share-buttons {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-family: var(--font-mono); /* Matching site's meta font */
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .share-link {
+    color: #666;
+    text-decoration: none;
+    border: none;
+    background: none;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .share-link:hover {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  .separator {
+    color: #ccc;
+    user-select: none;
+  }
+
+  /* Copy Button Logic */
+  .copy-button {
+    position: relative;
+  }
+  
+  .text-success {
+    display: none;
+    color: #06C755; /* Keep a subtle green for success state text */
+    font-weight: bold;
+  }
+
+  /* System Share Visibility */
+  .system-share-wrapper {
+      display: contents; /* Allows children to participate in the flex container directly */
+  }
+
+  @media (min-width: 769px) {
+    #web-share-button, .system-share-wrapper {
+      display: none !important;
+    }
+  }
+</style>
+
+<script>
+  // Web Share Logic
+  const shareButton = document.getElementById('web-share-button');
+
+  if (shareButton && navigator.share) {
+    shareButton.hidden = false;
+
+    shareButton.addEventListener('click', async () => {
+      const title = shareButton.getAttribute('data-title');
+      const url = shareButton.getAttribute('data-url');
+
+      if (!title || !url) return;
+
+      try {
+        await navigator.share({
+          title: title,
+          url: url,
+        });
+      } catch (err) {
+        console.log('Error sharing:', err);
+      }
+    });
+  }
+
+  // Copy Logic
+  const copyButton = document.getElementById('copy-button');
+  let copyTimeout: ReturnType<typeof setTimeout> | null = null;
+
+  if (copyButton) {
+      copyButton.addEventListener('click', async () => {
+          const url = copyButton.getAttribute('data-url');
+          if (!url || copyTimeout) return;
+
+          try {
+              await navigator.clipboard.writeText(url);
+              
+              const defaultText = copyButton.querySelector('.text-default') as HTMLElement;
+              const successText = copyButton.querySelector('.text-success') as HTMLElement;
+              
+              if (defaultText && successText) {
+                  defaultText.style.display = 'none';
+                  successText.style.display = 'inline';
+                  
+                  copyTimeout = setTimeout(() => {
+                      defaultText.style.display = 'inline';
+                      successText.style.display = 'none';
+                      copyTimeout = null;
+                  }, 1500);
+              }
+          } catch (err) {
+              console.error('Failed to copy: ', err);
+          }
+      });
+  }
+</script>

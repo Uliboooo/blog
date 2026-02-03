@@ -3,13 +3,15 @@ import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import logo from '../assets/logo.png';
 import TableOfContents from '../components/TableOfContents.astro';
+import ShareButtons from '../components/ShareButtons.astro';
 
 interface Props {
 	title: string;
     headings?: { depth: number; slug: string; text: string; }[];
+    showShareButtons?: boolean;
 }
 
-const { title, headings } = Astro.props;
+const { title, headings, showShareButtons = false } = Astro.props;
 
 const allArticles = await getCollection('articles');
 // Sort by date desc
@@ -62,6 +64,12 @@ const recentArticles = sortedArticles.slice(0, 5);
                     <slot />
                 </div>
                 <aside class="sidebar">
+                    {showShareButtons && (
+                        <div class="sidebar-share">
+                            <h3>Share</h3>
+                            <ShareButtons title={title} url={Astro.url} />
+                        </div>
+                    )}
                     {headings && headings.length > 0 && (
                         <nav class="toc sidebar-toc">
                             <h3>Table of Contents</h3>
@@ -190,6 +198,13 @@ const recentArticles = sortedArticles.slice(0, 5);
         margin-bottom: 0.5rem;
     }
     
+    .sidebar-share {
+        display: block;
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #eee;
+    }
+
     /* TOC Styles */
     .toc {
         margin-bottom: 2rem;
@@ -206,6 +221,7 @@ const recentArticles = sortedArticles.slice(0, 5);
         font-size: 0.8rem;
         color: #666;
     }
+
 
     h1, h2, h3, h4, h5, h6 {
         font-family: var(--font-serif);
