@@ -38,20 +38,22 @@ const recentArticles = sortedArticles.slice(0, 5);
 	<body>
         <div class="container">
             <header class="site-header">
-                <div class="logo">
-                    <a href="/">
-                        <Image src={logo} alt="Logo" height={50} />
-                    </a>
+                <div class="header-main">
+                    <div class="logo">
+                        <a href="/">
+                            <Image src={logo} alt="Logo" height={50} />
+                        </a>
+                    </div>
+                    <div class="info">
+                        <a href="https://about.uliboooo.dev/" target="_blank">About Me</a>
+                        <a href="https://github.com/Uliboooo" target="_blank">GitHub</a>
+                        <a href="https://x.com/Uliboooo" target="_blank">X</a>
+                    </div>
                 </div>
                 <nav class="menu">
                     <a href="/">All Articles</a>
                     <a href="/tags">List by Tag</a>
                 </nav>
-                <div class="info">
-                    <a href="https://about.uliboooo.dev/" target="_blank">About Me</a>
-                    <a href="https://github.com/Uliboooo" target="_blank">GitHub</a>
-                    <a href="https://x.com/Uliboooo" target="_blank">X</a>
-                </div>
             </header>
             <main>
                 <div class="content">
@@ -105,18 +107,33 @@ const recentArticles = sortedArticles.slice(0, 5);
         gap: 2rem;
     }
 
+    .logo, .menu, .info {
+        white-space: nowrap;
+    }
+
     .site-header {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
+        flex-direction: column;
+        gap: 0.5rem;
         padding-bottom: 1rem;
         border-bottom: 1px solid #ccc;
         font-family: var(--font-serif);
     }
 
+    .header-main {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
     .menu {
         display: flex;
-        gap: 1rem;
+        gap: 2rem;
+        justify-content: center;
+        width: 100%;
     }
 
     .info {
@@ -135,6 +152,7 @@ const recentArticles = sortedArticles.slice(0, 5);
     .content {
         flex: 8;
         min-width: 0; 
+        overflow-wrap: break-word;
     }
 
     .sidebar {
@@ -161,6 +179,11 @@ const recentArticles = sortedArticles.slice(0, 5);
 
     h1, h2, h3, h4, h5, h6 {
         font-family: var(--font-serif);
+        overflow-wrap: break-word;
+    }
+
+    p, li {
+        overflow-wrap: break-word;
     }
 
     a {
@@ -169,5 +192,22 @@ const recentArticles = sortedArticles.slice(0, 5);
     }
     a:hover {
         text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            width: 95%;
+        }
+
+        main {
+            flex-direction: column;
+        }
+
+        .sidebar {
+            border-left: none;
+            padding-left: 0;
+            border-top: 1px solid #eee;
+            padding-top: 2rem;
+        }
     }
 </style>
