@@ -1,0 +1,40 @@
+---
+interface Props {
+    headings: { depth: number; slug: string; text: string; }[];
+}
+
+const { headings } = Astro.props;
+---
+
+<ul class="toc-list">
+    {headings.map(heading => (
+        <li class={`toc-depth-${heading.depth}`}>
+            <a href={`#${heading.slug}`}>{heading.text}</a>
+        </li>
+    ))}
+</ul>
+
+<style>
+    .toc-list {
+        padding-left: 1.2rem;
+        list-style: none;
+        margin: 0;
+    }
+    .toc-list li {
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+    }
+    .toc-list a {
+        text-decoration: none;
+        color: inherit;
+    }
+    .toc-list a:hover {
+        text-decoration: underline;
+    }
+    .toc-depth-1 { margin-left: 0; font-weight: bold; }
+    .toc-depth-2 { margin-left: 0; }
+    .toc-depth-3 { margin-left: 1rem; }
+    .toc-depth-4 { margin-left: 2rem; }
+    .toc-depth-5 { margin-left: 3rem; }
+    .toc-depth-6 { margin-left: 4rem; }
+</style>

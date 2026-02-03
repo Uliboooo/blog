@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
+import TableOfContents from '../../components/TableOfContents.astro';
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('articles');
@@ -11,10 +12,10 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content, headings } = await entry.render();
 ---
 
-<Layout title={entry.data.title}>
+<Layout title={entry.data.title} headings={headings}>
     <article>
         <header class="article-header">
             {entry.data.thumbnail && (
@@ -34,6 +35,16 @@ const { Content } = await entry.render();
                 ))}
             </div>
         </header>
+
+        {headings && headings.length > 0 && (
+            <div class="mobile-toc">
+                <details>
+                    <summary>Table of Contents</summary>
+                    <TableOfContents headings={headings} />
+                </details>
+            </div>
+        )}
+
         <div class="article-content">
             <Content />
         </div>
@@ -116,5 +127,26 @@ const { Content } = await entry.render();
         color: #555;
         font-style: italic;
         font-family: var(--font-serif);
+    }
+
+    /* Mobile TOC */
+    .mobile-toc {
+        display: none;
+        margin-bottom: 2rem;
+        padding: 1rem;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        border: 1px solid #eee;
+    }
+    .mobile-toc summary {
+        cursor: pointer;
+        font-weight: bold;
+        font-family: var(--font-serif);
+    }
+    
+    @media (max-width: 768px) {
+        .mobile-toc {
+            display: block;
+        }
     }
 </style>

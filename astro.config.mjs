@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import expressiveCode from 'astro-expressive-code';
+import rehypeExternalLinks from 'rehype-external-links';
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,6 +16,14 @@ export default defineConfig({
         // We will stick to defaults first.
       }
     }),
-    mdx()
+    mdx({
+      rehypePlugins: [
+        [rehypeExternalLinks, { 
+          target: '_blank', 
+          rel: ['noopener', 'noreferrer'],
+          properties: { class: 'external-link' }
+        }]
+      ]
+    })
   ],
 });

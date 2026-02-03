@@ -2,12 +2,14 @@
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import logo from '../assets/logo.png';
+import TableOfContents from '../components/TableOfContents.astro';
 
 interface Props {
 	title: string;
+    headings?: { depth: number; slug: string; text: string; }[];
 }
 
-const { title } = Astro.props;
+const { title, headings } = Astro.props;
 
 const allArticles = await getCollection('articles');
 // Sort by date desc
@@ -45,9 +47,9 @@ const recentArticles = sortedArticles.slice(0, 5);
                         </a>
                     </div>
                     <div class="info">
-                        <a href="https://about.uliboooo.dev/" target="_blank">About Me</a>
-                        <a href="https://github.com/Uliboooo" target="_blank">GitHub</a>
-                        <a href="https://x.com/Uliboooo" target="_blank">X</a>
+                        <a href="https://about.uliboooo.dev/" target="_blank" class="external-link">About Me</a>
+                        <a href="https://github.com/Uliboooo" target="_blank" class="external-link">GitHub</a>
+                        <a href="https://x.com/Uliboooo" target="_blank" class="external-link">X</a>
                     </div>
                 </div>
                 <nav class="menu">
@@ -60,17 +62,25 @@ const recentArticles = sortedArticles.slice(0, 5);
                     <slot />
                 </div>
                 <aside class="sidebar">
-                    <h3>Previous Articles</h3>
-                    <ul>
-                        {recentArticles.map(article => (
-                            <li><a href={`/articles/${article.slug}`}>{article.data.title}</a></li>
-                        ))}
-                    </ul>
+                    {headings && headings.length > 0 && (
+                        <nav class="toc sidebar-toc">
+                            <h3>Table of Contents</h3>
+                            <TableOfContents headings={headings} />
+                        </nav>
+                    )}
+                    <div class="previous-articles">
+                        <h3>Previous Articles</h3>
+                        <ul>
+                            {recentArticles.map(article => (
+                                <li><a href={`/articles/${article.slug}`}>{article.data.title}</a></li>
+                            ))}
+                        </ul>
+                    </div>
                 </aside>
             </main>
             <footer>
                 <p>&copy; 2026 Uliboooo. All rights reserved.</p>
-                <a href="https://github.com/Uliboooo/blog">View Source</a>
+                <a href="https://github.com/Uliboooo/blog" class="external-link">View Source</a>
             </footer>
         </div>
 	</body>
@@ -159,12 +169,32 @@ const recentArticles = sortedArticles.slice(0, 5);
         flex: 2;
         border-left: 1px solid #eee;
         padding-left: 1rem;
+        /* Sticky positioning for desktop */
+        position: sticky;
+        top: 2rem;
+        align-self: flex-start;
+        max-height: calc(100vh - 4rem); /* Prevent sidebar from being taller than viewport if possible, or just let it scroll naturally if content is long. But sticky needs space. */
+        overflow-y: auto; /* Allow scrolling within sidebar if it's too tall */
+    }
+    .sidebar h3 {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
     }
     .sidebar ul {
         padding-left: 1.2rem;
+        list-style: none;
+        margin: 0;
     }
     .sidebar li {
         margin-bottom: 0.5rem;
+    }
+    
+    /* TOC Styles */
+    .toc {
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #eee;
     }
 
     footer {
@@ -193,6 +223,36 @@ const recentArticles = sortedArticles.slice(0, 5);
     a:hover {
         text-decoration: underline;
     }
+    
+    /* External link indicator with SVG and Animation */
+    .external-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.1em; /* Slight gap between text and icon */
+    }
+    
+    .external-link::after {
+        content: "";
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        background-color: currentColor; /* Inherit text color */
+        
+        /* Arrow Up Right SVG with stroke-width 1.5 for Thin font match */
+        -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>');
+        mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>');
+        
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        
+        transition: transform 0.2s ease;
+    }
+
+    .external-link:hover::after {
+        transform: translate(2px, -2px); /* Move top-right on hover */
+    }
 
     @media (max-width: 768px) {
         .container {
@@ -208,6 +268,13 @@ const recentArticles = sortedArticles.slice(0, 5);
             padding-left: 0;
             border-top: 1px solid #eee;
             padding-top: 2rem;
+            position: static; /* Reset sticky on mobile */
+            align-self: auto;
+            max-height: none;
+        }
+        
+        .sidebar-toc {
+            display: none;
         }
     }
 </style>
