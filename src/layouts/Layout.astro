@@ -7,11 +7,17 @@ import ShareButtons from '../components/ShareButtons.astro';
 
 interface Props {
 	title: string;
+    description?: string;
     headings?: { depth: number; slug: string; text: string; }[];
     showShareButtons?: boolean;
 }
 
-const { title, headings, showShareButtons = false } = Astro.props;
+const { 
+    title, 
+    description = "ソフトウェアと文字が好きな大学生、Ulibooooの技術ブログです。Rustなどの開発経験や、日々の技術的な知見をまとめています。", 
+    headings, 
+    showShareButtons = false 
+} = Astro.props;
 
 const allArticles = await getCollection('articles');
 // Sort by date desc
@@ -25,16 +31,17 @@ const recentArticles = sortedArticles.slice(0, 5);
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="shortcut icon" type="image/x-icon" href="/resource/favicon/favicon.ico">
-		<meta name="description"
-			content="ソフトウェアと文字が好きな大学生、Ulibooooのポートフォリオサイトです。Rustで開発したCLIツールや、技術記事（Zenn/note）の情報をまとめています。">
-		<meta property="og:title" content="about uliboooo" />
-		<meta property="og:description" content="describe about uliboooo" />
+		<meta name="description" content={description}>
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
 		<meta property="og:image" content="https://blog.uliboooo.dev/resource/logo.png" />
-		<meta property="og:url" content="https://blog.uliboooo.dev/" />
+		<meta property="og:url" content={Astro.url} />
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content="about uliboooo" />
 
 		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content="https://blog.uliboooo.dev/resource/logo.png" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
