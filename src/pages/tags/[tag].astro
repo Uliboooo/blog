@@ -24,11 +24,17 @@ const sortedArticles = articles.sort((a, b) => b.data.date.valueOf() - a.data.da
 <Layout title={`Articles tagged with #${tag}`}>
     <h1>Articles tagged with <span>#{tag}</span></h1>
     <div class="article-grid">
-        {sortedArticles.map(article => (
+        {sortedArticles.map((article, index) => (
              <article class="article-card">
                 {article.data.thumbnail && (
                   <div class="thumbnail">
-                     <Image src={article.data.thumbnail} alt={article.data.title} width={600} />
+                     <Image 
+                        src={article.data.thumbnail} 
+                        alt={article.data.title} 
+                        width={600} 
+                        loading={index < 4 ? "eager" : "lazy"} 
+                        fetchpriority={index < 4 ? "high" : "auto"}
+                     />
                   </div>
                 )}
                 <div class="card-content">

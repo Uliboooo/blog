@@ -29,13 +29,13 @@ const recentArticles = sortedArticles.slice(0, 5);
 			content="ソフトウェアと文字が好きな大学生、Ulibooooのポートフォリオサイトです。Rustで開発したCLIツールや、技術記事（Zenn/note）の情報をまとめています。">
 		<meta property="og:title" content="about uliboooo" />
 		<meta property="og:description" content="describe about uliboooo" />
-		<meta property="og:image" content="https://about.uliboooo.dev/resource/logo.png" />
-		<meta property="og:url" content="https://about.uliboooo.dev/" />
+		<meta property="og:image" content="https://blog.uliboooo.dev/resource/logo.png" />
+		<meta property="og:url" content="https://blog.uliboooo.dev/" />
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content="about uliboooo" />
 
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:image" content="https://about.uliboooo.dev/resource/logo.png" />
+		<meta name="twitter:image" content="https://blog.uliboooo.dev/resource/logo.png" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
@@ -45,7 +45,7 @@ const recentArticles = sortedArticles.slice(0, 5);
                 <div class="header-main">
                     <div class="logo">
                         <a href="/">
-                            <Image src={logo} alt="Logo" height={50} />
+                            <Image src={logo} alt="Logo" height={50} loading="eager" fetchpriority="high" />
                         </a>
                     </div>
                     <div class="info">
@@ -183,14 +183,19 @@ const recentArticles = sortedArticles.slice(0, 5);
         align-self: flex-start;
         max-height: calc(100vh - 4rem); /* Prevent sidebar from being taller than viewport if possible, or just let it scroll naturally if content is long. But sticky needs space. */
         overflow-y: auto; /* Allow scrolling within sidebar if it's too tall */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+    }
+    .sidebar::-webkit-scrollbar {
+        display: none; /* Chrome, Safari and Opera */
     }
     .sidebar h3 {
         margin-top: 0;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
         font-size: 1.2rem;
     }
     .sidebar ul {
-        padding-left: 1.2rem;
+        padding-left: 0.5rem;
         list-style: none;
         margin: 0;
     }
@@ -238,6 +243,17 @@ const recentArticles = sortedArticles.slice(0, 5);
     }
     a:hover {
         text-decoration: underline;
+    }
+
+    /* Inline code style */
+    :not(pre) > code {
+        font-family: var(--font-mono);
+        background-color: #f0f0f0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 0.1em 0.3em;
+        font-size: 0.9em;
+        color: #d12121; /* A slightly distinct color for code */
     }
     
     /* External link indicator with SVG and Animation */

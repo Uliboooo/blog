@@ -6,24 +6,25 @@ import rehypeExternalLinks from 'rehype-external-links';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://blog.uliboooo.dev',
+  markdown: {
+    syntaxHighlight: false,
+    rehypePlugins: [
+      [rehypeExternalLinks, { 
+        target: '_blank', 
+        rel: ['noopener', 'noreferrer'],
+        properties: { class: 'external-link' }
+      }]
+    ]
+  },
   integrations: [
     expressiveCode({
-      // Configure the theme to match the blog's aesthetic (or use GitHub themes)
+      // Configure the theme to match the blog's aesthetic
       themes: ['github-dark', 'github-light'],
-      styleOverrides: {
-        // Optional: Customize to match the specific 'light' bg of the blog if needed
-        // but default github-light is usually good.
-        // We will stick to defaults first.
-      }
     }),
     mdx({
-      rehypePlugins: [
-        [rehypeExternalLinks, { 
-          target: '_blank', 
-          rel: ['noopener', 'noreferrer'],
-          properties: { class: 'external-link' }
-        }]
-      ]
+      // Disable built-in syntax highlighting to let expressiveCode handle it
+      syntaxHighlight: false,
     })
   ],
 });

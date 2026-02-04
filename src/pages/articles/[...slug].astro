@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import TableOfContents from '../../components/TableOfContents.astro';
+import ShareButtons from '../../components/ShareButtons.astro';
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('articles');
@@ -20,7 +21,7 @@ const { Content, headings } = await entry.render();
         <header class="article-header">
             {entry.data.thumbnail && (
                 <div class="thumbnail">
-                    <Image src={entry.data.thumbnail} alt={entry.data.title} />
+                    <Image src={entry.data.thumbnail} alt={entry.data.title} loading="eager" fetchpriority="high" />
                 </div>
             )}
             <div class="meta">
@@ -47,6 +48,14 @@ const { Content, headings } = await entry.render();
 
         <div class="article-content">
             <Content />
+        </div>
+
+        <div class="article-footer">
+            <div class="footer-share">
+                <h3>Share this article</h3>
+                <ShareButtons title={entry.data.title} url={Astro.url} />
+            </div>
+            <p class="character-count">{entry.body.split('\n').length}l  {entry.body.split(/\s+/).filter(Boolean).length}w  {entry.body.length}c</p>
         </div>
     </article>
 </Layout>
@@ -148,5 +157,30 @@ const { Content, headings } = await entry.render();
         .mobile-toc {
             display: block;
         }
+    }
+
+    .article-footer {
+        margin-top: 3rem;
+        padding-top: 1rem;
+        border-top: 1px solid #eee;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .footer-share h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        margin-top: 0;
+    }
+
+    .character-count {
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        color: #888;
+        margin: 0;
+        white-space: pre; /* Preserve spaces for wc-like formatting */
+        text-align: right; /* Keep character count right aligned */
+        align-self: flex-end; /* Align self to the end of the flex container */
     }
 </style>
