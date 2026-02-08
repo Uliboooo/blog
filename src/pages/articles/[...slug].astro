@@ -6,7 +6,7 @@ import TableOfContents from '../../components/TableOfContents.astro';
 import ShareButtons from '../../components/ShareButtons.astro';
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('articles');
+  const blogEntries = (await getCollection('articles')).filter(entry => entry.data.publish);
   return blogEntries.map(entry => ({
     params: { slug: entry.slug }, props: { entry },
   }));

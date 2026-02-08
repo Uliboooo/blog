@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
-const allArticles = await getCollection('articles');
+const allArticles = (await getCollection('articles')).filter(article => article.data.publish);
 const uniqueTags = [...new Set(allArticles.map((article) => article.data.tags).flat())];
 ---
 <Layout title="Tags">
