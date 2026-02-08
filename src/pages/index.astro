@@ -7,17 +7,17 @@ const allArticles = await getCollection('articles');
 const sortedArticles = allArticles.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<Layout title="My Blog">
+<Layout title="Uliboooo Blog">
   <div class="article-grid">
     {sortedArticles.map((article, index) => (
       <article class="article-card">
         {article.data.thumbnail && (
           <div class="thumbnail">
-             <Image 
-                src={article.data.thumbnail} 
-                alt={article.data.title} 
-                width={600} 
-                loading={index < 4 ? "eager" : "lazy"} 
+             <Image
+                src={article.data.thumbnail}
+                alt={article.data.title}
+                width={600}
+                loading={index < 4 ? "eager" : "lazy"}
                 fetchpriority={index < 4 ? "high" : "auto"}
              />
           </div>
@@ -72,7 +72,7 @@ const sortedArticles = allArticles.sort((a, b) => b.data.date.valueOf() - a.data
         align-items: center;
         justify-content: center;
     }
-    
+
     .thumbnail img {
         width: 100%;
         height: 100%;
