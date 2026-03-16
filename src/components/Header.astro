@@ -1,0 +1,127 @@
+---
+// src/components/Header.astro
+const navItems = [
+  { href: '/', label: 'Top' },
+  { href: '/blog/about_me', label: 'About Me' },
+];
+
+const snsItems = [
+  { href: 'https://github.com/Uliboooo', label: 'GitHub' },
+  { href: 'https://x.com/Uliboooo', label: 'X' },
+  { href: 'https://zenn.dev/uliboooo', label: 'Zenn' },
+  { href: 'https://note.com/uliboooo', label: 'note' },
+]
+---
+
+<header>
+  <div class="head_contents">
+    <div class="left_head">
+      <div>
+        <a href="/">
+          <p id="title_p">@Uliboooo</p>
+        </a>
+      </div>
+      <nav>
+        <ul>
+          {navItems.map(item => (
+            <li><a href={item.href}>{item.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+    <div>
+      <ul id="sns_links">
+        {snsItems.map(item => (
+          <li><a href={item.href} target="_blank" rel="noopener noreferrer">{item.label}</a></li>
+        ))}
+      <button id="theme-toggle" aria-label="テーマ切り替え" class="theme-btn">
+        🌙
+      </button>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<style>
+  header {
+    border-bottom: 1px solid #ddd;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 1.1rem;
+  }
+  .head_contents {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .left_head {
+      #title_p {
+        font-size: 1.5rem;
+        margin: 0;
+      }
+      a,
+      a:visited {
+        text-decoration: none;
+        color: #111111;
+      }
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+  }
+  #sns_links {
+    font-size: 1rem;
+  }
+  ul {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+    align-items: center;
+    padding-left: 10px;
+
+    li a,
+    li a:visited {
+      text-decoration: none;
+      color: #111111;
+    }
+  }
+
+  :root.dark .left_head a,
+  :root.dark .left_head a:visited,
+  :root.dark li a,
+  :root.dark li a:visited {
+    color: var(--text);
+  }
+
+  .theme-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0.25rem;
+  }
+</style>
+
+<script>
+  const button = document.getElementById('theme-toggle');
+
+  const updateButton = () => {
+    const isDark = document.documentElement.classList.contains('dark');
+    if (button) button.textContent = isDark ? '🔆' : '🌙';
+  };
+
+  button?.addEventListener('click', () => {
+    const isDark = document.documentElement.classList.contains('dark');
+    if (isDark) {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    }
+    updateButton();
+  });
+
+  // 初期表示時にボタンのアイコンを更新
+  updateButton();
+</script>

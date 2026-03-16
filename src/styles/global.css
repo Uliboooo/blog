@@ -1,0 +1,155 @@
+/* global.css */
+:root {
+  --background: #fcfcfc;
+  --text: #111111;
+  --a-link: #0000EE;
+  --visited-link: #551A8B;
+  --table-bg: #ffffff;
+  --table-text: #333333;
+  --table-border: #dddddd;
+  --table-header-bg: #f4f4f4;
+  --table-stripe-bg: #fafafa;
+  --table-hover-bg: #f1f1f1;
+}
+
+:root.dark {
+  --background: #1a1a1a;
+  --text: #F7F2F2;
+  --a-link: #8ab4f8;
+  --visited-link: #c58af9;
+  --table-bg: #1e1e1e;
+  --table-text: #e0e0e0;
+  --table-border: #444444;
+  --table-header-bg: #2d2d2d;
+  --table-stripe-bg: #252525;
+  --table-hover-bg: #3d3d3d;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+  transition: background-color 0.3s ease;
+
+  width: 70%;
+  max-width: 750px;
+  min-width: 400px;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 1.5em;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    width: 100%;
+    min-width: 0;
+
+    margin: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    font-size: 80%;
+  }
+}
+
+a:link {
+  color: var(--a-link);
+}
+
+a:visited {
+  color: var(--visited-link);
+}
+
+.external-link {
+  display: inline-flex;
+  align-items: center;
+  text-underline-offset: 4px;
+  transition: color 0.2s ease;
+}
+
+.external-link::after {
+  content: "";
+  display: inline-block;
+  width: 0.9em;
+  height: 0.9em;
+  margin-left: 0.25em;
+
+  background-color: currentColor;
+
+  -webkit-mask-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"%3E%3Cline x1="7" y1="17" x2="17" y2="7"%3E%3C/line%3E%3Cpolyline points="7 7 17 7 17 17"%3E%3C/polyline%3E%3C/svg%3E');
+  mask-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"%3E%3Cline x1="7" y1="17" x2="17" y2="7"%3E%3C/line%3E%3Cpolyline points="7 7 17 7 17 17"%3E%3C/polyline%3E%3C/svg%3E');
+
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+
+  transition: transform 0.2s ease;
+}
+
+.external-link:hover {
+  opacity: 0.8;
+}
+
+.external-link:hover::after {
+  transform: translate(2px, -2px);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--table-bg);
+  color: var(--table-text);
+}
+
+th,
+td {
+  border: 1px solid var(--table-border);
+  padding: 12px;
+}
+
+th {
+  background-color: var(--table-header-bg);
+}
+
+tr:nth-child(even) {
+  background-color: var(--table-stripe-bg);
+}
+
+tr:hover {
+  background-color: var(--table-hover-bg);
+}
+
+.head_contents {
+
+  a.dark,
+  a.dark:visited {
+    text-decoration: none;
+    color: #F7F2F2;
+  }
+
+  nav {
+    ul {
+
+      li a.dark,
+      li a.dark:visited {
+        text-decoration: none;
+        color: #F7F2F2;
+      }
+
+    }
+  }
+}

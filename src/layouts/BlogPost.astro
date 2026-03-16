@@ -1,18 +1,15 @@
 ---
 // src/layouts/BlogPost.astro
+import MainLayout from './MainLayout.astro';
+import '../styles/post.css';
+
 const { title, date } = Astro.props;
 ---
 
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <title>{title}</title>
-  </head>
-  <body>
-    <article>
-      <h1>{title}</h1>
-      <time>{date.toLocaleDateString('ja-JP')}</time>
-      <slot />
-    </article>
-  </body>
-</html>
+<MainLayout title={title}>
+  <article class="prose">
+    <h1>{title}</h1>
+    {date && <time>{date.toLocaleDateString('ja-JP')}</time>}
+    <slot />
+  </article>
+</MainLayout>

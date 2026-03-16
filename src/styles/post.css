@@ -1,0 +1,99 @@
+.prose {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.prose p {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 1.3em;
+  letter-spacing: 0.03em;
+}
+
+.prose h2 {
+  /* text-decoration: underline; */
+  text-underline-offset: 5px;
+  margin-top: 3rem;
+  letter-spacing: 0.02em;
+}
+
+.prose h2::before {
+  content: "##";
+  color: #666;
+  margin-right: 0.5rem;
+}
+
+.prose blockquote {
+  margin-right: 0;
+  border-left: 4px solid #666;
+  padding-left: 15px;
+  margin: 20px 0;
+}
+
+.prose ul {
+  padding-left: 20px;
+}
+
+.prose li {
+  line-height: 1.5;
+  margin-bottom: 0.3em;
+}
+
+.prose img {
+  width: 100%;
+  height: auto;
+}
+
+.prose img[alt$="#small"] {
+  width: 200px;
+  height: auto;
+}
+
+.prose pre {
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  padding: 1rem;
+
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  box-sizing: border-box;
+}
+
+.prose pre code {
+  padding: 0;
+  margin: 0;
+  color: #f8f8f2;
+  display: block;
+  font-family: 'Fira Code', monospace;
+  /* コードが折り返されずに横に伸びるようにする */
+  white-space: pre;
+}
+
+@media (max-width: 640px) {
+  .prose pre {
+    padding: 0.75rem;
+    border-radius: 4px;
+    /* モバイルでのスクロールを滑らかに */
+    -webkit-overflow-scrolling: touch;
+
+    /* 画面端に密着させたい場合は、親のmarginを打ち消す設定が必要な場合があります */
+  }
+}
+
+.prose code {
+  /* フォントの設定：等幅フォントを指定 */
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+
+  /* 背景と境界線：薄いグレーで囲む */
+  background-color: rgba(175, 184, 193, 0.2);
+  border-radius: 6px;
+
+  /* 余白とサイズ：文字の高さに合わせる */
+  padding: 0.2em 0.4em;
+  font-size: 85%;
+
+  /* 折り返しの設定：長いコードがはみ出さないようにする */
+  word-break: break-word;
+}

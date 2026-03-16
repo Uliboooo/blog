@@ -1,6 +1,7 @@
 ---
 // src/pages/index.astro
 import { getCollection } from 'astro:content';
+import MainLayout from '../layouts/MainLayout.astro';
 
 const posts = await getCollection('blog');
 const sorted = posts
@@ -10,22 +11,66 @@ const sorted = posts
   );
 ---
 
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Blog</title>
-  </head>
-  <body>
-    <h1>Blog</h1>
-    <ul>
-      {sorted.map(post => (
-        <li>
-          <a href={`/blog/${post.id}`}>{post.data.title}</a>
-          <time>{post.data.date.toLocaleDateString('ja-JP')}</time>
-          {post.data.published === false && <span> (Draft)</span>}
-        </li>
-      ))}
-    </ul>
-  </body>
-</html>
+<MainLayout title="Blog of Uliboooo">
+  <h2>Aricles</h2>
+  <ul>
+    {sorted.map(post => (
+      <li>
+        <a href={`/blog/${post.id}`}>{post.data.title}</a>
+        <time>{post.data.date.toLocaleDateString('ja-JP')}</time>
+        {post.data.tags && post.data.tags.length > 0 && (
+          <span class="tags">
+            {post.data.tags.map(tag => (
+              <span class="tag">{tag}</span>
+            ))}
+          </span>
+        )}
+        {post.data.published === false && <span> (Draft)</span>}
+      </li>
+    ))}
+  </ul>
+</MainLayout>
+
+<style>
+  ul {
+    padding-left: 10px;
+  }
+  li {
+    list-style: none;
+    margin-bottom: 1rem;
+  }
+
+  time {
+    color: #666;
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+  }
+
+  .tags {
+    display: inline-flex;
+    gap: 0.4rem;
+    margin-left: 0.5rem;
+  }
+
+  .tag {
+    display: inline-block;
+    color: #333;
+    font-size: 0.9rem;
+  }
+
+  .tag::before {
+    content: "#";
+    color: #666;
+    margin-right: 0.15rem;
+  }
+
+  :root.dark .tag {
+    color: #D1D1D1;
+  }
+
+  :root.dark .tag::before {
+    content: "#";
+    color: #B0B0B0;
+    margin-right: 0.15rem;
+  }
+</style>
