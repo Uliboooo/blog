@@ -4,7 +4,7 @@ date: 2026-02-01
 writer: "Uliboooo"
 description: "Linuxを流行らせるにはchromeOSの普及が効果的?"
 tags: ["chromeOS", "Linux", "OS"]
-publish: true
+published: true
 ---
 
 ## ChromeBook (OS)とは?

@@ -1,20 +1,43 @@
 ---
 title: "About Me"
-date: 2026-03-16
+date: 2026-03-17
 writer: "Uliboooo"
 description: "About Me"
 tags: ["me"]
-publish: true
+published: true
 ---
 
-
-## About Me
+## @Uliboooo
 
 ![my draw#small](../../assets/about_me/logo.png)
 
 ソフトウェアと記号が好きな大学生。oは4つです。RustでCLIツールなどを開発しています。エディタはVim派です。
 
 I am a university student who loves software and text. (My name has four 'o's). I develop CLI tools mainly using Rust. I'm a Vimmer.
+
+## Works
+
+### ghost_git_writer
+
+LLMでGitコミットメッセージ、README、または差分要約を作成するツール。
+
+[Github Repository](https://github.com/Uliboooo/ghost_git_writer)
+
+### dotfiles
+
+Hyprland + Archを中心としたdotfiles。個人用ですが、ある程度汎用化してあるため流用可能です。
+
+[GitHub Repository](https://github.com/Uliboooo/dotfiles)
+
+### track2line
+
+VoiSona Talk などから出力された音声ファイルの名前を、台詞テキストを参照して一括変換するツール。
+
+[GitHub Repository](https://github.com/Uliboooo/track2line)
+
+## Capabilities
+
+[Rust](https://github.com/Uliboooo?tab=repositories&q=&type=public&language=rust&sort=), [shell](https://github.com/Uliboooo?tab=repositories&q=&type=public&language=shell&sort=)
 
 ## SNS
 

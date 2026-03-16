@@ -25,7 +25,7 @@ const sorted = posts
             ))}
           </span>
         )}
-        {post.data.published === false && <span> (Draft)</span>}
+      {!post.data.published && <span> (Draft)</span>}
       </li>
     ))}
   </ul>
