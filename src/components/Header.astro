@@ -64,7 +64,7 @@ const snsItems = [
       a,
       a:visited {
         text-decoration: none;
-        color: #111111;
+        color: var(--text);
       }
       ul {
         list-style: none;
@@ -93,16 +93,9 @@ const snsItems = [
       li a,
       li a:visited {
         text-decoration: none;
-        color: #111111;
+        color: var(--text);
       }
     }
-  }
-
-  :root.dark .left_head a,
-  :root.dark .left_head a:visited,
-  :root.dark li a,
-  :root.dark li a:visited {
-    color: var(--text);
   }
 
   .theme-btn {
