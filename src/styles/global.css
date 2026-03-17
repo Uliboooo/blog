@@ -1,4 +1,9 @@
 /* global.css */
+
+@import '@fontsource-variable/baloo-da-2';
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root {
   --background: #fcfcfc;
   --text: #111111;
@@ -47,6 +52,7 @@ body {
     font-size: 16px;
     line-height: 1.7;
     margin-bottom: 1.5em;
+    font-family: 'Baloo Da 2 Variable';
   }
 }
 

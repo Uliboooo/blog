@@ -11,9 +11,9 @@ published: true
 
 ![my draw#small](../../assets/about_me/logo.png)
 
-ソフトウェアと記号が好きな大学生。oは4つです。RustでCLIツールなどを開発しています。エディタはVim派です。
+ソフトウェアと活字が好きな大学生。oは4つです。RustでCLIツールなどを開発しています。Vim派。
 
-I am a university student who loves software and text. (My name has four 'o's). I develop CLI tools mainly using Rust. I'm a Vimmer.
+I am a university student who loves Software and Letters. (My name has four 'o's). I develop CLI tools mainly using Rust. I'm a Vimmer.
 
 ## Works
 

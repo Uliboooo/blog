@@ -52,7 +52,6 @@ const snsItems = [
   .head_contents {
     display: flex;
     justify-content: space-between;
-    <!-- justify-content: space-around; -->
     align-items: center;
     flex-wrap: wrap;
 
@@ -60,6 +59,7 @@ const snsItems = [
       #title_p {
         font-size: 1.5rem;
         margin: 0;
+        font-family: "Public Sans";
       }
       a,
       a:visited {
@@ -107,7 +107,21 @@ const snsItems = [
   }
 
   @media (max-width: 640px) {
-    font-size: 80%;
+    font-size: 90%;
+    header {
+      font-size: 90%;
+    }
+    .head_contents {
+      justify-content: center; /* wrapしたら（スマホ幅では）中央寄せ */
+      gap: 10px;
+      ul {
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+      <!-- #sns_links { -->
+      <!--   margin-top: 3px; -->
+      <!-- } -->
+    }
   }
 </style>
 
