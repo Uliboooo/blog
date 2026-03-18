@@ -80,13 +80,18 @@
 }
 
 @media (max-width: 640px) {
+
+  /* .prose p { */
+  /* font-size: 90%; */
+  /* } */
+  .prose p {
+    font-size: 16px;
+  }
+
   .prose pre {
     padding: 0.75rem;
     border-radius: 4px;
-    /* モバイルでのスクロールを滑らかに */
     -webkit-overflow-scrolling: touch;
-
-    /* 画面端に密着させたい場合は、親のmarginを打ち消す設定が必要な場合があります */
   }
 }
 
