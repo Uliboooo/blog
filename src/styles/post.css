@@ -6,8 +6,9 @@
 .prose p {
   font-size: 17px;
   line-height: 1.8;
-  margin-bottom: 1.3em;
-  letter-spacing: 0.03em;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
   font-family: 'Baloo Da 2 Variable', "Zen Kaku Gothic Antique";
   font-weight: 420;
 }
@@ -15,27 +16,45 @@
 .prose h2 {
   /* text-decoration: underline; */
   text-underline-offset: 5px;
-  margin-top: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
   letter-spacing: 0.02em;
+  color: var(--heading-color);
+
+  a {
+    text-decoration: none;
+    color: var(--heading-color);
+  }
 }
 
 .prose h2::before {
   content: "##";
-  color: #666;
+  color: var(--heading-prefix);
   margin-right: 0.5rem;
+}
+
+.prose h3 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: var(--heading-color);
 }
 
 .prose h3::before {
   content: "###";
-  color: #666;
+  color: var(--heading-prefix);
   margin-right: 0.5rem;
 }
 
 .prose blockquote {
   margin-right: 0;
-  border-left: 4px solid #666;
+  border-left: 4px solid var(--blockquote-border);
   padding-left: 15px;
   margin: 20px 0;
+}
+
+.prose .external-link {
+  margin-left: 0.2rem;
+  margin-right: 0.1rem;
 }
 
 .prose ul {
@@ -54,6 +73,16 @@
 
 .prose img[alt$="#small"] {
   width: 200px;
+  height: auto;
+}
+
+.prose img[alt$="#middle"] {
+  width: 50%;
+  height: auto;
+}
+
+.prose img[alt$="#upper"] {
+  width: 80%;
   height: auto;
 }
 

@@ -2,6 +2,7 @@
 // src/components/Header.astro
 const navItems = [
   { href: '/blog/about_me', label: 'About Me' },
+  { href: '/', label: 'Blog' },
 ];
 
 const snsItems = [
@@ -16,14 +17,14 @@ const snsItems = [
   <div class="head_contents">
     <div class="left_head">
       <div class="head-icon">
-        <a href="/">
+        <a href="/blog/about_me">
           <p id="title_p">@Uliboooo</p>
         </a>
       </div>
       <div>
         <ul>
           {navItems.map(item => (
-            <li><a href={item.href}>{item.label}</a></li>
+            <li class="head-item"><a href={item.href}>{item.label}</a></li>
           ))}
         </ul>
       </div>
@@ -31,7 +32,7 @@ const snsItems = [
     <div class="right_content">
       <ul id="sns_links">
         {snsItems.map(item => (
-          <li><a href={item.href} target="_blank" rel="noopener noreferrer">{item.label}</a></li>
+          <li class="head-item"><a href={item.href} target="_blank" rel="noopener noreferrer">{item.label}</a></li>
         ))}
       <button id="theme-toggle" aria-label="テーマ切り替え" class="theme-btn">
         🌙
@@ -53,6 +54,10 @@ const snsItems = [
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+
+    .head-item a{
+      font-size: 1rem;
+    }
 
     .left_head {
       #title_p {
@@ -101,7 +106,7 @@ const snsItems = [
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     padding: 0.25rem;
   }
 

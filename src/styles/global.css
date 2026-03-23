@@ -7,8 +7,11 @@
 :root {
   --background: #fcfcfc;
   --text: #111111;
+  --heading-color: #111111;
   --a-link: #0000EE;
   --visited-link: #551A8B;
+  --heading-prefix: #666;
+  --blockquote-border: #666;
   --table-bg: #ffffff;
   --table-text: #333333;
   --table-border: #dddddd;
@@ -20,8 +23,11 @@
 :root.dark {
   --background: #1a1a1a;
   --text: #F7F2F2;
+  --heading-color: #F7F2F2;
   --a-link: #8ab4f8;
   --visited-link: #c58af9;
+  --heading-prefix: #999;
+  --blockquote-border: #999;
   --table-bg: #1e1e1e;
   --table-text: #e0e0e0;
   --table-border: #444444;
