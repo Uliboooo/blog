@@ -1,0 +1,66 @@
+[
+  {
+    "id": "external-1",
+    "title": "Neovimでlspのエラー(現在の行)などをコピーする",
+    "date": "2026-03-24",
+    "url": "https://zenn.dev/uliboooo/articles/a3f76dac892e75",
+    "tags": ["zenn"],
+    "published": true
+  },
+  {
+    "id": "external-2",
+    "title": "swwwを使った背景制御ツールをbashで作る",
+    "date": "2026-03-22",
+    "url": "https://zenn.dev/uliboooo/articles/c4264b097f1abf",
+    "tags": ["zenn", "swww", "Linux"],
+    "published": true
+  },
+  {
+    "id": "external-3",
+    "title": "nvimでsnacks.nvimを使ったら色々便利になった",
+    "date": "2026-03-07",
+    "url": "https://zenn.dev/uliboooo/articles/6d60a46f01b94c",
+    "tags": ["zenn", "nvim"],
+    "published": true
+  },
+  {
+    "id": "external-4",
+    "title": "Linuxのデスクトップ環境について。GNOMEとhyprlandはどちらがいいのか?",
+    "date": "2026-02-08",
+    "url": "https://zenn.dev/uliboooo/articles/dad8c9a29ffbbb",
+    "tags": ["zenn", "Linux", "Desktop"],
+    "published": true
+  },
+  {
+    "id": "external-5",
+    "title": "2026年にLinuxはデスクトップOSとして使えるのか",
+    "date": "2026-03-07",
+    "url": "https://zenn.dev/uliboooo/articles/fd25d0e655e20c",
+    "tags": ["zenn", "Linux", "Desktop"],
+    "published": true
+  },
+  {
+    "id": "external-6",
+    "title": "nvimでsnacks.nvimを使ったら色々便利になった",
+    "date": "2026-03-07",
+    "url": "https://zenn.dev/uliboooo/articles/6d60a46f01b94c",
+    "tags": ["zenn", "nvim"],
+    "published": true
+  },
+  {
+    "id": "external-7",
+    "title": "全プログラマに送る便利な表記一覧",
+    "date": "2026-02-14",
+    "url": "https://note.com/uliboooo/n/ne513433615d7",
+    "tags": ["note", "colomn"],
+    "published": true
+  },
+  {
+    "id": "external-8",
+    "title": "Markdownの本質はレンダリングできない環境でのメタ表現である",
+    "date": "2026-02-14",
+    "url": "https://note.com/uliboooo/n/n8cca231d3baa",
+    "tags": ["note", "colomn"],
+    "published": true
+  }
+]

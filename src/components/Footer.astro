@@ -1,14 +1,21 @@
 ---
 const version = __APP_VERSION__
-const commit = __COMMIT_HASH__
+const build = new Date(__BUILD_TIME__)
+const human = new Intl.DateTimeFormat("en-US", {
+  month: "numeric",
+  day: "2-digit",
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: false,
+}).format(build)
 ---
 
 <footer>
-  <div>
+  <div class="copy-right">
     <p>&copy; 2026 Uliboooo. All rights reserve.<p>
   </div>
   <div class="site_info">
-    <p>v{version} ({commit}) built</p>
+    <p>{human} built ({version})</p>
     <a href="https://github.com/Uliboooo/blog", target="_blank" rel="noopener noreferrer">View Source</a>
   </div>
 </footer>
@@ -34,4 +41,20 @@ const commit = __COMMIT_HASH__
       }
     }
   }
+  @media (max-width: 640px) {
+    footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      p {
+        margin-bottom: 0.1rem;
+      }
+      .copy-right {
+      }
+      .site_info {
+        flex-wrap: nowrap;
+      }
+    }
+  }
+
 </style>

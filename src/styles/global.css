@@ -12,6 +12,7 @@
   --visited-link: #551A8B;
   --heading-prefix: #666;
   --blockquote-border: #666;
+  --link-color: #333;
   --table-bg: #ffffff;
   --table-text: #333333;
   --table-border: #dddddd;
@@ -28,6 +29,7 @@
   --visited-link: #c58af9;
   --heading-prefix: #999;
   --blockquote-border: #999;
+  --link-color: #e3e3e3;
   --table-bg: #1e1e1e;
   --table-text: #e0e0e0;
   --table-border: #444444;

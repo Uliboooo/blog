@@ -2,48 +2,135 @@
 // src/pages/index.astro
 import { getCollection } from 'astro:content';
 import MainLayout from '../layouts/MainLayout.astro';
+import externalJson from '../data/external.json';
 
-const posts = await getCollection('blog');
-const sorted = posts
+const postsP = getCollection('blog');
+
+const external = externalJson as ExternalPost[];
+
+type ExternalPost = {
+  id: string
+  title: string
+  date: string
+  url: string
+  tags: string[]
+  published: boolean
+}
+
+type BlogItem = {
+  id: string
+  data: {
+    title: string
+    date: Date
+    tags?: string[]
+    published?: boolean
+    url?: string
+  }
+}
+
+const externalPosts: BlogItem[] = external.map(item => ({
+  id: item.url,
+  data: {
+    title: item.title,
+    date: new Date(item.date),
+    tags: item.tags,
+    published: true,
+    url: item.url,
+  }
+}));
+
+const posts = await postsP;
+const astroPosts: BlogItem[] = posts.map(post => ({
+  id: post.id,
+  data: {
+    title: post.data.title,
+    date: post.data.date,
+    tags: post.data.tags,
+    published: post.data.published,
+    url: `/blog/${post.id}`,
+  }
+}));
+
+const sorted = [...astroPosts, ...externalPosts]
   .filter(post => post.data.published !== false)
   .sort((a, b) =>
     b.data.date.valueOf() - a.data.date.valueOf()
   );
 ---
 
-<MainLayout title="Blog of Uliboooo">
+<MainLayout title="Uliboooo's blog">
   <h2>Aricles</h2>
-  <ul>
+  <ul class="article-list">
     {sorted.map(post => (
-      <li>
-        <a href={`/blog/${post.id}`}>{post.data.title}</a>
-        <time>{post.data.date.toLocaleDateString('ja-JP')}</time>
-        {post.data.tags && post.data.tags.length > 0 && (
-          <span class="tags">
-            {post.data.tags.map(tag => (
-              <span class="tag">{tag}</span>
-            ))}
-          </span>
-        )}
-      {!post.data.published && <span> (Draft)</span>}
+      <li class="article-item">
+        <a href={post.data.url} class="article-title">{post.data.title}</a>
+
+        <div class="article-meta">
+          <time>
+            {post.data.date.toLocaleDateString('ja-JP')}
+          </time>
+
+          {post.data.tags?.map(tag => (
+            <span class="tag">{tag}</span>
+          ))}
+        </div>
       </li>
     ))}
   </ul>
 </MainLayout>
 
 <style>
-  ul {
-    padding-left: 10px;
-  }
-  li {
+
+  .article-list {
     list-style: none;
-    margin-bottom: 1rem;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .article-item {
+    <!-- display: flex; -->
+    <!-- justify-content: space-between; -->
+    <!-- align-items: baseline; -->
+    <!-- gap: 1rem; -->
+  }
+
+  .article-title {
+    color: var(--link-color);
+    text-decoration: none;
+    font-size: 1.05rem;
+    background-image: linear-gradient(#da70d6, #da70d6);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: 0 1px;
+    transition: background-size 0.3s ease-in-out;
+    padding-bottom: 1px;
+  }
+
+  .article-title:hover {
+    color: #da70d6;
+    background-size: 100% 1.5px;
+  }
+
+  .article-meta {
+    display: flex;
+    grid-area: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+    white-space: nowrap;
+    margin-top: 0.25rem;
+  }
+
+  .article-meta::before {
+    content: "--";
+    margin-left: 1rem;
   }
 
   time {
     color: #666;
     font-size: 0.9rem;
-    margin-right: 0.5rem;
+    margin-left: 0.2rem;
   }
 
   .tags {
@@ -56,6 +143,7 @@ const sorted = posts
     display: inline-block;
     color: #333;
     font-size: 0.9rem;
+    margin-left: 0.4rem;
   }
 
   .tag::before {

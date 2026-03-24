@@ -1,11 +1,11 @@
 ---
 // src/components/Header.astro
 const navItems = [
-  { href: '/blog/about_me', label: 'About Me' },
   { href: '/', label: 'Blog' },
 ];
 
 const snsItems = [
+  { href: '/blog/about_me', label: 'About Me' },
   { href: 'https://github.com/Uliboooo', label: 'GitHub' },
   { href: 'https://x.com/Uliboooo', label: 'X' },
   { href: 'https://zenn.dev/uliboooo', label: 'Zenn' },
@@ -17,16 +17,9 @@ const snsItems = [
   <div class="head_contents">
     <div class="left_head">
       <div class="head-icon">
-        <a href="/blog/about_me">
+        <a href="/">
           <p id="title_p">@Uliboooo</p>
         </a>
-      </div>
-      <div>
-        <ul>
-          {navItems.map(item => (
-            <li class="head-item"><a href={item.href}>{item.label}</a></li>
-          ))}
-        </ul>
       </div>
     </div>
     <div class="right_content">
@@ -86,7 +79,7 @@ const snsItems = [
       display: flex;
       flex-wrap: wrap;
       list-style: none;
-      gap: 1rem;
+      gap: 0.6rem;
       align-items: center;
       padding-left: 10px;
 
