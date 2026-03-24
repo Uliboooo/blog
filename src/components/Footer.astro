@@ -1,8 +1,14 @@
+---
+const version = __APP_VERSION__
+const commit = __COMMIT_HASH__
+---
+
 <footer>
   <div>
     <p>&copy; 2026 Uliboooo. All rights reserve.<p>
   </div>
-  <div>
+  <div class="site_info">
+    <p>v{version} ({commit}) built</p>
     <a href="https://github.com/Uliboooo/blog", target="_blank" rel="noopener noreferrer">View Source</a>
   </div>
 </footer>
@@ -15,6 +21,17 @@
     align-items: center;
     a {
       text-decoration: none;
+    }
+    .site_info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      p {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
     }
   }
 </style>
