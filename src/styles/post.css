@@ -22,6 +22,7 @@
   color: var(--heading-color);
 
   a {
+    font-size: 1.5rem;
     text-decoration: none;
     color: var(--heading-color);
   }
@@ -68,7 +69,7 @@
 
 .prose img {
   width: 100%;
-  height: auto;
+  height: autond;
 }
 
 .prose img[alt$="#small"] {
@@ -104,15 +105,22 @@
   color: #f8f8f2;
   display: block;
   font-family: 'Fira Code', monospace;
-  /* コードが折り返されずに横に伸びるようにする */
   white-space: pre;
+
+  background: none;
+  border-radius: 0;
+}
+
+.prose code {
+  font-family: "Fira Code", Consolas, 'Liberation Mono', Menlo, monospace;
+  background-color: rgba(175, 184, 193, 0.2);
+  border-radius: 6px;
+  padding: 0.2em 0.4em;
+  font-size: 85%;
+  word-break: break-word;
 }
 
 @media (max-width: 640px) {
-
-  /* .prose p { */
-  /* font-size: 90%; */
-  /* } */
   .prose p {
     font-size: 16px;
   }
@@ -124,18 +132,19 @@
   }
 }
 
-.prose code {
-  /* フォントの設定：等幅フォントを指定 */
-  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+.prose a {
+  color: var(--a-link-in-post);
+  text-decoration: none;
+  font-size: 1.05rem;
+  background-image: linear-gradient(var(--a-under-in-post-hovered), var(--a-under-in-post-hovered));
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 0 1px;
+  transition: background-size 0.3s ease-in-out;
+  padding-bottom: 0;
+}
 
-  /* 背景と境界線：薄いグレーで囲む */
-  background-color: rgba(175, 184, 193, 0.2);
-  border-radius: 6px;
-
-  /* 余白とサイズ：文字の高さに合わせる */
-  padding: 0.2em 0.4em;
-  font-size: 85%;
-
-  /* 折り返しの設定：長いコードがはみ出さないようにする */
-  word-break: break-word;
+.prose a:hover {
+  color: var(--a-link-in-post-hovered);
+  background-size: 100% 1px;
 }

@@ -3,12 +3,16 @@
 @import '@fontsource-variable/baloo-da-2';
 @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 
 :root {
   --background: #fcfcfc;
   --text: #111111;
   --heading-color: #111111;
   --a-link: #0000EE;
+  --a-link-in-post: #2273f5;
+  --a-link-in-post-hovered: #da70d6;
+  --a-under-in-post-hovered: #da70d6;
   --visited-link: #551A8B;
   --heading-prefix: #666;
   --blockquote-border: #666;
@@ -26,6 +30,9 @@
   --text: #F7F2F2;
   --heading-color: #F7F2F2;
   --a-link: #8ab4f8;
+  --a-link-in-post: #9cc0fa;
+  --a-link-in-post-hovered: #ffb3ff;
+  --a-under-in-post-hovered: #ffb3ff;
   --visited-link: #c58af9;
   --heading-prefix: #999;
   --blockquote-border: #999;
@@ -97,7 +104,7 @@ a:visited {
   display: inline-block;
   width: 0.9em;
   height: 0.9em;
-  margin-left: 0.25em;
+  margin-left: 0;
 
   background-color: currentColor;
 
@@ -119,7 +126,7 @@ a:visited {
 }
 
 .external-link:hover::after {
-  transform: translate(2px, -2px);
+  transform: translate(1px, -1px);
 }
 
 table {

@@ -80,20 +80,18 @@ const sorted = [...astroPosts, ...externalPosts]
 </MainLayout>
 
 <style>
+  h2 {
+    font-size: 1.8rem;
+  }
 
   .article-list {
     list-style: none;
     padding: 0;
+    padding-left: 1rem;
     margin: 0;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-  }
-  .article-item {
-    <!-- display: flex; -->
-    <!-- justify-content: space-between; -->
-    <!-- align-items: baseline; -->
-    <!-- gap: 1rem; -->
   }
 
   .article-title {
@@ -106,6 +104,7 @@ const sorted = [...astroPosts, ...externalPosts]
     background-size: 0 1px;
     transition: background-size 0.3s ease-in-out;
     padding-bottom: 1px;
+    font-weight: 600;
   }
 
   .article-title:hover {
