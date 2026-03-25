@@ -69,7 +69,7 @@
 
 .prose img {
   width: 100%;
-  height: autond;
+  height: auto;
 }
 
 .prose img[alt$="#small"] {

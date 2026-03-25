@@ -1,0 +1,87 @@
+---
+// src/components/ShareButtons.astro
+const { title, url } = Astro.props;
+const encoded = encodeURIComponent(url);
+const encodedTitle = encodeURIComponent(title);
+const shareLinks = [
+  {
+    name: "X",
+    href: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encoded}&via=Uliboooo`,
+  },
+  {
+    name: "Hatena",
+    href: `https://b.hatena.ne.jp/entry/s/${url.replace(/^https?:\/\//, "")}`,
+  },
+];
+---
+
+<div class="share-buttons">
+  <div>
+    <span>Share:</span>
+    {shareLinks.map(link => (
+      <a href={link.href} target="_blank" rel="noopener noreferrer" class="external-link">
+        {link.name}
+      </a>
+    ))}
+  </div>
+  <div>
+    <button id="share-btn", class="external-link">Share with</button>
+  </div>
+</div>
+
+
+<style>
+  .share-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+    a {
+      font-size: 0.9rem;
+    }
+  }
+
+  #share-btn {
+    display: none;
+    background: none;
+    border: none;
+    padding: 0;
+    margin-left: 0.2rem;
+    margin-right: 0.1rem;
+    font: inherit;
+    cursor: pointer;
+    color: var(--a-link-in-post);
+    text-decoration: none;
+    background-image: linear-gradient(var(--a-under-in-post-hovered), var(--a-under-in-post-hovered));
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: 0 1px;
+    transition: background-size 0.3s ease-in-out;
+    padding-bottom: 0;
+  }
+
+  #share-btn:hover {
+    color: var(--a-link-in-post-hovered);
+    background-size: 100% 1px;
+  }
+
+  @media (max-width: 640px) {
+    #share-btn {
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  const btn = document.getElementById("share-btn");
+  btn?.addEventListener("click", async () => {
+    if (navigator.share) {
+      await navigator.share({
+        title: document.title,
+        url: location.href,
+      });
+    } else {
+      await navigator.clipboard.writeText(location.href);
+      alert("URLをコピーしました！");
+    }
+  });
+</script>

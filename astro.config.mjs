@@ -9,6 +9,8 @@ const commit = execSync('git rev-parse --short HEAD')
   .trim()
 
 export default defineConfig({
+  site: 'https://blog.uliboooo.dev',
+
   server: {
     host: true,
     allowedHosts: true,

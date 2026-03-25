@@ -1,9 +1,11 @@
 ---
 // src/layouts/BlogPost.astro
 import MainLayout from './MainLayout.astro';
+import ShareButtons from '../components/ShareButtons.astro';
 import '../styles/post.css';
 
 const { title, date } = Astro.props;
+const url = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <MainLayout title={title}>
@@ -11,5 +13,7 @@ const { title, date } = Astro.props;
     <h1>{title}</h1>
     {date && <time>{date.toLocaleDateString('ja-JP')}</time>}
     <slot />
+
+    <ShareButtons title={title} url={url} />
   </article>
 </MainLayout>
