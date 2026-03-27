@@ -15,20 +15,13 @@ published: true
 
 I am a university student who loves Software and Text. My name has four 'o'. I develop CLI tools mainly using Rust. I'm a Vimmer.
 
-<blockquote class="twitter-tweet">
-    <p lang="ja" dir="ltr">好きな物: バジルソース, パスタ, 薄いキーボード, 文字, かわいいもの, 軽いデバイス, 雨, 睡眠, 創作物全般, 最小のルール, モーダル編集, フランスパン, 紙袋</p>
-    &mdash; Uliboooo (@Uliboooo)
-    <a href="https://twitter.com/Uliboooo/status/2036656145348366349?ref_src=twsrc%5Etfw">March 25, 2026</a>
-</blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-<blockquote class="twitter-tweet">
-    <p lang="ja" dir="ltr">嫌いなもの: 右クリック, 微妙に使いずらいスクロールホイール, 細かいUI, 多機能, 上手いことまとまらない髪, 肉肉しい肉, 複雑な料金プラン</p>
-    &mdash; Uliboooo (@Uliboooo)
-    <a href="https://twitter.com/Uliboooo/status/2035978866943238175?ref_src=twsrc%5Etfw">March 23, 2026</a>
-</blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+> 好きな物:  
+> バジルソース, パスタ, 薄いキーボード, 文字, かわいいもの, 軽いデバイス, 雨, 睡眠, 創作物全般, 最小のルール, モーダル編集, フランスパン, 紙袋 [x](https://x.com/Uliboooo/status/2036656145348366349)
 
+
+> 嫌いなもの:  
+> 右クリック, 微妙に使いずらいスクロールホイール, 細かいUI, 多機能, 上手いことまとまらない髪, 肉肉しい肉, 複雑な料金プラン [x](https://x.com/Uliboooo/status/2035978866943238175?s=20)
 
 ## Works
 
