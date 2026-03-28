@@ -1,11 +1,11 @@
 ---
 // src/components/Header.astro
 const navItems = [
+  { href: '/blog/about_me', label: 'About Me' },
   { href: '/', label: 'Blog' },
 ];
 
 const snsItems = [
-  { href: '/blog/about_me', label: 'About Me' },
   { href: 'https://github.com/Uliboooo', label: 'GitHub' },
   { href: 'https://x.com/Uliboooo', label: 'X' },
   { href: 'https://zenn.dev/uliboooo', label: 'Zenn' },
@@ -23,9 +23,18 @@ const snsItems = [
       </div>
     </div>
     <div class="right_content">
+      <ul>
+        {
+        navItems.map(item => (
+          <li class="head-item"><a href="{item.href}">{item.label}</a></li>
+        ))
+        }
+      </ul>
       <ul id="sns_links">
         {snsItems.map(item => (
-          <li class="head-item"><a href={item.href} target="_blank" rel="noopener noreferrer">{item.label}</a></li>
+          <li class="head-item">
+            <a href={item.href} target="_blank" rel="noopener noreferrer">{item.label}</a>
+          </li>
         ))}
       <button id="theme-toggle" aria-label="テーマ切り替え" class="theme-btn">
         🌙
@@ -73,6 +82,14 @@ const snsItems = [
       display: flex;
       align-items: center;
       gap: 15px;
+    }
+
+    .right_content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-self: center;
+      align-items: center;
+      gap: 0.6rem;
     }
 
     .right_content ul {
