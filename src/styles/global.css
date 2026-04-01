@@ -71,6 +71,12 @@ body {
   }
 }
 
+@media (max-width: 900px) {
+  body {
+    width: 92%;
+  }
+}
+
 @media (max-width: 640px) {
   body {
     width: 100%;
