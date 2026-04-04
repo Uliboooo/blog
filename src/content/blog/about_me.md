@@ -45,7 +45,7 @@ Hyprland + Archを中心としたdotfiles。個人用ですが、ある程度汎
 
 大学のLinuxサークル(申請中)のメンバー([@liar2357](https://github.com/liar235)と[@Uliboooo(me)](https://github.com/Ulibooooa))と共同でリリースを行ったサイトです。Linuxを始めるにあたっての基礎的な学習を行う事を目的としたサイトです。
 
-私は主に文書を、[@liar2357](https://github.com/liar235)はサイト(React等)のシステムを構築しました。
+私は主に文書を、[@liar2357](https://github.com/liar2357)はサイト(React等)のシステムを構築しました。
 
 [GitHub Repository](https://github.com/linux-club-tid/linux-docs-next), [Website](https://linux-docs-next.pages.dev/)
 
