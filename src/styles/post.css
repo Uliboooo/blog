@@ -17,7 +17,7 @@
   /* text-decoration: underline; */
   text-underline-offset: 5px;
   margin-top: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   letter-spacing: 0.02em;
   color: var(--heading-color);
 
@@ -35,8 +35,8 @@
 }
 
 .prose h3 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 1.8rem;
+  margin-bottom: 1.0rem;
   color: var(--heading-color);
 }
 
@@ -51,6 +51,10 @@
   border-left: 4px solid var(--blockquote-border);
   padding-left: 15px;
   margin: 20px 0;
+
+  p {
+    font-size: 0.93rem;
+  }
 }
 
 .prose .external-link {
