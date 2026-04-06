@@ -16,6 +16,12 @@ export default defineConfig({
     allowedHosts: true,
   },
 
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+    },
+  },
+
   markdown: {
     rehypePlugins: [
       [
