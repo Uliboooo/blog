@@ -1,21 +1,5 @@
 [
   {
-    "id": "external-1",
-    "title": "Neovimでlspのエラー(現在の行)などをコピーする",
-    "date": "2026-03-24",
-    "url": "https://zenn.dev/uliboooo/articles/a3f76dac892e75",
-    "tags": ["zenn"],
-    "published": true
-  },
-  {
-    "id": "external-2",
-    "title": "swwwを使った背景制御ツールをbashで作る",
-    "date": "2026-03-22",
-    "url": "https://zenn.dev/uliboooo/articles/c4264b097f1abf",
-    "tags": ["zenn", "swww", "Linux"],
-    "published": true
-  },
-  {
     "id": "external-3",
     "title": "nvimでsnacks.nvimを使ったら色々便利になった",
     "date": "2026-03-07",

@@ -2,7 +2,7 @@
 title: "Neovimでlspのエラー(現在の行)などをコピーする"
 date: 2026-03-24
 writer: "Uliboooo"
-description: "About Me"
+description: "Lspのエラーのコピーって必須よね"
 tags: ["neovim", "how2"]
 published: true
 ---
