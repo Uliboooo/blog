@@ -14,7 +14,7 @@ const tocHeadings = headings.filter(({ depth }) => depth >= 2 && depth <= 3);
     <h1>{title}</h1>
     {date && <time>{date.toLocaleDateString('ja-JP')}</time>}
     {tocHeadings.length > 0 && (
-      <details class="post-toc" open>
+      <details class="post-toc" open aria-label="Table of contents">
         <summary>Table of contents</summary>
         <ul>
           {tocHeadings.map((heading) => (
