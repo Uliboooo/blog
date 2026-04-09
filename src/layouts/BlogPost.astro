@@ -1,10 +1,20 @@
 ---
 // src/layouts/BlogPost.astro
+import type { MarkdownHeading } from 'astro';
 import MainLayout from './MainLayout.astro';
 import ShareButtons from '../components/ShareButtons.astro';
 import '../styles/post.css';
 
-const { title, date } = Astro.props;
+const {
+  title,
+  date,
+  headings = [],
+} = Astro.props as {
+  title: string;
+  date?: Date;
+  headings?: MarkdownHeading[];
+};
+const tocHeadings = headings.filter((heading) => heading.depth >= 2 && heading.depth <= 3);
 const url = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
@@ -12,6 +22,20 @@ const url = new URL(Astro.url.pathname, Astro.site).href;
   <article class="prose">
     <h1>{title}</h1>
     {date && <time>{date.toLocaleDateString('ja-JP')}</time>}
+    {tocHeadings.length > 0 && (
+      <details class="toc">
+        <summary>目次</summary>
+        <nav aria-label="Table of contents">
+          <ul>
+            {tocHeadings.map((heading) => (
+              <li class={`toc-depth-${heading.depth}`}>
+                <a href={`#${heading.slug}`}>{heading.text}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </details>
+    )}
     <slot />
 
     <ShareButtons title={title} url={url} />
