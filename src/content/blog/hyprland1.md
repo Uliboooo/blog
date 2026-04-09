@@ -17,7 +17,7 @@ published: true
 
 これらの標準のwsとは別に、**Special Workspace**と呼ばれるwsがHyprlandには存在します。これらにはindexがなく固有の名前で管理されます。これらはwsの列とは独立しているため、モニターにもwsの順番にも縛られずに**いつでも, どこからでも**呼び出すことができます。
 
-私の使い方としてはgmailやdiscrod, todoアプリなどの常時起動しておきたいツールを置いておくために使っています。Msgという名前で管理しています。
+私の使い方としてはgmailやDiscord, todoアプリなどの常時起動しておきたいツールを置いておくために使っています。Msgという名前で管理しています。
 
 ![](https://storage.googleapis.com/zenn-user-upload/352ab9131b4f-20260326.png)
 

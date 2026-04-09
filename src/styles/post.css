@@ -9,8 +9,9 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
   letter-spacing: 0.05em;
-  font-family: 'Baloo Da 2 Variable', "Zen Kaku Gothic Antique";
-  font-weight: 420;
+  font-family: "Roboto", "Noto Sans JP";
+  font-weight: 430;
+  font-optical-sizing: auto;
 }
 
 .prose h2 {
