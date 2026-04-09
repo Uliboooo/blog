@@ -3,6 +3,36 @@
   padding-right: 10px;
 }
 
+.prose .toc {
+  margin: 1rem 0 1.4rem;
+  border: 1px solid var(--line-color);
+  border-radius: 8px;
+  padding: 0.55rem 0.8rem;
+}
+
+.prose .toc summary {
+  cursor: pointer;
+  user-select: none;
+  font-weight: 600;
+}
+
+.prose .toc nav {
+  margin-top: 0.7rem;
+}
+
+.prose .toc ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.prose .toc li {
+  margin: 0.35rem 0;
+}
+
+.prose .toc .toc-depth-3 {
+  margin-left: 1rem;
+}
+
 .prose p {
   font-size: 17px;
   line-height: 1.8;
