@@ -92,6 +92,36 @@
   height: auto;
 }
 
+.prose .post-toc {
+  margin: 1rem 0 1.5rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--table-border);
+  border-radius: 6px;
+}
+
+.prose .post-toc summary {
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.prose .post-toc ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.prose .post-toc li {
+  margin-bottom: 0.2rem;
+}
+
+.prose .post-toc li.depth-3 {
+  margin-left: 1rem;
+}
+
+.prose .post-toc a {
+  font-size: 1rem;
+}
+
 .prose pre {
   background-color: #1e1e1e;
   border-radius: 8px;
