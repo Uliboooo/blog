@@ -5,12 +5,6 @@ const navItems = [
   { href: '/', label: 'Blog' },
 ];
 
-const snsItems = [
-  { href: 'https://github.com/Uliboooo', label: 'GitHub' },
-  { href: 'https://x.com/Uliboooo', label: 'X' },
-  { href: 'https://zenn.dev/uliboooo', label: 'Zenn' },
-  { href: 'https://note.com/uliboooo', label: 'note' },
-]
 ---
 
 <header>
@@ -31,11 +25,6 @@ const snsItems = [
         }
       </ul>
       <ul id="sns_links">
-        {snsItems.map(item => (
-          <li class="head-item">
-            <a href={item.href} target="_blank" rel="noopener noreferrer">{item.label}</a>
-          </li>
-        ))}
       <button id="theme-toggle" aria-label="テーマ切り替え" class="theme-btn">
         🌙
       </button>
@@ -63,14 +52,16 @@ const snsItems = [
 
     .left_head {
       #title_p {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         margin: 0;
-        font-family: "Public Sans";
+        font-family: var(--base-fonts);
+        color: var(--header-title-color);
+        font-weight: bold;
       }
       a,
       a:visited {
         text-decoration: none;
-        color: var(--text);
+        color: var(--header-title-color);
       }
       ul {
         list-style: none;

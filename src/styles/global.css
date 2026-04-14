@@ -1,9 +1,6 @@
 /* global.css */
 
-@import '@fontsource-variable/baloo-da-2';
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
   --background: #fcfcfc;
@@ -23,6 +20,9 @@
   --table-header-bg: #f4f4f4;
   --table-stripe-bg: #fafafa;
   --table-hover-bg: #f1f1f1;
+
+  --base-fonts-sans: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Roboto", "Noto Sans JP", sans;
+  --header-title-color: #696969;
 }
 
 :root.dark {
@@ -43,6 +43,10 @@
   --table-header-bg: #2d2d2d;
   --table-stripe-bg: #252525;
   --table-hover-bg: #3d3d3d;
+
+  --base-fonts-sans: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Roboto", "Noto Sans JP", sans;
+  --header-title-color: #B8B8B8;
+
 }
 
 *,
@@ -52,7 +56,7 @@
 }
 
 body {
-  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Roboto", "Noto Sans JP", sans-serif;
+  font-family: var(--base-fonts-sans);
   background-color: var(--background);
   color: var(--text);
   transition: background-color 0.3s ease;
