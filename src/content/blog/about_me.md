@@ -47,7 +47,7 @@ Hyprland + Archを中心としたdotfiles。個人用ですが、ある程度汎
 ### 初心者向けLinux doc
 
 
-大学のLinuxサークル(申請中)のメンバー([@liar2357](https://github.com/liar235)と[@Uliboooo(me)](https://github.com/Ulibooooa))と共同でリリースを行ったサイトです。Linuxを始めるにあたっての基礎的な学習を行う事を目的としたサイトです。
+大学のLinuxサークル(申請中)のメンバー([@liar2357](https://github.com/liar235)と[@Uliboooo(me)](https://github.com/Uliboooo))と共同でリリースを行ったサイトです。Linuxを始めるにあたっての基礎的な学習を行う事を目的としたサイトです。
 
 私は主に文書を、[@liar2357](https://github.com/liar2357)はサイト(React等)のシステムを構築しました。
 
@@ -133,6 +133,14 @@ Moonbitの練習用。ソフトウェアの完成度よりMoonbitの使い方を
 x.comへアクセスした際に[hacker news](https://news.ycombinator.com/)にリダイレクトするだけのChrome extenstion。名前に意味はないです。
 
 [GitHub Repository](https://github.com/Uliboooo/Mother_is_angry)
+
+### min_lisp
+
+プログラミング練習のための最小限のLisp環境。開発中のためまだ全然未完成。
+
+[Github Repository](https://github.com/Uliboooo/lisp_min_practice)
+
+![result](../../assets/about_me/shot_of_lisp_machine.png)
 
 ## Capabilities
 
