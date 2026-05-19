@@ -1,6 +1,10 @@
 ---
 // src/components/ShareButtons.astro
-const { title, url } = Astro.props;
+const { title, url, wordCount } = Astro.props as {
+  title: string;
+  url: string;
+  wordCount?: number;
+};
 const encoded = encodeURIComponent(url);
 const encodedTitle = encodeURIComponent(title);
 const shareLinks = [
@@ -17,16 +21,24 @@ const shareLinks = [
 
 <div class="share-buttons">
   <div>
-    <span>Share:</span>
-    {shareLinks.map(link => (
-      <a href={link.href} target="_blank" rel="noopener noreferrer" class="external-link">
-        {link.name}
-      </a>
-    ))}
+    <div class="share-links">
+      <span>Share:</span>
+      {shareLinks.map(link => (
+        <a href={link.href} target="_blank" rel="noopener noreferrer" class="external-link">
+          {link.name}
+        </a>
+      ))}
+    </div>
+    <div class="share-native">
+      <button id="share-btn" class="external-link">Share with</button>
+    </div>
   </div>
-  <div>
-    <button id="share-btn", class="external-link">Share with</button>
+  {typeof wordCount === "number" && (
+  <div class="share-meta">
+    <span class="word-count">{wordCount.toLocaleString("ja-JP")} words</span>
   </div>
+  )}
+
 </div>
 
 
@@ -34,11 +46,19 @@ const shareLinks = [
   .share-buttons {
     display: flex;
     flex-wrap: wrap;
-    font-size: 0.9rem;
+    justify-content: space-between;
+    gap: 0.25rem 0.8rem;
+    align-items: center;
+    font-size: 1rem;
     margin-top: 2rem;
     a {
-      font-size: 0.9rem;
+      font-size: 1rem;
     }
+  }
+
+  .share-meta {
+    color: var(--heading-prefix);
+    white-space: nowrap;
   }
 
   #share-btn {

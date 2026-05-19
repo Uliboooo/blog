@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config'
 import rehypeExternalLinks from 'rehype-external-links'
 import pkg from './package.json' assert { type: 'json' }
 import { execSync } from 'node:child_process'
+import remarkCodeTitle from './src/plugins/remark-code-title.js'
 
 const commit = execSync('git rev-parse --short HEAD')
   .toString()
@@ -23,6 +24,7 @@ export default defineConfig({
   },
 
   markdown: {
+    remarkPlugins: [remarkCodeTitle],
     rehypePlugins: [
       [
         rehypeExternalLinks,

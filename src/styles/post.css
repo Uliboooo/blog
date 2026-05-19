@@ -44,6 +44,14 @@
   font-optical-sizing: auto;
 }
 
+.prose .post-description {
+  margin: 0.4rem 0 0.8rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  color: var(--heading-prefix);
+}
+
 .prose h2 {
   /* text-decoration: underline; */
   text-underline-offset: 5px;
@@ -123,7 +131,7 @@
 }
 
 .prose pre {
-  background-color: #1e1e1e;
+  background-color: #24292e;
   border-radius: 8px;
   padding: 1rem;
 
@@ -132,6 +140,29 @@
   max-width: 100%;
   overflow-x: auto;
   box-sizing: border-box;
+  position: relative;
+}
+
+.prose .code-title {
+  margin: 1.1rem 0 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: #f8f8f2;
+  font-family: "Fira Code", Consolas, 'Liberation Mono', Menlo, monospace;
+  background-color: #24292e;
+  border-radius: 8px 8px 0 0;
+  padding: 0.25rem 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.prose .code-title+pre {
+  margin-top: 0;
+  border-top: 1px solid #ffffff;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .prose pre code {
@@ -144,6 +175,47 @@
 
   background: none;
   border-radius: 0;
+}
+
+.prose .code-copy-button {
+  padding: 0.35rem 0.6rem;
+  font-size: 0.75rem;
+  line-height: 1;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  color: #f8f8f2;
+  cursor: pointer;
+  opacity: 0.75;
+}
+
+.prose pre .code-copy-button {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+}
+
+.prose .code-title .code-copy-button {
+  margin-left: auto;
+}
+
+.prose .code-copy-button:hover {
+  opacity: 1;
+}
+
+.prose .code-copy-button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 2px;
+}
+
+.prose .code-copy-button[data-state='copied'] {
+  color: #9be9a8;
+  border-color: rgba(155, 233, 168, 0.6);
+}
+
+.prose .code-copy-button[data-state='failed'] {
+  color: #fda4af;
+  border-color: rgba(253, 164, 175, 0.6);
 }
 
 .prose code {

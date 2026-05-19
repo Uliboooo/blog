@@ -1,26 +1,36 @@
 ---
 // src/layouts/BlogPost.astro
-import type { MarkdownHeading } from 'astro';
-import MainLayout from './MainLayout.astro';
-import ShareButtons from '../components/ShareButtons.astro';
-import '../styles/post.css';
+import type { MarkdownHeading } from "astro";
+import MainLayout from "./MainLayout.astro";
+import ShareButtons from "../components/ShareButtons.astro";
+import "../styles/post.css";
 
 const {
   title,
   date,
   headings = [],
+  description,
+  wordCount,
 } = Astro.props as {
   title: string;
   date?: Date;
   headings?: MarkdownHeading[];
+  description?: string;
+  wordCount?: number;
 };
-const tocHeadings = headings.filter((heading) => heading.depth >= 2 && heading.depth <= 3);
+const trimmedDescription = description?.trim();
+const tocHeadings = headings.filter(
+  (heading) => heading.depth >= 2 && heading.depth <= 3,
+);
 const url = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
-<MainLayout title={title}>
-  <article class="prose">
+  <MainLayout title={title}>
+    <article class="prose">
     <h1>{title}</h1>
+    {trimmedDescription && (
+      <p class="post-description">{trimmedDescription}</p>
+    )}
     {date && <time>{date.toLocaleDateString('ja-JP')}</time>}
     {tocHeadings.length > 0 && (
       <details class="toc">
@@ -38,6 +48,71 @@ const url = new URL(Astro.url.pathname, Astro.site).href;
     )}
     <slot />
 
-    <ShareButtons title={title} url={url} />
-  </article>
-</MainLayout>
+      <ShareButtons title={title} url={url} wordCount={wordCount} />
+    </article>
+
+    <script is:inline>
+      const root = document.querySelector('.prose');
+      const codeBlocks = root?.querySelectorAll('pre > code') ?? [];
+
+      for (const code of codeBlocks) {
+        const pre = code.parentElement;
+        if (!pre) continue;
+
+        const title = pre.previousElementSibling;
+        const titleTarget =
+          title instanceof HTMLElement && title.classList.contains('code-title')
+            ? title
+            : null;
+        const container = titleTarget ?? pre;
+
+        if (container.querySelector('.code-copy-button')) continue;
+
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'code-copy-button';
+        button.setAttribute('aria-label', 'Copy code');
+        button.textContent = 'Copy';
+        container.appendChild(button);
+
+        let resetTimer;
+        const resetLabel = () => {
+          button.textContent = 'Copy';
+          button.dataset.state = '';
+        };
+
+        button.addEventListener('click', async () => {
+          const text = code.textContent ?? '';
+          clearTimeout(resetTimer);
+
+          try {
+            if (navigator.clipboard && window.isSecureContext) {
+              await navigator.clipboard.writeText(text);
+            } else {
+              const textarea = document.createElement('textarea');
+              textarea.value = text;
+              textarea.style.position = 'fixed';
+              textarea.style.opacity = '0';
+              textarea.style.pointerEvents = 'none';
+              document.body.appendChild(textarea);
+              textarea.focus();
+              textarea.select();
+              const copied = document.execCommand('copy');
+              textarea.remove();
+              if (!copied) {
+                throw new Error('Copy failed');
+              }
+            }
+
+            button.textContent = 'Copied';
+            button.dataset.state = 'copied';
+          } catch (error) {
+            button.textContent = 'Failed';
+            button.dataset.state = 'failed';
+          }
+
+          resetTimer = window.setTimeout(resetLabel, 2000);
+        });
+      }
+    </script>
+  </MainLayout>

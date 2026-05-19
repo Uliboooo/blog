@@ -1,61 +1,63 @@
 ---
 // src/pages/index.astro
-import { getCollection } from 'astro:content';
-import MainLayout from '../layouts/MainLayout.astro';
-import externalJson from '../data/external.json';
+import { getCollection } from "astro:content";
+import MainLayout from "../layouts/MainLayout.astro";
+import externalJson from "../data/external.json";
 
-const postsP = getCollection('blog');
+const postsP = getCollection("blog");
 
 const external = externalJson as ExternalPost[];
 
 type ExternalPost = {
-  id: string
-  title: string
-  date: string
-  url: string
-  tags: string[]
-  published: boolean
-}
+  id: string;
+  title: string;
+  date: string;
+  url: string;
+  description?: string;
+  tags: string[];
+  published: boolean;
+};
 
 type BlogItem = {
-  id: string
+  id: string;
   data: {
-    title: string
-    date: Date
-    tags?: string[]
-    published?: boolean
-    url?: string
-  }
-}
+    title: string;
+    date: Date;
+    description?: string;
+    tags?: string[];
+    published?: boolean;
+    url?: string;
+  };
+};
 
-const externalPosts: BlogItem[] = external.map(item => ({
+const externalPosts: BlogItem[] = external.map((item) => ({
   id: item.url,
   data: {
     title: item.title,
     date: new Date(item.date),
+    description: item.description?.trim() || undefined,
     tags: item.tags,
     published: true,
     url: item.url,
-  }
+  },
 }));
 
 const posts = await postsP;
-const astroPosts: BlogItem[] = posts.map(post => ({
+const astroPosts: BlogItem[] = posts.map((post) => ({
   id: post.id,
   data: {
     title: post.data.title,
     date: post.data.date,
+    description: post.data.description?.trim() || undefined,
     tags: post.data.tags,
     published: post.data.published,
-    url: `/blog/${post.id.split('/')[0]}`,
-  }
+    url: `/blog/${post.id.split("/")[0]}`,
+  },
 }));
 
 const sorted = [...astroPosts, ...externalPosts]
-  .filter(post => post.data.published !== false)
-  .sort((a, b) =>
-    b.data.date.valueOf() - a.data.date.valueOf()
-  );
+  .filter((post) => post.data.published !== false)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <MainLayout title="Uliboooo's blog">
@@ -64,6 +66,10 @@ const sorted = [...astroPosts, ...externalPosts]
     {sorted.map(post => (
       <li class="article-item">
         <a href={post.data.url} class="article-title">{post.data.title}</a>
+
+        {post.data.description && (
+          <p class="article-description">{post.data.description}</p>
+        )}
 
         <div class="article-meta">
           <time>
@@ -97,7 +103,7 @@ const sorted = [...astroPosts, ...externalPosts]
   .article-title {
     color: var(--link-color);
     text-decoration: none;
-    font-size: 1.05rem;
+    font-size: 1.4rem;
     background-image: linear-gradient(#da70d6, #da70d6);
     background-repeat: no-repeat;
     background-position: left bottom;
@@ -112,6 +118,17 @@ const sorted = [...astroPosts, ...externalPosts]
     background-size: 100% 1.5px;
   }
 
+  .article-description {
+    margin: 0.35rem 0 0 1rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #555;
+  }
+
+  :root.dark .article-description {
+    color: #B0B0B0;
+  }
+
   .article-meta {
     display: flex;
     grid-area: 1rem;
@@ -122,8 +139,8 @@ const sorted = [...astroPosts, ...externalPosts]
   }
 
   .article-meta::before {
-    content: "--";
-    margin-left: 1rem;
+    content: "—";
+    margin-left: 1.3rem;
   }
 
   time {
