@@ -11,21 +11,29 @@ const {
   headings = [],
   description,
   wordCount,
+  slug,
 } = Astro.props as {
   title: string;
   date?: Date;
   headings?: MarkdownHeading[];
   description?: string;
   wordCount?: number;
+  slug: string;
 };
 const trimmedDescription = description?.trim();
+const ogImage = slug ? `/og/${slug}.png` : undefined;
 const tocHeadings = headings.filter(
   (heading) => heading.depth >= 2 && heading.depth <= 3,
 );
 const url = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
-  <MainLayout title={title}>
+  <MainLayout
+    title={title}
+    description={trimmedDescription}
+    ogImage={ogImage}
+    ogType="article"
+  >
     <article class="prose">
     <h1>{title}</h1>
     {trimmedDescription && (
