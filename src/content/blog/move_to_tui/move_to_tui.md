@@ -9,6 +9,9 @@ published: true
 
 従来はGUIでやっていた作業をもっとTUIでやってみようという話です。役立ちそうなTUIたちを紹介します。
 
+あと、[わたしのdotfiles](https://github.com/Uliboooo/dotfiles)にNixOSの設定まであるので、たぶんこれをまんまパクればそのまま記事中のTUIや設定は動くと思われます。(Nix初心者すぎて分からない)
+ただかなり個人に寄せたHyprlandなどの設定なのでちょいちょい設定などをパクるくらいがいいかも。
+
 ## File Manager: Yazi
 
 GUIではGNOMEのNautilusやKDEなどのDolphinがあります。でもマウスぽちぽちするのが面倒なこともあります。
