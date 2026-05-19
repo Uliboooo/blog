@@ -47,7 +47,7 @@ const astroPosts: BlogItem[] = posts.map(post => ({
     date: post.data.date,
     tags: post.data.tags,
     published: post.data.published,
-    url: `/blog/${post.id}`,
+    url: `/blog/${post.id.split('/')[0]}`,
   }
 }));
 

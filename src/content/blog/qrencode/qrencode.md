@@ -49,7 +49,7 @@ qrencode -s 50 -o about_me.svg -t SVG "https://blog.uliboooo.dev/blog/about_me/"
 
 上記のコマンドによりSVGとして生成されたQRコード(実際はpngに変換済みですが)をフォントサイズ11のターミナル上で表示されたQRコードです。
 
-![e.g.](../../assets/qr/about_me.png)
+![e.g.](./about_me.png)
 
 QRコードのはその用途的にも拡大をする可能性も高いため、SVGで書き出すのが安全だと思います。
 

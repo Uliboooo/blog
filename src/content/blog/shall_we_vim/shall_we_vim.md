@@ -14,7 +14,7 @@ published: true
 
 自由で高速で効率的なエディター。
 
-![neovim 0.12](../../assets/shall_we_vim/nvim.png)
+![neovim 0.12](./nvim.png)
 
 ## Vim or Neovim?
 
