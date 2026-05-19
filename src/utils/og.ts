@@ -11,6 +11,14 @@ const escapeXml = (value: string) =>
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
 
+const truncateDescription = (desc: string) => {
+  const maxDescChars = 65; // Adjust based on font size and width
+  if (Array.from(desc).length > maxDescChars) {
+    return Array.from(desc).slice(0, maxDescChars).join("") + "...";
+  }
+  return desc;
+};
+
 const splitTitle = (title: string) => {
   const trimmed = title.trim() || "Untitled";
   const hasSpace = /\s/.test(trimmed);
@@ -60,13 +68,19 @@ const resolveFontSize = (lines: string[]) => {
   return 64;
 };
 
-export const buildOgSvg = (title: string) => {
+export const buildOgSvg = (title: string, description?: string) => {
   const lines = splitTitle(title);
   const fontSize = resolveFontSize(lines);
   const lineHeight = Math.round(fontSize * 1.25);
-  const startY = Math.round(
+  
+  // Calculate starting Y position. Adjust slightly up if there's a description
+  let startY = Math.round(
     (OG_IMAGE_HEIGHT - lineHeight * (lines.length - 1)) / 2,
   );
+  if (description) {
+      startY = startY - 20; // Shift title up to make room
+  }
+
   const textX = 120;
   const tspans = lines
     .map((line, index) => {
@@ -77,6 +91,15 @@ export const buildOgSvg = (title: string) => {
 
   const fontFamily =
     "Noto Sans JP, Hiragino Kaku Gothic ProN, Hiragino Sans, Yu Gothic, Meiryo, Segoe UI, sans-serif";
+    
+  let descriptionElement = "";
+  if (description) {
+    const descFontSize = 28;
+    // Position description below the last line of the title
+    const descY = startY + (lineHeight * (lines.length - 1)) + 60;
+    const cleanDesc = truncateDescription(description.replace(/\n/g, " "));
+    descriptionElement = `<text x="${textX}" y="${descY}" fill="#555555" font-family="${fontFamily}" font-size="${descFontSize}" font-weight="500">${escapeXml(cleanDesc)}</text>`;
+  }
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <svg width="${OG_IMAGE_WIDTH}" height="${OG_IMAGE_HEIGHT}" viewBox="0 0 ${OG_IMAGE_WIDTH} ${OG_IMAGE_HEIGHT}" xmlns="http://www.w3.org/2000/svg">
@@ -91,6 +114,7 @@ export const buildOgSvg = (title: string) => {
   <text x="${textX}" y="${startY}" fill="#111111" font-family="${fontFamily}" font-size="${fontSize}" font-weight="700">
     ${tspans}
   </text>
+  ${descriptionElement}
   <text x="${textX}" y="${OG_IMAGE_HEIGHT - 120}" fill="#666666" font-family="${fontFamily}" font-size="32" font-weight="600">
     Uliboooo's blog
   </text>
