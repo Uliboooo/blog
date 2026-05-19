@@ -60,7 +60,11 @@ const sorted = [...astroPosts, ...externalPosts]
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<MainLayout title="Uliboooo's blog">
+<MainLayout
+  title="Uliboooo's blog"
+  description="Uliboooo's blog"
+  ogImage="/og/index.png"
+>
   <h2>Aricles</h2>
   <ul class="article-list">
     {sorted.map(post => (
