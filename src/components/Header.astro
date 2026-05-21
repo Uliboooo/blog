@@ -10,7 +10,7 @@ const navItems = [
   <div class="head_contents">
     <div class="left_head">
       <div class="head-icon">
-        <a href="/">
+        <a href="/" class="nav-link title-link">
           <p id="title_p">@Uliboooo</p>
         </a>
       </div>
@@ -18,15 +18,17 @@ const navItems = [
     <div class="right_content">
       <ul>
         {
-        navItems.map(item => (
-          <li class="head-item"><a href={item.href}>{item.label}</a></li>
-        ))
+          navItems.map(item => (
+            <li class="head-item">
+              <a href={item.href} class="nav-link">{item.label}</a>
+            </li>
+          ))
         }
       </ul>
       <ul id="sns_links">
-      <button id="theme-toggle" aria-label="テーマ切り替え" class="theme-btn">
-        🌙
-      </button>
+        <button id="theme-toggle" aria-label="テーマ切り替え" class="theme-btn">
+          🌙
+        </button>
       </ul>
     </div>
   </div>
@@ -39,29 +41,29 @@ const navItems = [
     padding-bottom: 5px;
     font-size: 1.1rem;
   }
+
   .head_contents {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
 
-    .head-item a{
+    .head-item a {
       font-size: 1rem;
     }
 
     .left_head {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+
       #title_p {
         font-size: 1.4rem;
         margin: 0;
         font-family: var(--base-fonts);
-        color: var(--header-title-color);
         font-weight: bold;
       }
-      a,
-      a:visited {
-        text-decoration: none;
-        color: var(--header-title-color);
-      }
+
       ul {
         list-style: none;
         display: flex;
@@ -69,9 +71,6 @@ const navItems = [
         gap: 15px;
         padding-left: 0;
       }
-      display: flex;
-      align-items: center;
-      gap: 15px;
     }
 
     .right_content {
@@ -94,12 +93,40 @@ const navItems = [
         font-size: 1rem;
       }
 
-      li a,
-      li a:visited {
-        text-decoration: none;
-        color: var(--text);
+      #toggle-theme {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #toggle-theme svg {
+        display: block;
       }
     }
+  }
+
+  .nav-link,
+  .nav-link:visited {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text);
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1.5px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    transition: background-size 0.3s ease, color 0.2s ease, opacity 0.2s ease;
+  }
+
+  .nav-link:hover {
+    background-size: 100% 1.5px;
+    color: var(--a-link-in-post-hovered);
+    background-image: linear-gradient(var(--a-under-in-post-hovered), var(--a-under-in-post-hovered));
+    opacity: 0.7;
+  }
+
+  .title-link,
+  .title-link:visited {
+    color: var(--header-title-color);
   }
 
   .theme-btn {
@@ -127,24 +154,69 @@ const navItems = [
 </style>
 
 <script>
-  const button = document.getElementById('theme-toggle');
+const ICONS = {
+  moon: `<svg xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 44 44"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    style="transform: translateY(1px);"
+    aria-hidden="true">
+    <!-- outer moon -->
+    <path d="M28 6
+      C18 7, 11 15, 11 24
+      C11 33, 18 39, 27 39
+      C33 39, 38 36, 41 31
+      C35 32, 29 30, 24 25
+      C19 20, 17 13, 18 7
+      C21 6, 24 5.5, 28 6Z"/>
+  </svg>`,
 
-  const updateButton = () => {
-    const isDark = document.documentElement.classList.contains('dark');
-    if (button) button.textContent = isDark ? '🔆' : '🌙';
-  };
+  sun: `<svg xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 44 44"
+    fill="none"
+    stroke="#f59e0b"
+    stroke-width="1.8"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    style="transform: translateY(1px);"
+    aria-hidden="true">
+    <circle cx="22" cy="22" r="7"/>
+    <line x1="22" y1="3"  x2="22" y2="8"/>
+    <line x1="22" y1="36" x2="22" y2="41"/>
+    <line x1="3"  y1="22" x2="8"  y2="22"/>
+    <line x1="36" y1="22" x2="41" y2="22"/>
+    <line x1="8"  y1="8"  x2="11.5" y2="11.5"/>
+    <line x1="32.5" y1="32.5" x2="36" y2="36"/>
+    <line x1="36" y1="8"  x2="32.5" y2="11.5"/>
+    <line x1="11.5" y1="32.5" x2="8"  y2="36"/>
+  </svg>`,
+};
 
-  button?.addEventListener('click', () => {
-    const isDark = document.documentElement.classList.contains('dark');
-    if (isDark) {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    } else {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    }
-    updateButton();
-  });
+const button = document.getElementById('theme-toggle');
 
+const updateButton = () => {
+  const isDark = document.documentElement.classList.contains('dark');
+  if (button) button.innerHTML = isDark ? ICONS.sun : ICONS.moon;
+};
+
+button?.addEventListener('click', () => {
+  const isDark = document.documentElement.classList.contains('dark');
+  if (isDark) {
+    document.documentElement.classList.remove('dark');
+    localStorage.setItem('theme', 'light');
+  } else {
+    document.documentElement.classList.add('dark');
+    localStorage.setItem('theme', 'dark');
+  }
   updateButton();
+});
+
+updateButton();
 </script>

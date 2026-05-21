@@ -107,14 +107,20 @@ a:visited {
   color: var(--visited-link);
 }
 
-.external-link {
+/* ベース：下線スタイル */
+.link--underline {
   display: inline-flex;
   align-items: center;
   text-underline-offset: 4px;
   transition: color 0.2s ease;
 }
 
-.external-link::after {
+.link--underline:hover {
+  opacity: 0.8;
+}
+
+/* 拡張：外部リンク矢印を追加 */
+.link--external::after {
   content: "";
   display: inline-block;
   width: 0.9em;
@@ -136,11 +142,7 @@ a:visited {
   transition: transform 0.2s ease;
 }
 
-.external-link:hover {
-  opacity: 0.8;
-}
-
-.external-link:hover::after {
+.link--external:hover::after {
   transform: translate(1px, -1px);
 }
 

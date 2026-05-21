@@ -8,6 +8,7 @@ const human = new Intl.DateTimeFormat("en-US", {
   minute: "2-digit",
   hour12: false,
 }).format(build)
+import '../styles/global.css';
 ---
 
 <footer>
@@ -16,7 +17,7 @@ const human = new Intl.DateTimeFormat("en-US", {
   </div>
   <div class="site_info">
     <p>{human} UTC (v.{version})</p>
-    <a href="https://github.com/Uliboooo/blog", target="_blank" rel="noopener noreferrer">View Source</a>
+    <a href="https://github.com/Uliboooo/blog", target="_blank" rel="noopener noreferrer" class="link--underline link--external">View Source</a>
   </div>
 </footer>
 

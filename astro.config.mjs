@@ -32,7 +32,7 @@ export default defineConfig({
           target: '_blank',
           rel: ['noopener', 'noreferrer'],
           properties: {
-            class: 'external-link',
+            class: 'link--underline link--external',
           },
         },
       ],
