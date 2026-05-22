@@ -1,6 +1,11 @@
 /* global.css */
-
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
+@font-face {
+  font-family: 'Annotation Mono';
+  src: url('/fonts/AnnotationMono-VF.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   --background: #fcfcfc;
@@ -22,6 +27,7 @@
   --table-hover-bg: #f1f1f1;
 
   --base-fonts-sans: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Roboto", "Noto Sans JP", sans;
+  --base-fonts-mono: "Annotation Mono", "Fira Code", Consolas, 'Liberation Mono', Menlo, monospace;
   --header-title-color: #696969;
 }
 
@@ -45,6 +51,7 @@
   --table-hover-bg: #3d3d3d;
 
   --base-fonts-sans: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Roboto", "Noto Sans JP", sans;
+  --base-fonts-mono: "Annotation Mono", "Fira Code", Consolas, 'Liberation Mono', Menlo, monospace;
   --header-title-color: #B8B8B8;
 
 }

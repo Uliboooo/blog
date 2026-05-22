@@ -149,7 +149,7 @@
   line-height: 1.4;
   letter-spacing: 0.02em;
   color: #f8f8f2;
-  font-family: "Fira Code", Consolas, 'Liberation Mono', Menlo, monospace;
+  font-family: var(--base-fonts-mono);
   background-color: #24292e;
   border-radius: 8px 8px 0 0;
   padding: 0.25rem 0.75rem;
@@ -170,7 +170,7 @@
   margin: 0;
   color: #f8f8f2;
   display: block;
-  font-family: 'Fira Code', monospace;
+  font-family: var(--base-fonts-mono);
   white-space: pre;
 
   background: none;
@@ -219,7 +219,7 @@
 }
 
 .prose code {
-  font-family: "Fira Code", Consolas, 'Liberation Mono', Menlo, monospace;
+  font-family: var(--base-fonts-mono);
   background-color: rgba(175, 184, 193, 0.2);
   border-radius: 6px;
   padding: 0.2em 0.4em;
