@@ -12,6 +12,10 @@ const commit = execSync('git rev-parse --short HEAD')
 export default defineConfig({
   site: 'https://blog.uliboooo.dev',
 
+  redirects: {
+    '/blog/[...slug]': '/[slug]',
+  },
+
   server: {
     host: true,
     allowedHosts: true,
