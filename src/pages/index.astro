@@ -51,7 +51,7 @@ const astroPosts: BlogItem[] = posts.map((post) => ({
     description: post.data.description?.trim() || undefined,
     tags: post.data.tags,
     published: post.data.published,
-    url: `/blog/${post.id.split("/")[0]}`,
+    url: `/${post.id.split("/")[0]}`,
   },
 }));
 

@@ -81,7 +81,7 @@ const frontmatter = [
   "",
 ].join("\n");
 
-const article_path = `./src/content/blog/${slug}/${slug}.md`;
+const article_path = `./src/content/${slug}/${slug}.md`;
 const file = Bun.file(article_path);
 
 if (await file.exists()) {

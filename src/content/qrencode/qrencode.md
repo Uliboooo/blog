@@ -44,7 +44,7 @@ qrencode -t SVG -o save/to/pash.svg "URL"
 ## 実例
 
 ```bash
-qrencode -s 50 -o about_me.svg -t SVG "https://blog.uliboooo.dev/blog/about_me/"
+qrencode -s 50 -o about_me.svg -t SVG "https://blog.uliboooo.dev/about_me/"
 ```
 
 上記のコマンドによりSVGとして生成されたQRコード(実際はpngに変換済みですが)をフォントサイズ11のターミナル上で表示されたQRコードです。
