@@ -1,12 +1,14 @@
 ---
 const version = __APP_VERSION__
 const build = new Date(__BUILD_TIME__)
-const human = new Intl.DateTimeFormat("en-US", {
-  month: "numeric",
+const human = new Intl.DateTimeFormat("ja-JP", {
+  year: "numeric",
+  month: "2-digit",
   day: "2-digit",
   hour: "2-digit",
   minute: "2-digit",
   hour12: false,
+  timeZone: "Asia/Tokyo",
 }).format(build)
 import '../styles/global.css';
 ---
@@ -16,7 +18,7 @@ import '../styles/global.css';
     <p>&copy; 2026 Uliboooo. All rights reserved.</p>
   </div>
   <div class="site_info">
-    <p>{human} UTC (v.{version})</p>
+    <p>{human} JST (v.{version})</p>
     <a href="https://github.com/Uliboooo/blog", target="_blank" rel="noopener noreferrer" class="link--underline link--external">View Source</a>
   </div>
 </footer>
