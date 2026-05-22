@@ -16,6 +16,7 @@ import '../styles/global.css';
 <footer>
   <div class="copy-right">
     <p>&copy; 2026 Uliboooo. All rights reserved.</p>
+    <p>Fonts by <a href="https://github.com/qwerasd205/AnnotationMono" target="_blank" rel="noopener noreferrer" class="link--underline">Annotation Mono</a></p>
   </div>
   <div class="site_info">
     <p>{human} JST (v.{version})</p>
@@ -27,12 +28,22 @@ import '../styles/global.css';
   footer {
     font-family: var(--base-fonts-sans);
     margin-top: 2.5rem;
+    margin-bottom: 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+
     .copy-right {
+      flex: 1 1 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
       p {
          font-family: var(--base-fonts-sans);
+         margin: 0;
       }
     }
     a {
@@ -40,33 +51,26 @@ import '../styles/global.css';
       text-decoration: none;
     }
     .site_info {
+      flex: 1 1 0;
       font-family: var(--base-fonts-sans);
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: flex-end;
       align-items: center;
       gap: 1rem;
       p {
         font-family: var(--base-fonts-sans);
-        margin-top: 0;
-        margin-bottom: 0;
+        margin: 0;
       }
     }
   }
   @media (max-width: 640px) {
     footer {
-      display: flex;
-      flex-wrap: wrap;
       justify-content: center;
-      p {
-        margin-bottom: 0.1rem;
-      }
-      .copy-right {
-      }
-      .site_info {
-        flex-wrap: wrap;
+      text-align: center;
+      .copy-right, .site_info {
+        justify-content: center;
       }
     }
   }
-
 </style>

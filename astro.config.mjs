@@ -4,6 +4,8 @@ import rehypeExternalLinks from 'rehype-external-links'
 import pkg from './package.json' assert { type: 'json' }
 import { execSync } from 'node:child_process'
 import remarkCodeTitle from './src/plugins/remark-code-title.js'
+import remarkDirective from 'remark-directive'
+import remarkDirectiveHandler from './src/plugins/remark-directive-handler.js'
 
 const commit = execSync('git rev-parse --short HEAD')
   .toString()
@@ -28,7 +30,7 @@ export default defineConfig({
   },
 
   markdown: {
-    remarkPlugins: [remarkCodeTitle],
+    remarkPlugins: [remarkCodeTitle, remarkDirective, remarkDirectiveHandler],
     rehypePlugins: [
       [
         rehypeExternalLinks,
