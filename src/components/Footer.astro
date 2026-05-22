@@ -16,29 +16,28 @@ import '../styles/global.css';
 <footer>
   <div class="copy-right">
     <p>&copy; 2026 Uliboooo. All rights reserved.</p>
-    <p>Fonts by <a href="https://github.com/qwerasd205/AnnotationMono" target="_blank" rel="noopener noreferrer" class="link--underline">Annotation Mono</a></p>
+    <p>Fonts by <a href="https://github.com/qwerasd205/AnnotationMono" target="_blank" rel="noopener noreferrer" class="link--underline link--external">Annotation Mono</a></p>
   </div>
   <div class="site_info">
     <p>{human} JST (v.{version})</p>
-    <a href="https://github.com/Uliboooo/blog", target="_blank" rel="noopener noreferrer" class="link--underline link--external">View Source</a>
+    <p><a href="https://github.com/Uliboooo/blog", target="_blank" rel="noopener noreferrer" class="link--underline link--external">View Source</a></p>
   </div>
 </footer>
 
 <style>
   footer {
+    border-top: 1px solid #545454;
+    padding-top: 1rem;
     font-family: var(--base-fonts-sans);
     margin-top: 2.5rem;
     margin-bottom: 2rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
 
     .copy-right {
-      flex: 1 1 0;
-      display: flex;
-      flex-wrap: wrap;
       align-items: center;
       gap: 1rem;
       p {
@@ -48,15 +47,10 @@ import '../styles/global.css';
     }
     a {
       font-family: var(--base-fonts-sans);
-      text-decoration: none;
     }
     .site_info {
-      flex: 1 1 0;
       font-family: var(--base-fonts-sans);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      align-items: center;
+      text-align: center;
       gap: 1rem;
       p {
         font-family: var(--base-fonts-sans);

@@ -115,18 +115,25 @@ a:visited {
 }
 
 /* ベース：下線スタイル */
-.link--underline {
+.link--underline,
+.link--underline:visited {
   display: inline-flex;
   align-items: center;
-  text-underline-offset: 4px;
-  transition: color 0.2s ease;
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1.5px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  transition: background-size 0.3s ease, color 0.2s ease, opacity 0.2s ease;
 }
 
 .link--underline:hover {
-  opacity: 0.8;
+  background-size: 100% 1.5px;
+  color: var(--a-link-in-post-hovered);
+  background-image: linear-gradient(var(--a-under-in-post-hovered), var(--a-under-in-post-hovered));
+  opacity: 0.7;
 }
 
-/* 拡張：外部リンク矢印を追加 */
 .link--external::after {
   content: "";
   display: inline-block;

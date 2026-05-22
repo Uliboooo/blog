@@ -10,7 +10,7 @@ const navItems = [
   <div class="head_contents">
     <div class="left_head">
       <div class="head-icon">
-        <a href="/" class="nav-link title-link">
+        <a href="/" class="link--underline title-link">
           <p id="title_p">@Uliboooo</p>
         </a>
       </div>
@@ -20,7 +20,7 @@ const navItems = [
         {
           navItems.map(item => (
             <li class="head-item">
-              <a href={item.href} class="nav-link">{item.label}</a>
+              <a href={item.href} class="link--underline">{item.label}</a>
             </li>
           ))
         }
@@ -106,24 +106,9 @@ const navItems = [
     }
   }
 
-  .nav-link,
-  .nav-link:visited {
-    display: inline-flex;
-    align-items: center;
-    text-decoration: none;
+  .link--underline,
+  .link--underline:visited {
     color: var(--text);
-    background-image: linear-gradient(currentColor, currentColor);
-    background-size: 0% 1.5px;
-    background-repeat: no-repeat;
-    background-position: left bottom;
-    transition: background-size 0.3s ease, color 0.2s ease, opacity 0.2s ease;
-  }
-
-  .nav-link:hover {
-    background-size: 100% 1.5px;
-    color: var(--a-link-in-post-hovered);
-    background-image: linear-gradient(var(--a-under-in-post-hovered), var(--a-under-in-post-hovered));
-    opacity: 0.7;
   }
 
   .title-link,
