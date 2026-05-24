@@ -177,17 +177,17 @@
   height: auto;
 }
 
-.prose img[alt$="#small"] {
+.prose img[alt*="#small"] {
   width: 200px;
   height: auto;
 }
 
-.prose img[alt$="#middle"] {
+.prose img[alt*="#middle"] {
   width: 50%;
   height: auto;
 }
 
-.prose img[alt$="#upper"] {
+.prose img[alt*="#upper"] {
   width: 80%;
   height: auto;
 }
@@ -319,18 +319,46 @@
 }
 
 .prose a.no-deco-link,
-.prose a:has(img[alt$="#no-deco"]) {
+.prose a:has(img[alt*="#no-deco"]) {
   background-image: none !important;
   text-decoration: none !important;
 }
 
 .prose a.no-deco-link:hover,
-.prose a:has(img[alt$="#no-deco"]):hover {
+.prose a:has(img[alt*="#no-deco"]):hover {
   background-size: 0 0 !important;
   color: inherit;
 }
 
 .prose a.no-deco-link::after,
-.prose a:has(img[alt$="#no-deco"])::after {
+.prose a:has(img[alt*="#no-deco"])::after {
   display: none !important;
+}
+
+/* imgタグに#downloadが含まれるリンクの下線を消し、アイコンを付与する */
+.prose a:has(img[alt*="#download"]) {
+  background-image: none !important;
+  text-decoration: none !important;
+}
+
+.prose a:has(img[alt*="#download"])::after {
+  content: "";
+  display: inline-block;
+  width: 0.9em;
+  height: 0.9em;
+  margin-left: 4px;
+  background-color: currentColor;
+  -webkit-mask-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"%3E%3C/path%3E%3Cpolyline points="7 10 12 15 17 10"%3E%3C/polyline%3E%3Cline x1="12" y1="15" x2="12" y2="3"%3E%3C/line%3E%3C/svg%3E');
+  mask-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"%3E%3C/path%3E%3Cpolyline points="7 10 12 15 17 10"%3E%3C/polyline%3E%3Cline x1="12" y1="15" x2="12" y2="3"%3E%3C/line%3E%3C/svg%3E');
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  transition: transform 0.2s ease;
+}
+
+.prose a:has(img[alt*="#download"]):hover::after {
+  transform: translateY(2px);
 }
