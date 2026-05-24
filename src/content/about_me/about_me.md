@@ -28,7 +28,7 @@ I am a university student who loves Software and Text. My name has four 'o'. I d
 
 ## Links
 
-相互リンク募集中。私の即席バナーは以下。200x40。
+相互リンク募集中。私の即席バナーは以下。200x40。<a href="mailto:l1lan@proton.me?subject=相互リンクについて">l1lan@proton.me</a>へご連絡下さい。
 
 [![uliboooo-banner#download#small](./banners/uliboooo.webp)](https://raw.githubusercontent.com/Uliboooo/blog/main/src/content/about_me/banners/uliboooo.webp)
 [![keita_kawase_banner#no-deco](./banners/keita_kawase.png)](https://keitagame.github.io/)
