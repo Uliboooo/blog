@@ -303,3 +303,20 @@
   color: var(--a-link-in-post-hovered);
   background-size: 100% 1px;
 }
+
+.prose a.no-deco-link,
+.prose a:has(img[alt$="#no-deco"]) {
+  background-image: none !important;
+  text-decoration: none !important;
+}
+
+.prose a.no-deco-link:hover,
+.prose a:has(img[alt$="#no-deco"]):hover {
+  background-size: 0 0 !important;
+  color: inherit;
+}
+
+.prose a.no-deco-link::after,
+.prose a:has(img[alt$="#no-deco"])::after {
+  display: none !important;
+}
