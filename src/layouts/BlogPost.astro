@@ -8,6 +8,7 @@ import "../styles/post.css";
 const {
   title,
   date,
+  latest_edit_at,
   headings = [],
   description,
   wordCount,
@@ -15,6 +16,7 @@ const {
 } = Astro.props as {
   title: string;
   date?: Date;
+  latest_edit_at?: Date;
   headings?: MarkdownHeading[];
   description?: string;
   wordCount?: number;
@@ -39,7 +41,18 @@ const url = new URL(Astro.url.pathname, Astro.site).href;
     {trimmedDescription && (
       <p class="post-description">{trimmedDescription}</p>
     )}
-    {date && <time>{date.toLocaleDateString('ja-JP')}</time>}
+    <div class="post-meta">
+      {date && (
+        <time datetime={date.toISOString()}>
+          {date.toLocaleDateString('ja-JP')}
+        </time>
+      )}
+      {latest_edit_at && (
+        <time datetime={latest_edit_at.toISOString()} class="last-modified">
+          ⇢ {latest_edit_at.toLocaleDateString('ja-JP')}
+        </time>
+      )}
+    </div>
     {tocHeadings.length > 0 && (
       <details class="toc">
         <summary>目次</summary>
