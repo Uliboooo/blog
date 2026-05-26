@@ -1,0 +1,80 @@
+---
+// src/components/ScrollToTop.astro
+---
+<button id="scroll-to-top" aria-label="Scroll to top" class="scroll-to-top">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="18 15 12 9 6 15"></polyline>
+  </svg>
+</button>
+
+<style>
+  .scroll-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: var(--text);
+    color: var(--background);
+    border: 1px solid var(--blockquote-border);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, transform 0.3s, background-color 0.3s;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  :global(.dark) .scroll-to-top {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  .scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .scroll-to-top:hover {
+    transform: translateY(-5px);
+    background-color: var(--a-link-in-post-hovered);
+    color: var(--background);
+    border-color: var(--a-link-in-post-hovered);
+  }
+
+  @media (max-width: 640px) {
+    .scroll-to-top {
+      bottom: 1.5rem;
+      right: 1.5rem;
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+</style>
+
+<script>
+  const scrollBtn = document.getElementById('scroll-to-top');
+
+  const toggleScrollBtn = () => {
+    if (window.scrollY > 300) {
+      scrollBtn?.classList.add('show');
+    } else {
+      scrollBtn?.classList.remove('show');
+    }
+  };
+
+  window.addEventListener('scroll', toggleScrollBtn);
+
+  scrollBtn?.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  // Initial check in case the page is already scrolled
+  toggleScrollBtn();
+</script>
