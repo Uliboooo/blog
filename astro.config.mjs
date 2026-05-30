@@ -15,7 +15,7 @@ export default defineConfig({
   site: 'https://blog.uliboooo.dev',
 
   redirects: {
-    '/blog/[...slug]': '/[slug]',
+    '/blog/[slug]': '/[slug]',
   },
 
   server: {
