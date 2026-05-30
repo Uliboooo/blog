@@ -1,7 +1,21 @@
+import { readFileSync } from "node:fs";
+import path from "node:path";
+
 const OG_IMAGE_WIDTH = 1200;
 const OG_IMAGE_HEIGHT = 630;
 const MAX_LINES = 3;
 const BASE_MAX_CHARS = 18;
+
+const buildFontFace = (weight: number) => {
+  const fontPath = path.resolve(
+    process.cwd(),
+    `node_modules/@fontsource/noto-sans-jp/files/noto-sans-jp-japanese-${weight}-normal.woff2`,
+  );
+  const fontData = readFileSync(fontPath).toString("base64");
+  return `@font-face { font-family: 'Noto Sans JP'; font-style: normal; font-weight: ${weight}; src: url(data:font/woff2;base64,${fontData}) format('woff2'); }`;
+};
+
+const fontFaces = [500, 600, 700].map(buildFontFace).join("\n");
 
 const escapeXml = (value: string) =>
   value
@@ -104,6 +118,7 @@ export const buildOgSvg = (title: string, description?: string) => {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <svg width="${OG_IMAGE_WIDTH}" height="${OG_IMAGE_HEIGHT}" viewBox="0 0 ${OG_IMAGE_WIDTH} ${OG_IMAGE_HEIGHT}" xmlns="http://www.w3.org/2000/svg">
   <defs>
+    <style>${fontFaces}</style>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#faf5ff"/>
       <stop offset="100%" stop-color="#ffeefc"/>
