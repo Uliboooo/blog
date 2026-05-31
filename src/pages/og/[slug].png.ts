@@ -1,7 +1,13 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
 import sharp from "sharp";
-import { buildOgSvg } from "../../utils/og";
+import satori from "satori";
+import {
+  buildOgVNode,
+  loadOgFonts,
+  OG_IMAGE_HEIGHT,
+  OG_IMAGE_WIDTH,
+} from "../../utils/og";
 
 export const prerender = true;
 
@@ -21,7 +27,12 @@ export async function getStaticPaths() {
 export const GET: APIRoute = async ({ props }) => {
   const title = (props?.title as string | undefined) ?? "Uliboooo's blog";
   const description = props?.description as string | undefined;
-  const svg = buildOgSvg(title, description);
+  const vnode = buildOgVNode(title, description);
+  const svg = await satori(vnode, {
+    width: OG_IMAGE_WIDTH,
+    height: OG_IMAGE_HEIGHT,
+    fonts: loadOgFonts(),
+  });
   const png = await sharp(Buffer.from(svg)).png().toBuffer();
 
   return new Response(png, {

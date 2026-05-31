@@ -1,11 +1,22 @@
 import type { APIRoute } from "astro";
 import sharp from "sharp";
-import { buildOgSvg } from "../../utils/og";
+import satori from "satori";
+import {
+  buildOgVNode,
+  loadOgFonts,
+  OG_IMAGE_HEIGHT,
+  OG_IMAGE_WIDTH,
+} from "../../utils/og";
 
 export const prerender = true;
 
 export const GET: APIRoute = async () => {
-  const svg = buildOgSvg("Uliboooo's blog");
+  const vnode = buildOgVNode("Uliboooo's blog");
+  const svg = await satori(vnode, {
+    width: OG_IMAGE_WIDTH,
+    height: OG_IMAGE_HEIGHT,
+    fonts: loadOgFonts(),
+  });
   const png = await sharp(Buffer.from(svg)).png().toBuffer();
 
   return new Response(png, {
