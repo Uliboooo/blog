@@ -10,10 +10,24 @@
   padding: 0.55rem 0.8rem;
 }
 
-.prose .toc summary {
+.prose .toc summary,
+.prose .details summary {
   cursor: pointer;
   user-select: none;
   font-weight: 600;
+}
+
+.prose .details {
+  margin: 1rem 0 1.4rem;
+  border: 1px solid var(--line-color);
+  border-radius: 8px;
+  padding: 0.55rem 0.8rem;
+}
+
+.prose .details[open] summary {
+  border-bottom: 1px solid var(--line-color);
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.4rem;
 }
 
 .prose .toc nav {

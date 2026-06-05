@@ -13,8 +13,6 @@ const fontData = readFileSync(fontPath);
 
 const ogFonts = [
   { name: "Noto Sans JP", data: fontData, weight: 700, style: "normal" },
-  { name: "Noto Sans JP", data: fontData, weight: 600, style: "normal" },
-  { name: "Noto Sans JP", data: fontData, weight: 500, style: "normal" },
 ];
 
 export const loadOgFonts = () => ogFonts;
@@ -40,14 +38,14 @@ export const buildOgVNode = (title: string, description?: string) => {
         ${
           safeDescription
             ? html`<div
-                style="font-size:28px;font-weight:500;line-height:1.5;color:#555555;word-break:break-word;white-space:pre-wrap;"
+                style="font-size:28px;font-weight:700;line-height:1.5;color:#555555;word-break:break-word;white-space:pre-wrap;"
               >
                 ${safeDescription}
               </div>`
             : ""
         }
       </div>
-      <div style="font-size:32px;font-weight:600;color:#666666;">
+      <div style="font-size:32px;font-weight:700;color:#666666;">
         Uliboooo's blog
       </div>
     </div>
