@@ -8,6 +8,12 @@ tags: ["me"]
 published: true
 ---
 
+おニューのAbout Meサイト[こちら](https://about.uliboooo.dev/uliboooo/)
+
+一応各場所に貼ってしまったリンク保持のためにこのページは置いておきます。いつかリダイレクトするようにするかも。
+
+---
+
 ## [@Uliboooo](https://github.com/Uliboooo)
 
 ![my draw#small](./logo.png)
@@ -17,10 +23,10 @@ published: true
 I am a university student who loves Software and Text. My name has four 'o'. I develop CLI tools mainly using Rust. I'm a Vimmer.
 
 
-> 好きな物:  
+> 好きな物:
 > 文字, パスタ, かわいいもの, 軽さ, 雨, 睡眠, Vim, 紙袋
 
-> 嫌いなもの:  
+> 嫌いなもの:
 > 右クリック, 細かいUI, 多機能, 複雑な料金プラン
 
 ## SNS
