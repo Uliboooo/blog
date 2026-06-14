@@ -21,6 +21,34 @@ export const buildOgVNode = (title: string, description?: string) => {
   const safeTitle = title.trim() || "Uliboooo's blog";
   const safeDescription = description?.trim();
 
+  if (safeDescription) {
+    return html`<div
+      style="width:${OG_IMAGE_WIDTH}px;height:${OG_IMAGE_HEIGHT}px;display:flex;background:linear-gradient(135deg,#faf5ff,#ffeefc);font-family:'Noto Sans JP',sans-serif;"
+    >
+      <div
+        style="margin:56px;flex:1;background:#ffffff;border-radius:36px;border:2px solid #f1d5f0;display:flex;flex-direction:column;box-sizing:border-box;padding:64px;"
+      >
+        <div
+          style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:24px;"
+        >
+          <div
+            style="font-size:64px;font-weight:700;line-height:1.25;color:#111111;word-break:break-word;white-space:pre-wrap;"
+          >
+            ${safeTitle}
+          </div>
+          <div
+            style="font-size:28px;font-weight:700;line-height:1.5;color:#555555;word-break:break-word;white-space:pre-wrap;"
+          >
+            ${safeDescription}
+          </div>
+        </div>
+        <div style="font-size:32px;font-weight:700;color:#666666;">
+          Uliboooo's blog
+        </div>
+      </div>
+    </div>`;
+  }
+
   return html`<div
     style="width:${OG_IMAGE_WIDTH}px;height:${OG_IMAGE_HEIGHT}px;display:flex;background:linear-gradient(135deg,#faf5ff,#ffeefc);font-family:'Noto Sans JP',sans-serif;"
   >
@@ -35,15 +63,6 @@ export const buildOgVNode = (title: string, description?: string) => {
         >
           ${safeTitle}
         </div>
-        ${
-          safeDescription
-            ? html`<div
-                style="font-size:28px;font-weight:700;line-height:1.5;color:#555555;word-break:break-word;white-space:pre-wrap;"
-              >
-                ${safeDescription}
-              </div>`
-            : ""
-        }
       </div>
       <div style="font-size:32px;font-weight:700;color:#666666;">
         Uliboooo's blog
