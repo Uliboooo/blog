@@ -1,7 +1,7 @@
 ---
 // src/components/Header.astro
 const navItems = [
-  { href: "/", label: "Blog" },
+  { href: "https://about.uliboooo.dev/uliboooo/", label: "About Me" },
 ];
 ---
 
@@ -9,8 +9,8 @@ const navItems = [
   <div class="head_contents">
     <div class="left_head">
       <div class="head-icon">
-        <a href="https://about.uliboooo.dev" class="link--underline title-link">
-          <p id="title_p">@Uliboooo</p>
+        <a href="/" class="link--underline title-link">
+          <p id="title_p">Compute on Snails</p>
         </a>
       </div>
     </div>
@@ -19,7 +19,7 @@ const navItems = [
         {
           navItems.map(item => (
             <li class="head-item">
-              <a href={item.href} class="link--underline">{item.label}</a>
+              <a href={item.href} class="link--underline link-external">{item.label}</a>
             </li>
           ))
         }
