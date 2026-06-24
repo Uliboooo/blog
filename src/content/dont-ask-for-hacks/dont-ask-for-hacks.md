@@ -43,6 +43,11 @@ Neovimのdotfiles盆栽に飽きていた私には衝撃とまでは言わない
 - 日本語文の適切なSemantic parse
 - 矩形モード的な(マルチカーソルはあるけど)
 - **行末の**white spacesのみ`·`表示とか
+-
+
+ただhe
+
+## VS CodeやZedは?
 
 [^1]: [Plugin system #3806](https://github.com/helix-editor/helix/discussions/3806)
 にもあるようにまあ~~クソ~~長い議論は合ったようで、ただ個人的にもHelixとpluginっていうのはあんまり相性がいいとも思わない。というかhackerたちはpluginがあれば拡張性への欲望を抑えられないので。
