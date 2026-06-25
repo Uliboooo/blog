@@ -7,7 +7,13 @@
   margin: 1rem 0 1.4rem;
   border: 1px solid var(--line-color);
   border-radius: 8px;
-  padding: 0.55rem 0.8rem;
+  padding: 0.55rem 0.8rem 0.7rem;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0)
+  );
+  overflow: clip;
 }
 
 .prose .toc summary,
@@ -15,6 +21,33 @@
   cursor: pointer;
   user-select: none;
   font-weight: 600;
+}
+
+.prose .toc summary {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  list-style: none;
+}
+
+.prose .toc summary::-webkit-details-marker {
+  display: none;
+}
+
+.prose .toc summary::after {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-left: auto;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-1px);
+  transition: transform 180ms ease;
+  opacity: 0.7;
+}
+
+.prose .toc[open] summary::after {
+  transform: rotate(225deg) translateY(1px);
 }
 
 .prose .details {
@@ -41,6 +74,24 @@
 
 .prose .toc li {
   margin: 0.35rem 0;
+}
+
+.prose .toc[open] li {
+  animation: toc-item-in 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--toc-index, 0) * 45ms);
+}
+
+.prose .toc a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition:
+    transform 160ms ease,
+    color 160ms ease;
+}
+
+.prose .toc a:hover {
+  transform: translateX(3px);
 }
 
 .prose .toc .toc-depth-3 {
@@ -144,6 +195,18 @@
 :root.dark .prose .alert {
   background-color: rgba(239, 68, 68, 0.1);
   border-left-color: #f87171;
+}
+
+@keyframes toc-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes target-highlight {

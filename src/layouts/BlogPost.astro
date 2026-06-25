@@ -58,8 +58,11 @@ const url = new URL(Astro.url.pathname, Astro.site).href;
         <summary>目次</summary>
         <nav aria-label="Table of contents">
           <ul>
-            {tocHeadings.map((heading) => (
-              <li class={`toc-depth-${heading.depth}`}>
+            {tocHeadings.map((heading, index) => (
+              <li
+                class={`toc-depth-${heading.depth}`}
+                style={`--toc-index:${index};`}
+              >
                 <a href={`#${heading.slug}`}>{heading.text}</a>
               </li>
             ))}
