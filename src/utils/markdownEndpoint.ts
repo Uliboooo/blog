@@ -3,7 +3,8 @@ import { join } from "node:path";
 import { getCollection } from "astro:content";
 
 const markdownHeaders = {
-  "Content-Type": "text/markdown; charset=utf-8",
+  "Content-Type": "text/plain; charset=utf-8",
+  "X-Content-Type-Options": "nosniff",
 };
 
 const slugPattern = /^[A-Za-z0-9_-]+$/;
