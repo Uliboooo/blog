@@ -7,7 +7,7 @@ export const OG_IMAGE_HEIGHT = 630;
 
 const fontPath = path.resolve(
   process.cwd(),
-  "public/fonts/NotoSansJP-Bold.ttf",
+  "public/fonts/noto_sans/NotoSansJP-Bold.ttf",
 );
 const fontData = readFileSync(fontPath);
 
