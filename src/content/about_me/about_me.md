@@ -1,7 +1,7 @@
 ---
 title: "About Me"
 date: 2026-03-17
-latest_edit_at: 2026-06-25
+latest_edit_at: 2026-06-26
 writer: "Uliboooo"
 description: "About Me"
 tags: ["me"]
@@ -10,7 +10,7 @@ published: true
 
 ## [@Uliboooo](https://github.com/Uliboooo)
 
-[瀬梨(Seli)について](https://blog.uliboooo.dev/seli-ni-tsuite)
+[瀬梨(Seli)についてはこちら](https://blog.uliboooo.dev/seli-ni-tsuite)
 
 ![my draw#small](./logo.png)
 
@@ -20,7 +20,7 @@ I am a university student who loves Software and Text. My name has four 'o'. I d
 
 
 > 好きな物:
-> 文字, パスタ, かわいいもの, 軽さ, 雨, 睡眠, Vim, 紙袋
+> 文字, パスタ, かわいいもの, 軽さ, 雨, 睡眠, Vim, 紙袋, 鈴
 
 > 嫌いなもの:
 > 右クリック, 細かいUI, 多機能, 複雑な料金プラン
@@ -57,7 +57,7 @@ Hyprland + Archを中心としたdotfiles。個人用ですが、ある程度汎
 
 [GitHub Repository](https://github.com/Uliboooo/dotfiles)
 
-![Hyprland](./dotfiles_screenshot.jpg)
+![Hl](./my_my.png)
 
 ### wlmstr
 

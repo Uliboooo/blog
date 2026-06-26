@@ -3,16 +3,22 @@
   padding-right: 10px;
 }
 
+.prose .post-meta {
+  .last-modified {
+    .time-arrow {
+      text-align: center;
+    }
+  }
+}
+
 .prose .toc {
   margin: 1rem 0 1.4rem;
   border: 1px solid var(--line-color);
   border-radius: 8px;
   padding: 0.55rem 0.8rem 0.7rem;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.05),
-    rgba(255, 255, 255, 0)
-  );
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.05),
+      rgba(255, 255, 255, 0));
   overflow: clip;
 }
 
@@ -77,8 +83,8 @@
 }
 
 .prose .toc[open] li {
-  animation: toc-item-in 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: calc(var(--toc-index, 0) * 45ms);
+  animation: toc-item-in 180ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: calc(var(--toc-index, 0) * 12ms);
 }
 
 .prose .toc a {

@@ -14,9 +14,16 @@
       in
       {
         devShells.default = pkgs.mkShell {
-          buildInputs = [
-            pkgs.bun
+          packages = with pkgs; [
+            bun
+            nodejs
             python
+            biome
+
+            astro-language-server
+
+            typescript
+            typescript-language-server
           ];
         };
       }

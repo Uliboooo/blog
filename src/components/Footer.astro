@@ -1,6 +1,6 @@
 ---
-const version = __APP_VERSION__
-const build = new Date(__BUILD_TIME__)
+const version = __APP_VERSION__;
+const build = new Date(__BUILD_TIME__);
 const human = new Intl.DateTimeFormat("ja-JP", {
   year: "numeric",
   month: "2-digit",
@@ -9,17 +9,17 @@ const human = new Intl.DateTimeFormat("ja-JP", {
   minute: "2-digit",
   hour12: false,
   timeZone: "Asia/Tokyo",
-}).format(build)
-import '../styles/global.css';
+}).format(build);
+import "../styles/global.css";
 ---
 
 <footer>
   <div class="copy-right">
     <p>&copy; 2026 Uliboooo. All rights reserved.</p>
-    <p>Fonts by <a href="https://github.com/qwerasd205/AnnotationMono" target="_blank" rel="noopener noreferrer" class="link--underline link--external">Annotation Mono</a></p>
+    <!-- <p>Fonts by <a href="https://github.com/qwerasd205/AnnotationMono" target="_blank" rel="noopener noreferrer" class="link--underline link--external">Annotation Mono</a></p> -->
   </div>
   <div class="site_info">
-    <p>{human} JST (v.{version})</p>
+    <!-- <p>{human} JST (v.{version})</p> -->
     <p><a href="https://github.com/Uliboooo/blog", target="_blank" rel="noopener noreferrer" class="link--underline link--external">View Source</a></p>
   </div>
 </footer>
@@ -28,6 +28,7 @@ import '../styles/global.css';
   footer {
     border-top: 1px solid #545454;
     padding-top: 1rem;
+      width: 200%;
     font-family: var(--base-fonts-sans);
     margin-top: 2.5rem;
     margin-bottom: 2rem;

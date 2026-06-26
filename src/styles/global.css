@@ -1,14 +1,24 @@
 /* global.css */
 @font-face {
   font-family: 'Annotation Mono';
-  src: url('/fonts/AnnotationMono-VF.ttf') format('truetype');
+  src: url('/fonts/annotation_mono/AnnotationMono-VF.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
+@font-face {
+  font-family: "NotoSansJP-Bold";
+  src: url('/fonts/noto_sans/NotoSansJP-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: "monospace Radon";
+  src: url('/fonts/monospace/Monaspace Radon Var.ttf') format('truetype');
+}
+
 :root {
-  --background: #fcfcfc;
+  --background: #FFFAFD;
   --text: #111111;
   --heading-color: #111111;
   --a-link: #0000EE;
@@ -28,6 +38,7 @@
 
   --base-fonts-sans: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Roboto", "Noto Sans JP", sans;
   --base-fonts-mono: "Annotation Mono", "Fira Code", Consolas, 'Liberation Mono', Menlo, monospace;
+  --spacemono-font: "monospace Radon";
   --header-title-color: #696969;
 }
 
@@ -53,6 +64,7 @@
   --base-fonts-sans: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Roboto", "Noto Sans JP", sans;
   --base-fonts-mono: "Annotation Mono", "Fira Code", Consolas, 'Liberation Mono', Menlo, monospace;
   --header-title-color: #B8B8B8;
+  --spacemono-font: "monospace Radon";
 
 }
 
@@ -114,7 +126,6 @@ a:visited {
   color: var(--visited-link);
 }
 
-/* ベース：下線スタイル */
 .link--underline,
 .link--underline:visited {
   display: inline-flex;

@@ -4,6 +4,7 @@ import type { MarkdownHeading } from "astro";
 import MainLayout from "./MainLayout.astro";
 import ShareButtons from "../components/ShareButtons.astro";
 import "../styles/post.css";
+import TimeLineArrow from "../components/TimeLineArrow.astro";
 
 const {
   title,
@@ -49,7 +50,9 @@ const url = new URL(Astro.url.pathname, Astro.site).href;
       )}
       {latest_edit_at && (
         <time datetime={latest_edit_at.toISOString()} class="last-modified">
-          ⇢ {latest_edit_at.toLocaleDateString('ja-JP')}
+          <!-- <TimeLineArrow class="time-line-arrow" /> -->
+          <span class="time-arrow">⇒</span>
+          <span>{latest_edit_at.toLocaleDateString('ja-JP')}</span>
         </time>
       )}
     </div>
