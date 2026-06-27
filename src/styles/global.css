@@ -13,8 +13,10 @@
 }
 
 @font-face {
-  font-family: "monospace Radon";
-  src: url('/fonts/monospace/Monaspace Radon Var.ttf') format('truetype');
+  font-family: "Monaspace Radon";
+  src: url("/fonts/monospace/Monaspace Radon Var.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
 }
 
 :root {
@@ -37,8 +39,8 @@
   --table-hover-bg: #f1f1f1;
 
   --base-fonts-sans: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Roboto", "Noto Sans JP", sans;
-  --base-fonts-mono: "Annotation Mono", "Fira Code", Consolas, 'Liberation Mono', Menlo, monospace;
-  --spacemono-font: "monospace Radon";
+  --base-fonts-mono: "Monaspace Radon", "Annotation Mono", "Fira Code", Consolas, 'Liberation Mono', Menlo, monospace;
+  /* --spacemono-font: "monospace Radon"; */
   --header-title-color: #696969;
 }
 
