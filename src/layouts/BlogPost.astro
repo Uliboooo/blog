@@ -4,7 +4,6 @@ import type { MarkdownHeading } from "astro";
 import MainLayout from "./MainLayout.astro";
 import ShareButtons from "../components/ShareButtons.astro";
 import "../styles/post.css";
-import TimeLineArrow from "../components/TimeLineArrow.astro";
 
 const {
   title,
@@ -14,6 +13,7 @@ const {
   description,
   wordCount,
   slug,
+  tags,
 } = Astro.props as {
   title: string;
   date?: Date;
@@ -22,6 +22,7 @@ const {
   description?: string;
   wordCount?: number;
   slug: string;
+  tags?: string[];
 };
 const trimmedDescription = description?.trim();
 const ogImage = slug ? `/og/${slug}.png` : undefined;
@@ -54,6 +55,13 @@ const url = new URL(Astro.url.pathname, Astro.site).href;
           <span class="time-arrow">⇒</span>
           <span>{latest_edit_at.toLocaleDateString('ja-JP')}</span>
         </time>
+      )}
+      {tags && tags.length > 0 && (
+        <div class="tags">
+          {tags.map((tag) => (
+            <span class="tag">{tag}</span>
+          ))}
+        </div>
       )}
     </div>
     {tocHeadings.length > 0 && (

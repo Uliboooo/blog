@@ -4,9 +4,52 @@
 }
 
 .prose .post-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.8rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  color: #666;
+  font-size: 0.9rem;
+
   .last-modified {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+
     .time-arrow {
       text-align: center;
+    }
+  }
+
+  .tags {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    display: inline-block;
+    color: #333;
+    font-size: 0.9rem;
+
+    &::before {
+      content: "#";
+      color: #666;
+      margin-right: 0.15rem;
+    }
+  }
+}
+
+:root.dark .prose .post-meta {
+  color: #B0B0B0;
+
+  .tag {
+    color: #D1D1D1;
+
+    &::before {
+      color: #B0B0B0;
     }
   }
 }
