@@ -1,25 +1,25 @@
 const extractTitleFromCode = (node) => {
-  if (!node || typeof node.lang !== 'string') return null;
+  if (!node || typeof node.lang !== "string") return null;
 
-  const hasSuffix = node.lang.endsWith(':');
+  const hasSuffix = node.lang.endsWith(":");
   if (hasSuffix) {
     node.lang = node.lang.slice(0, -1) || undefined;
   }
 
-  if (!hasSuffix || typeof node.meta !== 'string') return null;
+  if (!hasSuffix || typeof node.meta !== "string") return null;
 
   const title = node.meta.trim();
   return title.length > 0 ? title : null;
 };
 
 const createTitleNode = (title) => ({
-  type: 'paragraph',
+  type: "paragraph",
   data: {
     hProperties: {
-      className: ['code-title'],
+      className: ["code-title"],
     },
   },
-  children: [{ type: 'text', value: title }],
+  children: [{ type: "text", value: title }],
 });
 
 const remarkCodeTitle = () => {
@@ -29,7 +29,7 @@ const remarkCodeTitle = () => {
 
       const nextChildren = [];
       for (const child of node.children) {
-        if (child?.type === 'code') {
+        if (child?.type === "code") {
           const title = extractTitleFromCode(child);
           if (title) {
             nextChildren.push(createTitleNode(title));

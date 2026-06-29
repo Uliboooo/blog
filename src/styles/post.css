@@ -246,6 +246,61 @@
   border-left-color: #f87171;
 }
 
+/* ── pros / cons list ─────────────────────────────── */
+
+.prose .pros ul,
+.prose .cons ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.prose .pros li,
+.prose .cons li {
+  margin-bottom: 0.4em;
+  padding-left: 1.6em;
+  position: relative;
+}
+
+.prose .pros li::before,
+.prose .cons li::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  line-height: inherit;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.prose .pros li::before {
+  content: "+";
+  color: #16a34a;
+}
+
+.prose .cons li::before {
+  content: "−";
+  color: #dc2626;
+}
+
+/* dark mode */
+:root.dark .prose .pros li::before {
+  color: #4ade80;
+}
+
+:root.dark .prose .cons li::before {
+  color: #f87171;
+}
+
+/* footnote sup がライン高さを押し広げないようにする */
+.prose sup {
+  vertical-align: baseline;
+  position: relative;
+  top: -0.4em;
+  font-size: 0.75em;
+  line-height: 0;
+}
+
+
 @keyframes toc-item-in {
   from {
     opacity: 0;
@@ -301,6 +356,33 @@
 .prose img {
   width: 100%;
   height: auto;
+}
+
+/* ── image-row ────────────────────────── */
+
+.prose .image-row {
+  display: flex;
+  flex-direction: row;
+  gap: 0.6rem;
+  align-items: flex-start;
+  margin: 1rem 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.prose .image-row img {
+  flex: 1 1 0;
+  min-width: 0;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+@media (max-width: 480px) {
+  .prose .image-row {
+    gap: 0.4rem;
+  }
 }
 
 .prose img[alt*="#small"] {
@@ -487,4 +569,58 @@
 
 .prose a:has(img[alt*="#download"]):hover::after {
   transform: translateY(2px);
+}
+
+/* ── lightbox ─────────────────────────────────────── */
+
+#img-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.82);
+  cursor: zoom-out;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+#img-lightbox.is-open {
+  display: flex;
+  animation: lightbox-in 180ms ease both;
+}
+
+#img-lightbox-img {
+  max-width: min(90vw, 1200px);
+  max-height: 90dvh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+  cursor: default;
+  animation: lightbox-img-in 200ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes lightbox-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lightbox-img-in {
+  from {
+    transform: scale(0.93);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }

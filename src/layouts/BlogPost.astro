@@ -150,4 +150,48 @@ const url = new URL(Astro.url.pathname, Astro.site).href;
         });
       }
     </script>
+
+    <script is:inline>
+      (() => {
+        // ── lightbox ──────────────────────────────────────
+        const overlay = document.createElement('div');
+        overlay.id = 'img-lightbox';
+        overlay.setAttribute('role', 'dialog');
+        overlay.setAttribute('aria-modal', 'true');
+        overlay.setAttribute('aria-label', '画像を拡大表示');
+        overlay.innerHTML = '<img id="img-lightbox-img" alt="" />';
+        document.body.appendChild(overlay);
+
+        const lbImg = overlay.querySelector('#img-lightbox-img');
+
+        const open = (src, alt) => {
+          lbImg.src = src;
+          lbImg.alt = alt;
+          overlay.classList.add('is-open');
+          document.documentElement.style.overflow = 'hidden';
+          overlay.focus();
+        };
+
+        const close = () => {
+          overlay.classList.remove('is-open');
+          document.documentElement.style.overflow = '';
+          lbImg.src = '';
+        };
+
+        overlay.addEventListener('click', (e) => {
+          if (e.target === overlay) close();
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') close();
+        });
+
+        const prose = document.querySelector('.prose');
+        prose?.querySelectorAll('img').forEach((img) => {
+          if (img.alt?.includes('#no-lightbox')) return;
+          img.style.cursor = 'zoom-in';
+          img.addEventListener('click', () => open(img.src, img.alt));
+        });
+      })();
+    </script>
   </MainLayout>
