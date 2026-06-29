@@ -2,10 +2,13 @@
 import { defineConfig } from 'astro/config'
 import rehypeExternalLinks from 'rehype-external-links'
 import pkg from './package.json' assert { type: 'json' }
+// import wasm from 'vite-plugin-wasm'
+// import topLevelAwait from 'vite-plugin-top-level-await'
 import { execSync } from 'node:child_process'
 import remarkCodeTitle from './src/plugins/remark-code-title.js'
 import remarkDirective from 'remark-directive'
 import remarkDirectiveHandler from './src/plugins/remark-directive-handler.js'
+// import remarkTypst from './src/plugins/remark-typst.js'
 
 const commit = execSync('git rev-parse --short HEAD')
   .toString()
@@ -30,7 +33,7 @@ export default defineConfig({
   },
 
   markdown: {
-    remarkPlugins: [remarkCodeTitle, remarkDirective, remarkDirectiveHandler],
+    remarkPlugins: [remarkCodeTitle, remarkDirective, remarkDirectiveHandler ],
     rehypePlugins: [
       [
         rehypeExternalLinks,
@@ -46,6 +49,13 @@ export default defineConfig({
   },
 
   vite: {
+    optimizeDeps: {
+      exclude: [
+        '@myriaddreamin/typst.ts',
+        '@myriaddreamin/typst-ts-renderer',
+        '@myriaddreamin/typst-ts-web-compiler',
+      ],
+    },
     define: {
       __APP_VERSION__: JSON.stringify(pkg.version),
       __BUILD_TIME__: JSON.stringify(new Date().toISOString()),
