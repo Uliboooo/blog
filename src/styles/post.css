@@ -79,6 +79,23 @@
   list-style: none;
 }
 
+.prose .details summary {
+  list-style: revert;
+}
+
+.prose .details {
+  margin: 1rem 0 1.4rem;
+  border: 1px solid var(--line-color);
+  border-radius: 4px;
+  padding: 0.55rem 0.8rem;
+}
+
+.prose .details[open] {
+  border-bottom: 1.5px solid #545454;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 .prose .toc summary::-webkit-details-marker {
   display: none;
 }
@@ -97,19 +114,6 @@
 
 .prose .toc[open] summary::after {
   transform: rotate(225deg) translateY(1px);
-}
-
-.prose .details {
-  margin: 1rem 0 1.4rem;
-  border: 1px solid var(--line-color);
-  border-radius: 8px;
-  padding: 0.55rem 0.8rem;
-}
-
-.prose .details[open] summary {
-  border-bottom: 1px solid var(--line-color);
-  margin-bottom: 0.8rem;
-  padding-bottom: 0.4rem;
 }
 
 .prose .toc nav {

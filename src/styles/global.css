@@ -14,15 +14,15 @@
 
 @font-face {
   font-family: "Monaspace Radon";
-  src: url("/fonts/monospace/Monaspace Radon Var.ttf") format("truetype");
-  font-weight: 100 900;
-  font-style: normal;
+  src: url("/fonts/monospace/Monaspace_Radon/MonaspaceRadonNF-SemiWideRegular.woff2") format("truetype");
+  /* font-weight: 100 900; */
+  /* font-style: normal; */
 }
 
 :root {
   --background: #FFFAFD;
-  --text: #111111;
-  --heading-color: #111111;
+  --text: #111;
+  --heading-color: #111;
   --a-link: #0000EE;
   --a-link-in-post: #2273f5;
   --a-link-in-post-hovered: #da70d6;
@@ -30,7 +30,7 @@
   --visited-link: #551A8B;
   --heading-prefix: #666;
   --blockquote-border: #666;
-  --link-color: #333;
+  --link-color: rgb(66 66 66 / 25%);
   --table-bg: #ffffff;
   --table-text: #333333;
   --table-border: #dddddd;
