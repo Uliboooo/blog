@@ -27,7 +27,7 @@ I am a university student who loves Software and Text. My name has four 'o'. I d
 
 ## SNS
 
-[GitHub](https://github.com/Uliboooo), [X](https://x.com/Uliboooo), [Bsky](https://bsky.app/profile/uliboooo.bsky.social), [Instagram](https://instagram.com/uliboooo), [Zenn](https://zenn.dev/uliboooo), [note](https://note.com/uliboooo), [CodeBerg](https://codeberg.org/seli_am2)
+[GitHub](https://github.com/Uliboooo), [X](https://x.com/Uliboooo), [マシュマロ](https://marshmallow-qa.com/db8xew1t5oa5l19?t=CH4dwd&utm_medium=url_text&utm_source=promotion), [Bsky](https://bsky.app/profile/uliboooo.bsky.social), [Instagram](https://instagram.com/uliboooo), [Zenn](https://zenn.dev/uliboooo), [note](https://note.com/uliboooo), [CodeBerg](https://codeberg.org/seli_am2)
 
 ## Links
 
