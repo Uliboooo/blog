@@ -261,22 +261,52 @@
 
 /* ── pros / cons list ─────────────────────────────── */
 
+/* dedicated :::pros / :::cons or bare + lists */
 .prose .pros ul,
-.prose .cons ul {
+.prose .cons ul,
+.prose ul.pros,
+.prose ul.cons {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
+/* special items inside regular lists: align text start position with sibling normal list items */
+.prose li.pros,
+.prose li.cons {
+  list-style: none;
+  position: relative;
+  padding-left: 1em;
+  margin-bottom: 0.4em;
+}
+
+/* symbol position for inline special items: pulled left by the padding amount to place symbol where normal bullet is */
+.prose li.pros::before,
+.prose li.cons::before {
+  position: absolute;
+  left: -1em;
+  top: 0;
+  line-height: inherit;
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* dedicated blocks / containers keep the original tight style */
 .prose .pros li,
-.prose .cons li {
+.prose .cons li,
+.prose ul.pros li,
+.prose ul.cons li {
   margin-bottom: 0.4em;
   padding-left: 1.6em;
   position: relative;
+  list-style: none;
 }
 
+/* symbol base positioning */
 .prose .pros li::before,
-.prose .cons li::before {
+.prose .cons li::before,
+.prose ul.pros li::before,
+.prose ul.cons li::before {
   position: absolute;
   left: 0;
   top: 0;
@@ -285,22 +315,31 @@
   font-weight: 700;
 }
 
-.prose .pros li::before {
+/* contents */
+.prose .pros li::before,
+.prose li.pros::before,
+.prose ul.pros li::before {
   content: "+";
   color: #16a34a;
 }
 
-.prose .cons li::before {
+.prose .cons li::before,
+.prose li.cons::before,
+.prose ul.cons li::before {
   content: "−";
   color: #dc2626;
 }
 
 /* dark mode */
-:root.dark .prose .pros li::before {
+:root.dark .prose .pros li::before,
+:root.dark .prose li.pros::before,
+:root.dark .prose ul.pros li::before {
   color: #4ade80;
 }
 
-:root.dark .prose .cons li::before {
+:root.dark .prose .cons li::before,
+:root.dark .prose li.cons::before,
+:root.dark .prose ul.cons li::before {
   color: #f87171;
 }
 
@@ -398,8 +437,18 @@
   }
 }
 
+.prose img[alt*="#auto"] {
+  width: auto;
+  height: auto;
+}
+
 .prose img[alt*="#small"] {
   width: 200px;
+  height: auto;
+}
+
+.prose img[alt*="#medium"] {
+  width: 48%;
   height: auto;
 }
 
