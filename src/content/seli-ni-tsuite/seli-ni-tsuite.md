@@ -3,7 +3,7 @@ title: "瀬梨(Seli)について"
 date: 2026-06-25
 writer: "Uliboooo"
 description: "小説とか用の、Techじゃない創作の名義です"
-tags: ["aboutme"]
+tags: ["me"]
 published: true
 ---
 

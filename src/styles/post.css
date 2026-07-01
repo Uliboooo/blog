@@ -55,14 +55,17 @@
 }
 
 .prose .toc {
+  --toc-summary-color: var(--heading-color);
+  --toc-link-color: var(--link-color);
+  --toc-surface: transparent;
   margin: 1rem 0 1.4rem;
-  border: 1px solid var(--line-color);
-  border-radius: 8px;
-  padding: 0.55rem 0.8rem 0.7rem;
-  background: linear-gradient(180deg,
-      rgba(255, 255, 255, 0.05),
-      rgba(255, 255, 255, 0));
+  padding: 0.35rem 0 0.2rem;
+  background: var(--toc-surface);
   overflow: clip;
+}
+
+:root.dark .prose .toc {
+  --toc-link-color: rgba(247, 242, 242, 0.84);
 }
 
 .prose .toc summary,
@@ -77,6 +80,8 @@
   align-items: center;
   gap: 0.45rem;
   list-style: none;
+  color: var(--toc-summary-color);
+  letter-spacing: 0.02em;
 }
 
 .prose .details summary {
@@ -101,19 +106,20 @@
 }
 
 .prose .toc summary::after {
+  --toc-chevron-rotation: 315deg;
   content: "";
   width: 0.55rem;
   height: 0.55rem;
-  margin-left: auto;
+  margin-left: 0.15rem;
   border-right: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
-  transform: rotate(45deg) translateY(-1px);
+  transform: translateY(0.5px) rotate(var(--toc-chevron-rotation));
   transition: transform 180ms ease;
   opacity: 0.7;
 }
 
 .prose .toc[open] summary::after {
-  transform: rotate(225deg) translateY(1px);
+  --toc-chevron-rotation: 405deg;
 }
 
 .prose .toc nav {
@@ -138,12 +144,15 @@
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
+  color: var(--toc-link-color);
+  text-decoration: none;
   transition:
     transform 160ms ease,
     color 160ms ease;
 }
 
 .prose .toc a:hover {
+  color: var(--a-link-in-post);
   transform: translateX(3px);
 }
 
