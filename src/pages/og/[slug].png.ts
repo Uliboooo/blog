@@ -10,6 +10,7 @@ import {
 } from "../../utils/og";
 
 export const prerender = true;
+const BLOG_TITLE = "Compute on Snails";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -17,7 +18,7 @@ export async function getStaticPaths() {
     .filter((post) => post.data.published !== false)
     .map((post) => ({
       params: { slug: post.id.split("/")[0] },
-      props: { 
+      props: {
         title: post.data.title,
         description: post.data.description,
       },
@@ -25,7 +26,7 @@ export async function getStaticPaths() {
 }
 
 export const GET: APIRoute = async ({ props }) => {
-  const title = (props?.title as string | undefined) ?? "Uliboooo's blog";
+  const title = (props?.title as string | undefined) ?? BLOG_TITLE;
   const description = props?.description as string | undefined;
   const vnode = buildOgVNode(title, description);
   const svg = await satori(vnode, {

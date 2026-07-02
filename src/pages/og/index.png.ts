@@ -11,7 +11,7 @@ import {
 export const prerender = true;
 
 export const GET: APIRoute = async () => {
-  const vnode = buildOgVNode("Uliboooo's blog");
+  const vnode = buildOgVNode("Compute on Snails");
   const svg = await satori(vnode, {
     width: OG_IMAGE_WIDTH,
     height: OG_IMAGE_HEIGHT,

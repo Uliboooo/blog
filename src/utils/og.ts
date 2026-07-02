@@ -18,7 +18,7 @@ const ogFonts = [
 export const loadOgFonts = () => ogFonts;
 
 export const buildOgVNode = (title: string, description?: string) => {
-  const safeTitle = title.trim() || "Uliboooo's blog";
+  const safeTitle = title.trim() || "Compute on Snails";
   const safeDescription = description?.trim();
 
   if (safeDescription) {
@@ -43,7 +43,7 @@ export const buildOgVNode = (title: string, description?: string) => {
           </div>
         </div>
         <div style="font-size:32px;font-weight:700;color:#666666;">
-          Uliboooo's blog
+          Compute on Snails
         </div>
       </div>
     </div>`;
@@ -65,7 +65,7 @@ export const buildOgVNode = (title: string, description?: string) => {
         </div>
       </div>
       <div style="font-size:32px;font-weight:700;color:#666666;">
-        Uliboooo's blog
+        Compute on Snails
       </div>
     </div>
   </div>`;
