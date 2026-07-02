@@ -7,7 +7,7 @@ tags: ["nvim", "env", "dev", "column"]
 published: true
 ---
 
-![fastfetch](./imgs/ff.png)
+![my desktop](./imgs/desktop.png)
 
 ## OS: NixOS
 
