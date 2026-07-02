@@ -4,6 +4,8 @@ import { html } from "satori-html";
 
 export const OG_IMAGE_WIDTH = 1200;
 export const OG_IMAGE_HEIGHT = 630;
+export const OG_AUTHOR = "Uliboooo/瀬梨";
+export const OG_SITE_NAME = "Compute on Snails";
 
 const fontPath = path.resolve(
   process.cwd(),
@@ -42,8 +44,11 @@ export const buildOgVNode = (title: string, description?: string) => {
             ${safeDescription}
           </div>
         </div>
-        <div style="font-size:32px;font-weight:700;color:#666666;">
-          Compute on Snails
+        <div
+          style="display:flex;justify-content:space-between;align-items:flex-end;font-size:32px;font-weight:700;color:#666666;"
+        >
+          <div>${OG_SITE_NAME}</div>
+          <div>${OG_AUTHOR}</div>
         </div>
       </div>
     </div>`;
@@ -64,8 +69,11 @@ export const buildOgVNode = (title: string, description?: string) => {
           ${safeTitle}
         </div>
       </div>
-      <div style="font-size:32px;font-weight:700;color:#666666;">
-        Compute on Snails
+      <div
+        style="display:flex;justify-content:space-between;align-items:flex-end;font-size:32px;font-weight:700;color:#666666;"
+      >
+        <div>${OG_SITE_NAME}</div>
+        <div>${OG_AUTHOR}</div>
       </div>
     </div>
   </div>`;
