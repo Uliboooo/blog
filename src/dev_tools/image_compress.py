@@ -16,6 +16,7 @@ from pathlib import Path
 from PIL import Image
 
 # ========== settings ==========
+VERSION = "0.1.0"
 CONTENT_DIR = Path("src/content")   # run from repository root
 MAX_WIDTH = 1600                     # resize if wider than this
 JPEG_QUALITY = 82
@@ -94,6 +95,7 @@ def compress(path: Path, apply: bool, backup: bool) -> tuple[int, int] | None:
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument("--version", action="version", version=f"%(prog)s {VERSION}")
     parser.add_argument("--apply", action="store_true", help="actually compress (omit for dry-run)")
     parser.add_argument("--no-backup", action="store_true", help="skip backup")
     parser.add_argument("--clean", action="store_true", help="delete all .bak files and exit")
@@ -150,16 +152,20 @@ def main():
 
     print("-" * 82)
     if apply:
-        saved = total_before - total_after
         print(f"Total: {processed} compressed, {skipped_small} skipped (too small), {skipped_larger} skipped (already optimal)")
-        print(f"Saved: {human(total_before)} -> {human(total_after)} (-{human(saved)}, -{(saved/total_before*100):.1f}%)")
+        if processed:
+            saved = total_before - total_after
+            pct = saved / total_before * 100
+            print(f"Saved: {human(total_before)} -> {human(total_after)} (-{human(saved)}, -{pct:.1f}%)")
         if backup:
             print(f"Backup: original + '{BACKUP_SUFFIX}'  saved alongside")
             print(f"To remove: find src/content -name '*{BACKUP_SUFFIX}' -delete")
     else:
-        saved = total_before - total_after
         print(f"Total: {processed} targets, {skipped_small} skipped (too small), {skipped_larger} skipped (already optimal)")
-        print(f"Estimated savings: {human(total_before)} -> {human(total_after)} (-{human(saved)}, -{(saved/total_before*100):.1f}%)")
+        if processed:
+            saved = total_before - total_after
+            pct = saved / total_before * 100
+            print(f"Estimated savings: {human(total_before)} -> {human(total_after)} (-{human(saved)}, -{pct:.1f}%)")
         print("* No files changed. Add --apply to compress.")
 
 
