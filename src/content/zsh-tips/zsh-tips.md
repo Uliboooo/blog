@@ -1,11 +1,13 @@
 ---
 title: "Zsh便利集"
-date: 2026-07-06
+date: 2026-07-07
 writer: "Uliboooo"
 description: "short hund集的な"
 tags: ["zsh"]
 published: true
 ---
+
+随時追加予定
 
 ## ディレクトリ内のheicをjpegに
 
