@@ -10,6 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "cf-dev": "wrangler pages dev ./dist --kv VIEWS",
+    "kv:setup": "bash scripts/setup-kv.sh",
     "astro": "astro"
   },
   "dependencies": {
