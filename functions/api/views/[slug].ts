@@ -5,7 +5,8 @@
 //   GET  /api/views/:slug  -> read the current count (no increment)
 //   POST /api/views/:slug  -> increment and return the new count
 //
-// The KV namespace is bound as `VIEWS` (see wrangler.jsonc / Pages settings).
+// The KV namespace is bound as `VIEWS`, configured in the Cloudflare Pages
+// project settings (Settings -> Functions -> KV namespace bindings).
 
 interface Env {
   VIEWS: KVNamespace;

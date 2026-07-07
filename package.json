@@ -9,7 +9,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "cf-dev": "wrangler pages dev ./dist",
+    "cf-dev": "wrangler pages dev ./dist --kv VIEWS",
     "astro": "astro"
   },
   "dependencies": {
