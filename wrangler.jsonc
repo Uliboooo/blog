@@ -1,0 +1,15 @@
+{
+  // Cloudflare Pages config for the blog.
+  // Generated/updated by scripts/setup-kv.sh — the VIEWS binding backs the
+  // per-post view counter (functions/api/views/[slug].ts).
+  // KV namespace ids are not secrets; committing them is expected.
+  "name": "blog",
+  "pages_build_output_dir": "./dist",
+  "kv_namespaces": [
+    {
+      "binding": "VIEWS",
+      "id": "06d59000fffa40139a413c473270e73a",
+      "preview_id": "0b4f1be360064f1ab0eabdbe29c94515"
+    }
+  ]
+}

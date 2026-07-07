@@ -40,6 +40,18 @@
       margin-right: 0.15rem;
     }
   }
+
+  .post-views {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-variant-numeric: tabular-nums;
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
 }
 
 :root.dark .prose .post-meta {
@@ -320,14 +332,12 @@
 .prose li.pros::before,
 .prose ul.pros li::before {
   content: "+";
-  color: #16a34a;
 }
 
 .prose .cons li::before,
 .prose li.cons::before,
 .prose ul.cons li::before {
   content: "−";
-  color: #dc2626;
 }
 
 /* dark mode */
