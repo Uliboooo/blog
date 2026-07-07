@@ -14,48 +14,55 @@ import "../styles/global.css";
 ---
 
 <footer>
-  <div class="copy-right">
-    <p>&copy; 2026 Uliboooo. All rights reserved.</p>
-    <!-- <p>Fonts by <a href="https://github.com/qwerasd205/AnnotationMono" target="_blank" rel="noopener noreferrer" class="link--underline link--external">Annotation Mono</a></p> -->
+  <div class="footer-content">
+    <div class="copy-right">
+      <p>&copy; 2026 Uliboooo. All rights reserved.</p>
+      <!-- <p>Fonts by <a href="https://github.com/qwerasd205/AnnotationMono" target="_blank" rel="noopener noreferrer" class="link--underline link--external">Annotation Mono</a></p> -->
+    </div>
+    <div class="site-info">
+      <!-- <p>{human} JST (v.{version})</p> -->
+      <p><a href="https://github.com/Uliboooo/blog" target="_blank" rel="noopener noreferrer" class="link--underline link--external">View Source</a></p>
+    </div>
   </div>
-  <div class="site_info">
-    <!-- <p>{human} JST (v.{version})</p> -->
-    <p><a href="https://github.com/Uliboooo/blog", target="_blank" rel="noopener noreferrer" class="link--underline link--external">View Source</a></p>
-  </div>
+  <section class="why-snails">
+    <div class="why-snail-c">
+      <h2>Why "Compute on Snails?"</h2>
+      <p>ハードウェアに寄らない抽象化された計算機が好きなため、計算機の要件を満たすのならばかたつむの上で計算してもいいという冗談から。</p>
+    </div>
+  </section>
 </footer>
 
 <style>
   footer {
     border-top: 1px solid #545454;
     padding-top: 1rem;
-      width: 200%;
     font-family: var(--base-fonts-sans);
     margin-top: 2.5rem;
     margin-bottom: 2rem;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+
     flex-wrap: wrap;
     gap: 1rem;
 
-    .copy-right {
+    .footer-content {
+      display: flex;
+      justify-content: space-around;
       align-items: center;
-      gap: 1rem;
-      p {
-         font-family: var(--base-fonts-sans);
-         margin: 0;
-      }
     }
-    a {
-      font-family: var(--base-fonts-sans);
-    }
-    .site_info {
-      font-family: var(--base-fonts-sans);
-      text-align: center;
-      gap: 1rem;
-      p {
-        font-family: var(--base-fonts-sans);
-        margin: 0;
+
+    .why-snails {
+      display: flex;
+      justify-content: center;
+
+      .why-snail-c {
+
+        width: 75%;
+        h2 {
+          margin-top: 0;
+          font-size: 1rem;
+        }
+        p {
+          font-size: 0.8rem;
+        }
       }
     }
   }

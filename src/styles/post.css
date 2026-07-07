@@ -52,10 +52,6 @@
     }
   }
 
-  .post-views__icon {
-    font-size: 0.85em;
-    opacity: 0.8;
-  }
 }
 
 :root.dark .prose .post-meta {
@@ -336,14 +332,12 @@
 .prose li.pros::before,
 .prose ul.pros li::before {
   content: "+";
-  color: #16a34a;
 }
 
 .prose .cons li::before,
 .prose li.cons::before,
 .prose ul.cons li::before {
   content: "−";
-  color: #dc2626;
 }
 
 /* dark mode */

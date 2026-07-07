@@ -18,9 +18,9 @@ const json = (data: unknown, status = 200): Response =>
   new Response(JSON.stringify(data), {
     status,
     headers: {
-      'Content-Type': 'application/json; charset=utf-8',
+      "Content-Type": "application/json; charset=utf-8",
       // Never let the edge cache serve a stale count or suppress the POST.
-      'Cache-Control': 'no-store',
+      "Cache-Control": "no-store",
     },
   });
 
@@ -38,7 +38,7 @@ const readCount = async (env: Env, slug: string): Promise<number> => {
 
 export const onRequestGet: PagesFunction<Env> = async ({ params, env }) => {
   const slug = normalizeSlug(params.slug);
-  if (!slug) return json({ error: 'invalid slug' }, 400);
+  if (!slug) return json({ error: "invalid slug" }, 400);
 
   const count = await readCount(env, slug);
   return json({ count });
@@ -46,7 +46,7 @@ export const onRequestGet: PagesFunction<Env> = async ({ params, env }) => {
 
 export const onRequestPost: PagesFunction<Env> = async ({ params, env }) => {
   const slug = normalizeSlug(params.slug);
-  if (!slug) return json({ error: 'invalid slug' }, 400);
+  if (!slug) return json({ error: "invalid slug" }, 400);
 
   // Read-modify-write. KV is eventually consistent and this is not atomic, so a
   // few counts can be lost under heavy concurrency — acceptable for this blog.
