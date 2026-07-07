@@ -162,32 +162,16 @@ const url = new URL(Astro.url.pathname, Astro.site).href;
         const slug = el?.dataset.slug;
         if (!el || !slug) return;
 
-        // Count a visitor at most once per post per 24h.
-        const key = 'viewed:' + slug;
-        const DAY = 24 * 60 * 60 * 1000;
-        let firstVisit = true;
-        try {
-          const last = Number(localStorage.getItem(key));
-          firstVisit = !last || Date.now() - last > DAY;
-        } catch {
-          // localStorage unavailable (private mode) → treat as a read.
-          firstVisit = false;
-        }
-
-        fetch('/api/views/' + encodeURIComponent(slug), {
-          method: firstVisit ? 'POST' : 'GET',
-        })
+        // Always POST; the server dedups per visitor per day and returns the
+        // count either way. (No request lands on `astro dev`, which has no
+        // Function — the counter simply stays hidden there.)
+        fetch('/api/views/' + encodeURIComponent(slug), { method: 'POST' })
           .then((res) => (res.ok ? res.json() : Promise.reject()))
           .then((data) => {
             if (typeof data?.count !== 'number') return;
             const n = el.querySelector('.post-views__n');
             if (n) n.textContent = data.count.toLocaleString('ja-JP');
             el.hidden = false;
-            if (firstVisit) {
-              try {
-                localStorage.setItem(key, String(Date.now()));
-              } catch {}
-            }
           })
           .catch(() => {
             // Best-effort: leave the counter hidden, page is unaffected.
