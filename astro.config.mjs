@@ -8,6 +8,7 @@ import { execSync } from 'node:child_process'
 import remarkCodeTitle from './src/plugins/remark-code-title.js'
 import remarkDirective from 'remark-directive'
 import remarkDirectiveHandler from './src/plugins/remark-directive-handler.js'
+import remarkTwitterEmbed from './src/plugins/remark-twitter-embed.js'
 // import remarkTypst from './src/plugins/remark-typst.js'
 
 const commit = execSync('git rev-parse --short HEAD')
@@ -33,7 +34,7 @@ export default defineConfig({
   },
 
   markdown: {
-    remarkPlugins: [remarkCodeTitle, remarkDirective, remarkDirectiveHandler ],
+    remarkPlugins: [remarkCodeTitle, remarkDirective, remarkDirectiveHandler, remarkTwitterEmbed ],
     rehypePlugins: [
       [
         rehypeExternalLinks,
