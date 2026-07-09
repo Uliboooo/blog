@@ -222,4 +222,83 @@ const url = new URL(Astro.url.pathname, Astro.site).href;
         });
       })();
     </script>
+
+    <script is:inline>
+      (() => {
+        // ── vim-like scroll keys (j/k, gg/G, h) ────────────
+        const SCROLL_STEP = 100;
+        let lastGTime = 0;
+
+        // A single continuously-eased scroll target, so rapid/held j/k
+        // presses accumulate into one smooth chase instead of each
+        // keydown starting its own competing `scrollBy(..., smooth)`
+        // animation (which is what caused the stutter on fast repeats).
+        let targetY = null;
+        let rafId = null;
+
+        const maxScroll = () =>
+          document.documentElement.scrollHeight - window.innerHeight;
+        const clamp = (v) => Math.max(0, Math.min(v, maxScroll()));
+
+        const animate = () => {
+          const current = window.scrollY;
+          const diff = targetY - current;
+          if (Math.abs(diff) < 1) {
+            window.scrollTo(0, targetY);
+            rafId = null;
+            targetY = null;
+            return;
+          }
+          window.scrollTo(0, current + diff * 0.3);
+          rafId = requestAnimationFrame(animate);
+        };
+
+        const setTarget = (y) => {
+          targetY = clamp(y);
+          if (rafId === null) rafId = requestAnimationFrame(animate);
+        };
+
+        const nudge = (delta) =>
+          setTarget((targetY ?? window.scrollY) + delta);
+
+        const isTypingTarget = (el) =>
+          el instanceof HTMLElement &&
+          (el.isContentEditable ||
+            ['INPUT', 'TEXTAREA', 'SELECT'].includes(el.tagName));
+
+        document.addEventListener('keydown', (e) => {
+          if (e.metaKey || e.ctrlKey || e.altKey) return;
+          if (isTypingTarget(e.target)) return;
+
+          switch (e.key) {
+            case 'j':
+              nudge(SCROLL_STEP);
+              break;
+            case 'k':
+              nudge(-SCROLL_STEP);
+              break;
+            case 'h':
+              window.location.href = '/';
+              break;
+            case 'G':
+              setTarget(maxScroll());
+              break;
+            case 'g': {
+              const now = Date.now();
+              if (now - lastGTime < 400) {
+                setTarget(0);
+                lastGTime = 0;
+              } else {
+                lastGTime = now;
+              }
+              break;
+            }
+            default:
+              return;
+          }
+
+          e.preventDefault();
+        });
+      })();
+    </script>
   </MainLayout>

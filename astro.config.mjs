@@ -1,7 +1,8 @@
 // @ts-check
 import { defineConfig } from 'astro/config'
+import { unified } from '@astrojs/markdown-remark'
 import rehypeExternalLinks from 'rehype-external-links'
-import pkg from './package.json' assert { type: 'json' }
+import pkg from './package.json' with { type: 'json' }
 // import wasm from 'vite-plugin-wasm'
 // import topLevelAwait from 'vite-plugin-top-level-await'
 import { execSync } from 'node:child_process'
@@ -34,19 +35,21 @@ export default defineConfig({
   },
 
   markdown: {
-    remarkPlugins: [remarkCodeTitle, remarkDirective, remarkDirectiveHandler, remarkTwitterEmbed ],
-    rehypePlugins: [
-      [
-        rehypeExternalLinks,
-        {
-          target: '_blank',
-          rel: ['noopener', 'noreferrer'],
-          properties: {
-            class: 'link--underline link--external',
+    processor: unified({
+      remarkPlugins: [remarkCodeTitle, remarkDirective, remarkDirectiveHandler, remarkTwitterEmbed],
+      rehypePlugins: [
+        [
+          rehypeExternalLinks,
+          {
+            target: '_blank',
+            rel: ['noopener', 'noreferrer'],
+            properties: {
+              class: 'link--underline link--external',
+            },
           },
-        },
+        ],
       ],
-    ],
+    }),
   },
 
   vite: {
