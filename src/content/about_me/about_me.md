@@ -20,7 +20,7 @@ I am a university student who loves Software and Text. My name has four 'o'. I d
 
 
 > 好きな物:
-> 文字, パスタ, かわいいもの, 軽さ, 雨, 睡眠, Vim, 紙袋, 鈴
+> 文字, パスタ, かわいいもの, 軽さ, 雨, 睡眠, Vim, 紙袋, 鈴, 硝子
 
 > 嫌いなもの:
 > 右クリック, 細かいUI, 多機能, 複雑な料金プラン
