@@ -32,273 +32,281 @@ const tocHeadings = headings.filter(
 const url = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
-  <MainLayout
-    title={title}
-    description={trimmedDescription}
-    ogImage={ogImage}
-    ogType="article"
-  >
-    <article class="prose">
+<MainLayout
+  title={title}
+  description={trimmedDescription}
+  ogImage={ogImage}
+  ogType="article"
+>
+  <article class="prose">
     <h1>{title}</h1>
-    {trimmedDescription && (
-      <p class="post-description">{trimmedDescription}</p>
-    )}
+    {trimmedDescription && <p class="post-description">{trimmedDescription}</p>}
     <div class="post-meta">
-      {date && (
-        <time datetime={date.toISOString()}>
-          {date.toLocaleDateString('ja-JP')}
-        </time>
-      )}
-      {latest_edit_at && (
-        <time datetime={latest_edit_at.toISOString()} class="last-modified">
-          <!-- <TimeLineArrow class="time-line-arrow" /> -->
-          <span class="time-arrow">⇒</span>
-          <span>{latest_edit_at.toLocaleDateString('ja-JP')}</span>
-        </time>
-      )}
-      {tags && tags.length > 0 && (
-        <div class="tags">
-          {tags.map((tag) => (
-            <span class="tag">{tag}</span>
-          ))}
-        </div>
-      )}
+      {
+        date && (
+          <time datetime={date.toISOString()}>
+            {date.toLocaleDateString("ja-JP")}
+          </time>
+        )
+      }
+      {
+        latest_edit_at && (
+          <time datetime={latest_edit_at.toISOString()} class="last-modified">
+            <span class="time-arrow">⇒</span>
+            <span>{latest_edit_at.toLocaleDateString("ja-JP")}</span>
+          </time>
+        )
+      }
+      {
+        tags && tags.length > 0 && (
+          <div class="tags">
+            {tags.map((tag) => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+        )
+      }
       <span class="post-views" data-slug={slug} hidden>
         <span class="post-views__n"></span>
         <span class="post-views__label"> views</span>
       </span>
     </div>
-    {tocHeadings.length > 0 && (
-      <details class="toc">
-        <summary>目次</summary>
-        <nav aria-label="Table of contents">
-          <ul>
-            {tocHeadings.map((heading, index) => (
-              <li
-                class={`toc-depth-${heading.depth}`}
-                style={`--toc-index:${index};`}
-              >
-                <a href={`#${heading.slug}`}>{heading.text}</a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </details>
-    )}
+    {
+      tocHeadings.length > 0 && (
+        <details class="toc">
+          <summary>目次</summary>
+          <nav aria-label="Table of contents">
+            <ul>
+              {tocHeadings.map((heading, index) => (
+                <li
+                  class={`toc-depth-${heading.depth}`}
+                  style={`--toc-index:${index};`}
+                >
+                  <a href={`#${heading.slug}`}>{heading.text}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </details>
+      )
+    }
     <slot />
 
-      <ShareButtons title={title} url={url} wordCount={wordCount} />
-    </article>
+    <ShareButtons title={title} url={url} wordCount={wordCount} />
+  </article>
 
-    <script is:inline>
-      const root = document.querySelector('.prose');
-      const codeBlocks = root?.querySelectorAll('pre > code') ?? [];
+  <script is:inline>
+    const root = document.querySelector(".prose");
+    const codeBlocks = root?.querySelectorAll("pre > code") ?? [];
 
-      for (const code of codeBlocks) {
-        const pre = code.parentElement;
-        if (!pre) continue;
+    for (const code of codeBlocks) {
+      const pre = code.parentElement;
+      if (!pre) continue;
 
-        const title = pre.previousElementSibling;
-        const titleTarget =
-          title instanceof HTMLElement && title.classList.contains('code-title')
-            ? title
-            : null;
-        const container = titleTarget ?? pre;
+      const title = pre.previousElementSibling;
+      const titleTarget =
+        title instanceof HTMLElement && title.classList.contains("code-title")
+          ? title
+          : null;
+      const container = titleTarget ?? pre;
 
-        if (container.querySelector('.code-copy-button')) continue;
+      if (container.querySelector(".code-copy-button")) continue;
 
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.className = 'code-copy-button';
-        button.setAttribute('aria-label', 'Copy code');
-        button.textContent = 'Copy';
-        container.appendChild(button);
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "code-copy-button";
+      button.setAttribute("aria-label", "Copy code");
+      button.textContent = "Copy";
+      container.appendChild(button);
 
-        let resetTimer;
-        const resetLabel = () => {
-          button.textContent = 'Copy';
-          button.dataset.state = '';
-        };
+      let resetTimer;
+      const resetLabel = () => {
+        button.textContent = "Copy";
+        button.dataset.state = "";
+      };
 
-        button.addEventListener('click', async () => {
-          const text = code.textContent ?? '';
-          clearTimeout(resetTimer);
+      button.addEventListener("click", async () => {
+        const text = code.textContent ?? "";
+        clearTimeout(resetTimer);
 
-          try {
-            if (navigator.clipboard && window.isSecureContext) {
-              await navigator.clipboard.writeText(text);
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+          } else {
+            const textarea = document.createElement("textarea");
+            textarea.value = text;
+            textarea.setAttribute("readonly", "");
+            textarea.style.position = "fixed";
+            textarea.style.top = "0";
+            textarea.style.left = "0";
+            textarea.style.opacity = "0";
+            textarea.style.pointerEvents = "none";
+            document.body.appendChild(textarea);
+            textarea.focus();
+            textarea.select();
+            textarea.setSelectionRange(0, textarea.value.length);
+            // eslint-disable-next-line deprecation/deprecation -- fallback for non-secure contexts
+            const copied = document.execCommand("copy");
+            textarea.remove();
+            if (!copied) {
+              throw new Error("Copy failed");
+            }
+          }
+          button.textContent = "Copied";
+          button.dataset.state = "copied";
+        } catch {
+          button.textContent = "Failed";
+          button.dataset.state = "failed";
+        }
+
+        resetTimer = window.setTimeout(resetLabel, 2000);
+      });
+    }
+  </script>
+
+  <script is:inline>
+    (() => {
+      // ── view counter ──────────────────────────────────
+      const el = document.querySelector(".post-views");
+      const slug = el?.dataset.slug;
+      if (!el || !slug) return;
+
+      // Always POST; the server dedups per visitor per day and returns the
+      // count either way. (No request lands on `astro dev`, which has no
+      // Function — the counter simply stays hidden there.)
+      fetch("/api/views/" + encodeURIComponent(slug), { method: "POST" })
+        .then((res) => (res.ok ? res.json() : Promise.reject()))
+        .then((data) => {
+          if (typeof data?.count !== "number") return;
+          const n = el.querySelector(".post-views__n");
+          if (n) n.textContent = data.count.toLocaleString("ja-JP");
+          el.hidden = false;
+        })
+        .catch(() => {
+          // Best-effort: leave the counter hidden, page is unaffected.
+        });
+    })();
+  </script>
+
+  <script is:inline>
+    (() => {
+      // ── lightbox ──────────────────────────────────────
+      const overlay = document.createElement("div");
+      overlay.id = "img-lightbox";
+      overlay.setAttribute("role", "dialog");
+      overlay.setAttribute("aria-modal", "true");
+      overlay.setAttribute("aria-label", "画像を拡大表示");
+      overlay.innerHTML = '<img id="img-lightbox-img" alt="" />';
+      document.body.appendChild(overlay);
+
+      const lbImg = overlay.querySelector("#img-lightbox-img");
+
+      const open = (src, alt) => {
+        lbImg.src = src;
+        lbImg.alt = alt;
+        overlay.classList.add("is-open");
+        document.documentElement.style.overflow = "hidden";
+        overlay.focus();
+      };
+
+      const close = () => {
+        overlay.classList.remove("is-open");
+        document.documentElement.style.overflow = "";
+        lbImg.src = "";
+      };
+
+      overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) close();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") close();
+      });
+
+      const prose = document.querySelector(".prose");
+      prose?.querySelectorAll("img").forEach((img) => {
+        if (img.alt?.includes("#no-lightbox")) return;
+        img.style.cursor = "zoom-in";
+        img.addEventListener("click", () => open(img.src, img.alt));
+      });
+    })();
+  </script>
+
+  <script is:inline>
+    (() => {
+      // ── vim-like scroll keys (j/k, gg/G, h) ────────────
+      const SCROLL_STEP = 100;
+      let lastGTime = 0;
+
+      // A single continuously-eased scroll target, so rapid/held j/k
+      // presses accumulate into one smooth chase instead of each
+      // keydown starting its own competing `scrollBy(..., smooth)`
+      // animation (which is what caused the stutter on fast repeats).
+      let targetY = null;
+      let rafId = null;
+
+      const maxScroll = () =>
+        document.documentElement.scrollHeight - window.innerHeight;
+      const clamp = (v) => Math.max(0, Math.min(v, maxScroll()));
+
+      const animate = () => {
+        const current = window.scrollY;
+        const diff = targetY - current;
+        if (Math.abs(diff) < 1) {
+          window.scrollTo(0, targetY);
+          rafId = null;
+          targetY = null;
+          return;
+        }
+        window.scrollTo(0, current + diff * 0.3);
+        rafId = requestAnimationFrame(animate);
+      };
+
+      const setTarget = (y) => {
+        targetY = clamp(y);
+        if (rafId === null) rafId = requestAnimationFrame(animate);
+      };
+
+      const nudge = (delta) => setTarget((targetY ?? window.scrollY) + delta);
+
+      const isTypingTarget = (el) =>
+        el instanceof HTMLElement &&
+        (el.isContentEditable ||
+          ["INPUT", "TEXTAREA", "SELECT"].includes(el.tagName));
+
+      document.addEventListener("keydown", (e) => {
+        if (e.metaKey || e.ctrlKey || e.altKey) return;
+        if (isTypingTarget(e.target)) return;
+
+        switch (e.key) {
+          case "j":
+            nudge(SCROLL_STEP);
+            break;
+          case "k":
+            nudge(-SCROLL_STEP);
+            break;
+          case "h":
+            window.location.href = "/";
+            break;
+          case "G":
+            setTarget(maxScroll());
+            break;
+          case "g": {
+            const now = Date.now();
+            if (now - lastGTime < 400) {
+              setTarget(0);
+              lastGTime = 0;
             } else {
-              const textarea = document.createElement('textarea');
-              textarea.value = text;
-              textarea.style.position = 'fixed';
-              textarea.style.opacity = '0';
-              textarea.style.pointerEvents = 'none';
-              document.body.appendChild(textarea);
-              textarea.focus();
-              textarea.select();
-              const copied = document.execCommand('copy');
-              textarea.remove();
-              if (!copied) {
-                throw new Error('Copy failed');
-              }
+              lastGTime = now;
             }
-
-            button.textContent = 'Copied';
-            button.dataset.state = 'copied';
-          } catch (error) {
-            button.textContent = 'Failed';
-            button.dataset.state = 'failed';
+            break;
           }
-
-          resetTimer = window.setTimeout(resetLabel, 2000);
-        });
-      }
-    </script>
-
-    <script is:inline>
-      (() => {
-        // ── view counter ──────────────────────────────────
-        const el = document.querySelector('.post-views');
-        const slug = el?.dataset.slug;
-        if (!el || !slug) return;
-
-        // Always POST; the server dedups per visitor per day and returns the
-        // count either way. (No request lands on `astro dev`, which has no
-        // Function — the counter simply stays hidden there.)
-        fetch('/api/views/' + encodeURIComponent(slug), { method: 'POST' })
-          .then((res) => (res.ok ? res.json() : Promise.reject()))
-          .then((data) => {
-            if (typeof data?.count !== 'number') return;
-            const n = el.querySelector('.post-views__n');
-            if (n) n.textContent = data.count.toLocaleString('ja-JP');
-            el.hidden = false;
-          })
-          .catch(() => {
-            // Best-effort: leave the counter hidden, page is unaffected.
-          });
-      })();
-    </script>
-
-    <script is:inline>
-      (() => {
-        // ── lightbox ──────────────────────────────────────
-        const overlay = document.createElement('div');
-        overlay.id = 'img-lightbox';
-        overlay.setAttribute('role', 'dialog');
-        overlay.setAttribute('aria-modal', 'true');
-        overlay.setAttribute('aria-label', '画像を拡大表示');
-        overlay.innerHTML = '<img id="img-lightbox-img" alt="" />';
-        document.body.appendChild(overlay);
-
-        const lbImg = overlay.querySelector('#img-lightbox-img');
-
-        const open = (src, alt) => {
-          lbImg.src = src;
-          lbImg.alt = alt;
-          overlay.classList.add('is-open');
-          document.documentElement.style.overflow = 'hidden';
-          overlay.focus();
-        };
-
-        const close = () => {
-          overlay.classList.remove('is-open');
-          document.documentElement.style.overflow = '';
-          lbImg.src = '';
-        };
-
-        overlay.addEventListener('click', (e) => {
-          if (e.target === overlay) close();
-        });
-
-        document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape') close();
-        });
-
-        const prose = document.querySelector('.prose');
-        prose?.querySelectorAll('img').forEach((img) => {
-          if (img.alt?.includes('#no-lightbox')) return;
-          img.style.cursor = 'zoom-in';
-          img.addEventListener('click', () => open(img.src, img.alt));
-        });
-      })();
-    </script>
-
-    <script is:inline>
-      (() => {
-        // ── vim-like scroll keys (j/k, gg/G, h) ────────────
-        const SCROLL_STEP = 100;
-        let lastGTime = 0;
-
-        // A single continuously-eased scroll target, so rapid/held j/k
-        // presses accumulate into one smooth chase instead of each
-        // keydown starting its own competing `scrollBy(..., smooth)`
-        // animation (which is what caused the stutter on fast repeats).
-        let targetY = null;
-        let rafId = null;
-
-        const maxScroll = () =>
-          document.documentElement.scrollHeight - window.innerHeight;
-        const clamp = (v) => Math.max(0, Math.min(v, maxScroll()));
-
-        const animate = () => {
-          const current = window.scrollY;
-          const diff = targetY - current;
-          if (Math.abs(diff) < 1) {
-            window.scrollTo(0, targetY);
-            rafId = null;
-            targetY = null;
+          default:
             return;
-          }
-          window.scrollTo(0, current + diff * 0.3);
-          rafId = requestAnimationFrame(animate);
-        };
+        }
 
-        const setTarget = (y) => {
-          targetY = clamp(y);
-          if (rafId === null) rafId = requestAnimationFrame(animate);
-        };
-
-        const nudge = (delta) =>
-          setTarget((targetY ?? window.scrollY) + delta);
-
-        const isTypingTarget = (el) =>
-          el instanceof HTMLElement &&
-          (el.isContentEditable ||
-            ['INPUT', 'TEXTAREA', 'SELECT'].includes(el.tagName));
-
-        document.addEventListener('keydown', (e) => {
-          if (e.metaKey || e.ctrlKey || e.altKey) return;
-          if (isTypingTarget(e.target)) return;
-
-          switch (e.key) {
-            case 'j':
-              nudge(SCROLL_STEP);
-              break;
-            case 'k':
-              nudge(-SCROLL_STEP);
-              break;
-            case 'h':
-              window.location.href = '/';
-              break;
-            case 'G':
-              setTarget(maxScroll());
-              break;
-            case 'g': {
-              const now = Date.now();
-              if (now - lastGTime < 400) {
-                setTarget(0);
-                lastGTime = 0;
-              } else {
-                lastGTime = now;
-              }
-              break;
-            }
-            default:
-              return;
-          }
-
-          e.preventDefault();
-        });
-      })();
-    </script>
-  </MainLayout>
+        e.preventDefault();
+      });
+    })();
+  </script>
+</MainLayout>

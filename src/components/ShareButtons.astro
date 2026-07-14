@@ -23,24 +23,33 @@ const shareLinks = [
   <div>
     <div class="share-links">
       <span>Share:</span>
-      {shareLinks.map(link => (
-        <a href={link.href} target="_blank" rel="noopener noreferrer" class="external-link">
-          {link.name}
-        </a>
-      ))}
+      {
+        shareLinks.map((link) => (
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="external-link"
+          >
+            {link.name}
+          </a>
+        ))
+      }
     </div>
     <div class="share-native">
       <button id="share-btn" class="external-link">Share with</button>
     </div>
   </div>
-  {typeof wordCount === "number" && (
-  <div class="share-meta">
-    <span class="word-count">{wordCount.toLocaleString("ja-JP")} words</span>
-  </div>
-  )}
-
+  {
+    typeof wordCount === "number" && (
+      <div class="share-meta">
+        <span class="word-count">
+          {wordCount.toLocaleString("ja-JP")} words
+        </span>
+      </div>
+    )
+  }
 </div>
-
 
 <style>
   .share-buttons {
@@ -72,7 +81,10 @@ const shareLinks = [
     cursor: pointer;
     color: var(--a-link-in-post);
     text-decoration: none;
-    background-image: linear-gradient(var(--a-under-in-post-hovered), var(--a-under-in-post-hovered));
+    background-image: linear-gradient(
+      var(--a-under-in-post-hovered),
+      var(--a-under-in-post-hovered)
+    );
     background-repeat: no-repeat;
     background-position: left bottom;
     background-size: 0 1px;

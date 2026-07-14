@@ -18,16 +18,22 @@ const navItems = [
     <div class="right_content">
       <ul>
         {
-          navItems.map(item => (
+          navItems.map((item) => (
             <li class="head-item">
-              <a href={item.href} class="link--underline link-external">{item.label}</a>
+              <a href={item.href} class="link--underline link-external">
+                {item.label}
+              </a>
             </li>
           ))
         }
       </ul>
       <ul id="sns_links">
         <li>
-          <button id="theme-toggle" aria-label="テーマ切り替え" class="theme-btn">
+          <button
+            id="theme-toggle"
+            aria-label="テーマ切り替え"
+            class="theme-btn"
+          >
             🌙
           </button>
         </li>
@@ -141,8 +147,8 @@ const navItems = [
 </style>
 
 <script>
-const ICONS = {
-  moon: `<svg xmlns="http://www.w3.org/2000/svg"
+  const ICONS = {
+    moon: `<svg xmlns="http://www.w3.org/2000/svg"
     width="20"
     height="20"
     viewBox="0 0 44 44"
@@ -163,7 +169,7 @@ const ICONS = {
       C21 6, 24 5.5, 28 6Z"/>
   </svg>`,
 
-  sun: `<svg xmlns="http://www.w3.org/2000/svg"
+    sun: `<svg xmlns="http://www.w3.org/2000/svg"
     width="20"
     height="20"
     viewBox="0 0 44 44"
@@ -184,26 +190,26 @@ const ICONS = {
     <line x1="36" y1="8"  x2="32.5" y2="11.5"/>
     <line x1="11.5" y1="32.5" x2="8"  y2="36"/>
   </svg>`,
-};
+  };
 
-const button = document.getElementById('theme-toggle');
+  const button = document.getElementById("theme-toggle");
 
-const updateButton = () => {
-  const isDark = document.documentElement.classList.contains('dark');
-  if (button) button.innerHTML = isDark ? ICONS.sun : ICONS.moon;
-};
+  const updateButton = () => {
+    const isDark = document.documentElement.classList.contains("dark");
+    if (button) button.innerHTML = isDark ? ICONS.sun : ICONS.moon;
+  };
 
-button?.addEventListener('click', () => {
-  const isDark = document.documentElement.classList.contains('dark');
-  if (isDark) {
-    document.documentElement.classList.remove('dark');
-    localStorage.setItem('theme', 'light');
-  } else {
-    document.documentElement.classList.add('dark');
-    localStorage.setItem('theme', 'dark');
-  }
+  button?.addEventListener("click", () => {
+    const isDark = document.documentElement.classList.contains("dark");
+    if (isDark) {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    } else {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    }
+    updateButton();
+  });
+
   updateButton();
-});
-
-updateButton();
 </script>

@@ -1,8 +1,19 @@
 ---
 // src/components/ScrollToTop.astro
 ---
+
 <button id="scroll-to-top" aria-label="Scroll to top" class="scroll-to-top">
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
     <polyline points="18 15 12 9 6 15"></polyline>
   </svg>
 </button>
@@ -24,7 +35,11 @@
     justify-content: center;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s, transform 0.3s, background-color 0.3s;
+    transition:
+      opacity 0.3s,
+      visibility 0.3s,
+      transform 0.3s,
+      background-color 0.3s;
     z-index: 1000;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
@@ -56,22 +71,22 @@
 </style>
 
 <script>
-  const scrollBtn = document.getElementById('scroll-to-top');
+  const scrollBtn = document.getElementById("scroll-to-top");
 
   const toggleScrollBtn = () => {
     if (window.scrollY > 300) {
-      scrollBtn?.classList.add('show');
+      scrollBtn?.classList.add("show");
     } else {
-      scrollBtn?.classList.remove('show');
+      scrollBtn?.classList.remove("show");
     }
   };
 
-  window.addEventListener('scroll', toggleScrollBtn);
+  window.addEventListener("scroll", toggleScrollBtn);
 
-  scrollBtn?.addEventListener('click', () => {
+  scrollBtn?.addEventListener("click", () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: "smooth",
     });
   });
 

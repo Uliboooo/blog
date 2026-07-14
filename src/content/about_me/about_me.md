@@ -1,7 +1,7 @@
 ---
 title: "About Me"
 date: 2026-03-17
-latest_edit_at: 2026-06-26
+latest_edit_at: 2026-07-14
 writer: "Uliboooo"
 description: "About Me"
 tags: ["me"]
@@ -20,7 +20,7 @@ I am a university student who loves Software and Text. My name has four 'o'. I d
 
 
 > 好きな物:
-> 文字, パスタ, かわいいもの, 軽さ, 雨, 睡眠, Vim, 紙袋, 鈴, 硝子
+> 文字, パスタ, かわいいもの, 雨, 睡眠, 紙袋, 鈴, 硝子
 
 > 嫌いなもの:
 > 右クリック, 細かいUI, 多機能, 複雑な料金プラン
@@ -66,6 +66,14 @@ awww を利用した stateful な壁紙管理 CLI ツールです。指定した
 [GitHub Repository](https://github.com/Uliboooo/wlmstr)
 
 ![wlmstr help](./wlmstr_help.png)
+
+### hyprPanopticon
+
+Hyprlandでworkspaceを円形に一覧するツール。Rust, GTK4, Layer shell. ほとんどfable5さんが書いた。
+
+[Github Repository](https://github.com/Uliboooo/hyprPanopticon), [Web site](https://hyprpanopticon.uliboooo.dev/)
+
+![hyprPanopticon](./hyprPanopticon.png)
 
 ### 初心者向けLinux doc
 

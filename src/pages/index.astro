@@ -67,37 +67,39 @@ const sorted = [...astroPosts, ...externalPosts]
 >
   <h2>Articles</h2>
   <ul class="article-list">
-    {sorted.map(post => (
-      <li class="article-item">
-        <a href={post.data.url} class="article-title">{post.data.title}</a>
+    {
+      sorted.map((post) => (
+        <li class="article-item">
+          <a href={post.data.url} class="article-title">
+            {post.data.title}
+          </a>
 
-        {post.data.description && (
-          <p class="article-description">{post.data.description}</p>
-        )}
+          {post.data.description && (
+            <p class="article-description">{post.data.description}</p>
+          )}
 
-        <div class="article-meta">
-          <time>
-            {post.data.date.toLocaleDateString('ja-JP')}
-          </time>
+          <div class="article-meta">
+            <time>{post.data.date.toLocaleDateString("ja-JP")}</time>
 
-          {post.data.tags?.map(tag => (
-            <span class="tag">{tag}</span>
-          ))}
-        </div>
-      </li>
-    ))}
+            {post.data.tags?.map((tag) => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+        </li>
+      ))
+    }
   </ul>
 </MainLayout>
 
 <script is:inline>
   (() => {
     // ── vim-like list navigation (j/k focus, Enter opens) ──
-    const items = Array.from(document.querySelectorAll('.article-title'));
+    const items = Array.from(document.querySelectorAll(".article-title"));
     if (items.length === 0) return;
 
     let index = -1;
     items.forEach((item, i) => {
-      item.addEventListener('focus', () => {
+      item.addEventListener("focus", () => {
         index = i;
       });
     });
@@ -105,7 +107,7 @@ const sorted = [...astroPosts, ...externalPosts]
     const isTypingTarget = (el) =>
       el instanceof HTMLElement &&
       (el.isContentEditable ||
-        ['INPUT', 'TEXTAREA', 'SELECT'].includes(el.tagName));
+        ["INPUT", "TEXTAREA", "SELECT"].includes(el.tagName));
 
     // Same continuously-eased scroll used on article pages, so rapid/held
     // j/k presses chase a single moving target instead of each keypress
@@ -154,15 +156,15 @@ const sorted = [...astroPosts, ...externalPosts]
       }
     };
 
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener("keydown", (e) => {
       if (e.metaKey || e.ctrlKey || e.altKey) return;
       if (isTypingTarget(e.target)) return;
 
       switch (e.key) {
-        case 'j':
+        case "j":
           focusIndex(index + 1);
           break;
-        case 'k':
+        case "k":
           focusIndex(index - 1);
           break;
         default:
@@ -221,7 +223,7 @@ const sorted = [...astroPosts, ...externalPosts]
   }
 
   :root.dark .article-description {
-    color: #B0B0B0;
+    color: #b0b0b0;
   }
 
   .article-meta {
@@ -264,12 +266,12 @@ const sorted = [...astroPosts, ...externalPosts]
   }
 
   :root.dark .tag {
-    color: #D1D1D1;
+    color: #d1d1d1;
   }
 
   :root.dark .tag::before {
     content: "#";
-    color: #B0B0B0;
+    color: #b0b0b0;
     margin-right: 0.15rem;
   }
 </style>
