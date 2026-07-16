@@ -33,7 +33,7 @@ import "../styles/global.css";
     <div class="why-snail-c">
       <h2>Why "Compute on Snails?"</h2>
       <p>
-        ハードウェアに寄らない抽象化された計算機が好きなため、計算機の要件を満たすのならばかたつむの上で計算してもいいという冗談から。
+        ハードウェアに寄らない抽象化された計算機が好きなため、計算機の要件を満たすのならばカタツムリの上で計算してもいいという冗談から。
       </p>
     </div>
   </section>
@@ -42,43 +42,45 @@ import "../styles/global.css";
 <style>
   footer {
     border-top: 1px solid #545454;
-    padding-top: 1rem;
     font-family: var(--base-fonts-sans);
-    margin-top: 2.5rem;
+    margin-top: 2rem;
     margin-bottom: 2rem;
+    padding-left: 10px;
+    padding-right: 10px;
 
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     gap: 1rem;
 
     .footer-content {
       display: flex;
-      justify-content: space-around;
+      justify-content: flex-start;
       align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      /* align-items: center; */
     }
 
     .why-snails {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
 
       .why-snail-c {
-        width: 75%;
+        /* width: 75%; */
         h2 {
           margin-top: 0;
           font-size: 1rem;
         }
         p {
           font-size: 0.8rem;
+          text-wrap: pretty;
         }
       }
     }
   }
   @media (max-width: 640px) {
     footer {
-      justify-content: center;
-      text-align: center;
-      .copy-right,
-      .site_info {
-        justify-content: center;
+      .footer-content {
+        gap: 0.2rem;
       }
     }
   }
