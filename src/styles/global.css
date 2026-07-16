@@ -19,30 +19,33 @@
   /* font-style: normal; */
 }
 
+/* Default (light) theme: Uncoated Paper
+   https://gist.github.com/Uliboooo/93be316ea170ad4a9f66a487a117c517
+   紙面は透けない: opaque, no gloss. */
 :root {
-  --background: #fffeff;
-  --text: #111;
-  --heading-color: #111;
-  --a-link: #0000EE;
-  --a-link-in-post: #2273f5;
-  --a-link-in-post-hovered: #da70d6;
-  --a-under-in-post-hovered: #ef70d6;
-  --visited-link: #551A8B;
-  --heading-prefix: #666;
-  --blockquote-border: #666;
-  --link-color: #333;
-  --line-color: #d7d7d7;
-  --table-bg: #fcf7f8;
-  --table-text: #333333;
-  --table-border: #dddddd;
-  --table-header-bg: #f3ebee;
-  --table-stripe-bg: #f8f1f3;
-  --table-hover-bg: #f1e7ea;
+  --background: #f1eee5;
+  --text: #2d302b;
+  --heading-color: #2d302b;
+  --a-link: #a84435;
+  --a-link-in-post: #a84435;
+  --a-link-in-post-hovered: #d38ca0;
+  --a-under-in-post-hovered: #d38ca0;
+  --visited-link: #77766d;
+  --heading-prefix: #77766d;
+  --blockquote-border: #b7b0a2;
+  --link-color: #2d302b;
+  --line-color: #d0c9bb;
+  --table-bg: #fbf9f2;
+  --table-text: #2d302b;
+  --table-border: #d0c9bb;
+  --table-header-bg: #ead2d9;
+  --table-stripe-bg: #f6f2e9;
+  --table-hover-bg: #ead2d9;
 
   --base-fonts-sans: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Roboto", "Noto Sans JP", sans;
   --base-fonts-mono: "Monaspace Radon", "Annotation Mono", "Fira Code", Consolas, 'Liberation Mono', Menlo, monospace;
   /* --spacemono-font: "monospace Radon"; */
-  --header-title-color: #696969;
+  --header-title-color: #77766d;
 }
 
 :root.dark {
