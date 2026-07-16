@@ -272,6 +272,13 @@ section.footnotes p {
   text-decoration: none;
 }
 
+.footnote-backref-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+}
+
 .head_contents {
 
   a.dark,

@@ -11,6 +11,7 @@ import remarkDirective from 'remark-directive'
 import remarkDirectiveHandler from './src/plugins/remark-directive-handler.js'
 import remarkTwitterEmbed from './src/plugins/remark-twitter-embed.js'
 import remarkTypst from './src/plugins/remark-typst.js'
+import rehypeFootnoteBackrefIcon from './src/plugins/rehype-footnote-backref-icon.js'
 
 const commit = execSync('git rev-parse --short HEAD')
   .toString()
@@ -38,6 +39,7 @@ export default defineConfig({
     processor: unified({
       remarkPlugins: [remarkTypst, remarkCodeTitle, remarkDirective, remarkDirectiveHandler, remarkTwitterEmbed],
       rehypePlugins: [
+        rehypeFootnoteBackrefIcon,
         [
           rehypeExternalLinks,
           {
