@@ -260,16 +260,15 @@ section.footnotes p {
   padding: 0 2px;
 }
 
-[data-footnote-ref]::before {
-  content: "[";
-}
-
-[data-footnote-ref]::after {
-  content: "]";
-}
-
 .data-footnote-backref {
   text-decoration: none;
+}
+
+.footnote-backref-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
 }
 
 .head_contents {
