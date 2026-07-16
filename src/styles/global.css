@@ -260,14 +260,6 @@ section.footnotes p {
   padding: 0 2px;
 }
 
-[data-footnote-ref]::before {
-  content: "[";
-}
-
-[data-footnote-ref]::after {
-  content: "]";
-}
-
 .data-footnote-backref {
   text-decoration: none;
 }
