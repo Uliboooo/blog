@@ -8,13 +8,9 @@
 }
 
 @font-face {
-  font-family: "NotoSansJP-Bold";
-  src: url('/fonts/noto_sans/NotoSansJP-Bold.ttf') format('truetype');
-}
-
-@font-face {
   font-family: "Monaspace Radon";
-  src: url("/fonts/monospace/Monaspace_Radon/MonaspaceRadonNF-SemiWideRegular.woff2") format("truetype");
+  src: url("/fonts/monospace/Monaspace_Radon/MonaspaceRadonNF-SemiWideRegular.woff2") format("woff2");
+  font-display: swap;
   /* font-weight: 100 900; */
   /* font-style: normal; */
 }
@@ -233,6 +229,47 @@ tr:nth-child(even) {
 
 tr:hover {
   background-color: var(--table-hover-bg);
+}
+
+/* Footnotes (#footnote[...] via remark-typst) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+section.footnotes {
+  margin-top: 3em;
+  border-top: 1px solid var(--line-color);
+  color: var(--heading-prefix);
+}
+
+section.footnotes p {
+  font-size: 13px;
+  margin-bottom: 0.5em;
+}
+
+[data-footnote-ref] {
+  text-decoration: none;
+  padding: 0 2px;
+}
+
+[data-footnote-ref]::before {
+  content: "[";
+}
+
+[data-footnote-ref]::after {
+  content: "]";
+}
+
+.data-footnote-backref {
+  text-decoration: none;
 }
 
 .head_contents {

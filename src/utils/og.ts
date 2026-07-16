@@ -26,7 +26,7 @@ const OG_THEME = {
 
 const fontPath = path.resolve(
   process.cwd(),
-  "public/fonts/noto_sans/NotoSansJP-Bold.ttf",
+  "src/assets/fonts/noto_sans/NotoSansJP-Bold.ttf",
 );
 const fontData = readFileSync(fontPath);
 

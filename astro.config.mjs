@@ -10,7 +10,7 @@ import remarkCodeTitle from './src/plugins/remark-code-title.js'
 import remarkDirective from 'remark-directive'
 import remarkDirectiveHandler from './src/plugins/remark-directive-handler.js'
 import remarkTwitterEmbed from './src/plugins/remark-twitter-embed.js'
-// import remarkTypst from './src/plugins/remark-typst.js'
+import remarkTypst from './src/plugins/remark-typst.js'
 
 const commit = execSync('git rev-parse --short HEAD')
   .toString()
@@ -36,7 +36,7 @@ export default defineConfig({
 
   markdown: {
     processor: unified({
-      remarkPlugins: [remarkCodeTitle, remarkDirective, remarkDirectiveHandler, remarkTwitterEmbed],
+      remarkPlugins: [remarkTypst, remarkCodeTitle, remarkDirective, remarkDirectiveHandler, remarkTwitterEmbed],
       rehypePlugins: [
         [
           rehypeExternalLinks,
