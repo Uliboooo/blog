@@ -67,27 +67,114 @@ const sorted = [...astroPosts, ...externalPosts]
 >
   <h2>Articles</h2>
   <ul class="article-list">
-    {sorted.map(post => (
-      <li class="article-item">
-        <a href={post.data.url} class="article-title">{post.data.title}</a>
+    {
+      sorted.map((post) => (
+        <li class="article-item">
+          <a href={post.data.url} class="article-title">
+            {post.data.title}
+          </a>
 
-        {post.data.description && (
-          <p class="article-description">{post.data.description}</p>
-        )}
+          {post.data.description && (
+            <p class="article-description">{post.data.description}</p>
+          )}
 
-        <div class="article-meta">
-          <time>
-            {post.data.date.toLocaleDateString('ja-JP')}
-          </time>
+          <div class="article-meta">
+            <time>{post.data.date.toLocaleDateString("ja-JP")}</time>
 
-          {post.data.tags?.map(tag => (
-            <span class="tag">{tag}</span>
-          ))}
-        </div>
-      </li>
-    ))}
+            {post.data.tags?.map((tag) => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+        </li>
+      ))
+    }
   </ul>
 </MainLayout>
+
+<script is:inline>
+  (() => {
+    // ── vim-like list navigation (j/k focus, Enter opens) ──
+    const items = Array.from(document.querySelectorAll(".article-title"));
+    if (items.length === 0) return;
+
+    let index = -1;
+    items.forEach((item, i) => {
+      item.addEventListener("focus", () => {
+        index = i;
+      });
+    });
+
+    const isTypingTarget = (el) =>
+      el instanceof HTMLElement &&
+      (el.isContentEditable ||
+        ["INPUT", "TEXTAREA", "SELECT"].includes(el.tagName));
+
+    // Same continuously-eased scroll used on article pages, so rapid/held
+    // j/k presses chase a single moving target instead of each keypress
+    // firing its own competing `scrollIntoView(smooth)` animation.
+    const SCROLL_PADDING = 24;
+    let targetY = null;
+    let rafId = null;
+
+    const maxScroll = () =>
+      document.documentElement.scrollHeight - window.innerHeight;
+    const clamp = (v) => Math.max(0, Math.min(v, maxScroll()));
+
+    const animate = () => {
+      const current = window.scrollY;
+      const diff = targetY - current;
+      if (Math.abs(diff) < 1) {
+        window.scrollTo(0, targetY);
+        rafId = null;
+        targetY = null;
+        return;
+      }
+      window.scrollTo(0, current + diff * 0.3);
+      rafId = requestAnimationFrame(animate);
+    };
+
+    const setTarget = (y) => {
+      targetY = clamp(y);
+      if (rafId === null) rafId = requestAnimationFrame(animate);
+    };
+
+    const focusIndex = (i) => {
+      index = Math.max(0, Math.min(i, items.length - 1));
+      const item = items[index];
+      item.focus({ preventScroll: true });
+
+      const rect = item.getBoundingClientRect();
+      const itemTop = rect.top + window.scrollY;
+      const itemBottom = itemTop + rect.height;
+      const visibleTop = targetY ?? window.scrollY;
+      const visibleBottom = visibleTop + window.innerHeight;
+
+      if (itemTop < visibleTop + SCROLL_PADDING) {
+        setTarget(itemTop - SCROLL_PADDING);
+      } else if (itemBottom > visibleBottom - SCROLL_PADDING) {
+        setTarget(itemBottom - window.innerHeight + SCROLL_PADDING);
+      }
+    };
+
+    document.addEventListener("keydown", (e) => {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      if (isTypingTarget(e.target)) return;
+
+      switch (e.key) {
+        case "j":
+          focusIndex(index + 1);
+          break;
+        case "k":
+          focusIndex(index - 1);
+          break;
+        default:
+          return;
+      }
+
+      e.preventDefault();
+    });
+  })();
+</script>
 
 <style>
   h2 {
@@ -122,6 +209,12 @@ const sorted = [...astroPosts, ...externalPosts]
     background-size: 100% 1.5px;
   }
 
+  .article-title:focus-visible {
+    outline: 2px solid #da70d6;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
   .article-description {
     margin: 0.35rem 0 0 1rem;
     font-size: 0.95rem;
@@ -130,7 +223,7 @@ const sorted = [...astroPosts, ...externalPosts]
   }
 
   :root.dark .article-description {
-    color: #B0B0B0;
+    color: #b0b0b0;
   }
 
   .article-meta {
@@ -173,12 +266,12 @@ const sorted = [...astroPosts, ...externalPosts]
   }
 
   :root.dark .tag {
-    color: #D1D1D1;
+    color: #d1d1d1;
   }
 
   :root.dark .tag::before {
     content: "#";
-    color: #B0B0B0;
+    color: #b0b0b0;
     margin-right: 0.15rem;
   }
 </style>

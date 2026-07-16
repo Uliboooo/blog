@@ -27,52 +27,63 @@ const siteName = "Compute on Snails";
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
-    {trimmedDescription && (
-      <meta name="description" content={trimmedDescription} />
-    )}
+    {
+      trimmedDescription && (
+        <meta name="description" content={trimmedDescription} />
+      )
+    }
     <link rel="canonical" href={canonical} />
     <meta property="og:site_name" content={siteName} />
     <meta property="og:title" content={title} />
     <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonical} />
-    {trimmedDescription && (
-      <meta property="og:description" content={trimmedDescription} />
-    )}
-    {resolvedOgImage && (
-      <>
-        <meta property="og:image" content={resolvedOgImage} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content={resolvedOgImage} />
-      </>
-    )}
+    {
+      trimmedDescription && (
+        <meta property="og:description" content={trimmedDescription} />
+      )
+    }
+    {
+      resolvedOgImage && (
+        <>
+          <meta property="og:image" content={resolvedOgImage} />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:image" content={resolvedOgImage} />
+        </>
+      )
+    }
     <meta name="twitter:title" content={title} />
-    {trimmedDescription && (
-      <meta name="twitter:description" content={trimmedDescription} />
-    )}
+    {
+      trimmedDescription && (
+        <meta name="twitter:description" content={trimmedDescription} />
+      )
+    }
     <script is:inline>
       const theme = (() => {
-        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-          return localStorage.getItem('theme');
+        if (
+          typeof localStorage !== "undefined" &&
+          localStorage.getItem("theme")
+        ) {
+          return localStorage.getItem("theme");
         }
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          return 'dark';
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return "dark";
         }
-        return 'light';
+        return "light";
       })();
 
-      if (theme === 'light') {
-        document.documentElement.classList.remove('dark');
+      if (theme === "dark") {
+        document.documentElement.classList.add("dark");
       } else {
-        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove("dark");
       }
-      window.localStorage.setItem('theme', theme);
+      window.localStorage.setItem("theme", theme);
     </script>
   </head>
   <body>
     <Header />
-      <main>
-        <slot />
-      </main>
+    <main>
+      <slot />
+    </main>
     <Footer />
     <ScrollToTop />
   </body>

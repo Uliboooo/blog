@@ -102,7 +102,6 @@ hyprlandにはsub mapというものがあり、特定のモードによって�
 
 <blockquote class="twitter-tweet">
     <p lang="ja" dir="ltr"></p>
-    &mdash; Uliboooo (@Uliboooo)
     <a href="https://x.com/Uliboooo/status/2071042133914755396?s=20"></a>
 </blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
