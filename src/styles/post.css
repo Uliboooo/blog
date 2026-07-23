@@ -52,6 +52,12 @@
     }
   }
 
+  .raw-links {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
 }
 
 :root.dark .prose .post-meta {
