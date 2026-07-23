@@ -66,6 +66,20 @@ const url = new URL(Astro.url.pathname, Astro.site).href;
           </div>
         )
       }
+      <span class="raw-links">
+        <a
+          href={`/md/${slug}`}
+          class="link--underline link--external"
+          target="_blank"
+          rel="noopener noreferrer">md</a
+        >
+        <a
+          href={`/html/${slug}`}
+          class="link--underline link--external"
+          target="_blank"
+          rel="noopener noreferrer">html</a
+        >
+      </span>
       <span class="post-views" data-slug={slug} hidden>
         <span class="post-views__n"></span>
         <span class="post-views__label"> views</span>
