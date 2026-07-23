@@ -79,6 +79,15 @@ function formatDate(date: Date) {
   return date.toLocaleDateString("ja-JP");
 }
 
+// Strip any <script> elements from the rendered body. The markdown pipeline can
+// emit scripts as part of an embed (e.g. the Twitter widget loader); those are
+// behaviour, not document content, so they are removed while the surrounding
+// markup (the tweet blockquote and its link) is kept. Escaped scripts shown
+// inside code blocks are `&lt;script&gt;` text and are left untouched.
+function stripScripts(html: string) {
+  return html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "");
+}
+
 type Frontmatter = {
   title?: unknown;
   description?: unknown;
@@ -163,14 +172,44 @@ const FOOTER = `<footer>
   </section>
 </footer>`;
 
+// Builds a self-contained, parseable HTML document: a minimal <head> (charset,
+// viewport, title, description) plus the article (frontmatter header + main
+// content) and the site footer. No stylesheet, theme script, or other page
+// chrome — just the document.
 function buildDocument(frontmatter: Frontmatter, body: string) {
-  return `<main>
-  <article class="prose">
-    ${renderHeader(frontmatter)}
-    ${body}
-  </article>
-</main>
-${FOOTER}
+  const title =
+    typeof frontmatter.title === "string" ? frontmatter.title.trim() : "";
+  const description =
+    typeof frontmatter.description === "string"
+      ? frontmatter.description.trim()
+      : "";
+
+  const head = [
+    `<meta charset="utf-8" />`,
+    `<meta name="viewport" content="width=device-width, initial-scale=1" />`,
+    `<title>${escapeHtml(title)}</title>`,
+    description
+      ? `<meta name="description" content="${escapeHtml(description)}" />`
+      : "",
+  ]
+    .filter(Boolean)
+    .join("\n    ");
+
+  return `<!doctype html>
+<html lang="ja">
+  <head>
+    ${head}
+  </head>
+  <body>
+    <main>
+      <article class="prose">
+        ${renderHeader(frontmatter)}
+        ${body}
+      </article>
+    </main>
+    ${FOOTER}
+  </body>
+</html>
 `;
 }
 
@@ -190,7 +229,7 @@ export async function getHtmlResponse(slug: string) {
   const processor = await getProcessor();
   const { code } = await processor.render(content);
 
-  return new Response(buildDocument(frontmatter, code), {
+  return new Response(buildDocument(frontmatter, stripScripts(code)), {
     headers: htmlHeaders,
   });
 }
