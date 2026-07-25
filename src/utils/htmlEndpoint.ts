@@ -1,52 +1,28 @@
-import { readdir, readFile } from "node:fs/promises";
-import { join } from "node:path";
-import { getCollection } from "astro:content";
+// Rendered-HTML endpoint, served at both /html/<slug> and /html/<slug>.html.
+// The two routes under src/pages/html/ are one-line re-exports of what follows.
+
 import {
   createMarkdownProcessor,
   parseFrontmatter,
 } from "@astrojs/markdown-remark";
 import { remarkPlugins, rehypePlugins } from "../markdown-pipeline.js";
+import {
+  getPublishedArticlePaths,
+  notFound,
+  readArticleSource,
+} from "./articleSource";
+import {
+  FOOTER_COPYRIGHT,
+  FOOTER_SOURCE_LABEL,
+  FOOTER_SOURCE_URL,
+  WHY_SNAILS_BODY,
+  WHY_SNAILS_HEADING,
+} from "../data/siteFooter";
 
 const htmlHeaders = {
   "Content-Type": "text/html; charset=utf-8",
   "X-Content-Type-Options": "nosniff",
 };
-
-const slugPattern = /^[A-Za-z0-9_-]+$/;
-const contentRoot = join(process.cwd(), "src", "content");
-
-async function resolveMarkdownPath(slug: string) {
-  const target = slug.toLowerCase();
-  const entries = await readdir(contentRoot, { withFileTypes: true });
-
-  for (const entry of entries) {
-    if (!entry.isDirectory() || entry.name.toLowerCase() !== target) {
-      continue;
-    }
-
-    const articleDir = join(contentRoot, entry.name);
-    const files = await readdir(articleDir, { withFileTypes: true });
-    const markdownFile = files.find(
-      (file) => file.isFile() && file.name.toLowerCase() === `${target}.md`,
-    );
-
-    if (markdownFile) {
-      return join(articleDir, markdownFile.name);
-    }
-  }
-
-  return null;
-}
-
-export async function getPublishedHtmlPaths() {
-  const posts = await getCollection("blog");
-
-  return posts
-    .filter((post) => post.data.published !== false)
-    .map((post) => ({
-      params: { slug: post.id.split("/")[0] },
-    }));
-}
 
 // The article body is rendered with the exact same remark/rehype pipeline the
 // site uses (see src/markdown-pipeline.js), so the HTML matches the published
@@ -149,24 +125,25 @@ function renderHeader(frontmatter: Frontmatter) {
 }
 
 // Static site footer, mirroring src/components/Footer.astro's markup (without
-// the scoped styles). The version/build metadata computed there is not part of
-// the rendered footer, so it is intentionally omitted here too.
+// the scoped styles); the text and links both share come from
+// src/data/siteFooter.ts. The version/build metadata computed in the component
+// is not part of the rendered footer, so it is intentionally omitted here too.
 const FOOTER = `<footer>
   <div class="footer-content">
     <div class="copy-right">
-      <p>&copy; 2026 Uliboooo. All rights reserved.</p>
+      <p>${escapeHtml(FOOTER_COPYRIGHT)}</p>
     </div>
     <div class="site-info">
       <p>
-        <a href="https://github.com/Uliboooo/blog" target="_blank" rel="noopener noreferrer" class="link--underline link--external">View Source</a>
+        <a href="${escapeHtml(FOOTER_SOURCE_URL)}" target="_blank" rel="noopener noreferrer" class="link--underline link--external">${escapeHtml(FOOTER_SOURCE_LABEL)}</a>
       </p>
     </div>
   </div>
   <section class="why-snails">
     <div class="why-snail-c">
-      <h2>Why "Compute on Snails" ?</h2>
+      <h2>${escapeHtml(WHY_SNAILS_HEADING)}</h2>
       <p>
-        ハードウェアに依らない抽象化された計算機を、「計算機の要件を満たすのならばカタツムリの上で計算してもいい」という冗談から。
+        ${escapeHtml(WHY_SNAILS_BODY)}
       </p>
     </div>
   </section>
@@ -213,17 +190,12 @@ function buildDocument(frontmatter: Frontmatter, body: string) {
 `;
 }
 
-export async function getHtmlResponse(slug: string) {
-  if (!slugPattern.test(slug)) {
-    return new Response("Not found", { status: 404 });
-  }
+export const getStaticPaths = getPublishedArticlePaths;
 
-  const markdownPath = await resolveMarkdownPath(slug);
-  if (!markdownPath) {
-    return new Response("Not found", { status: 404 });
-  }
+export async function GET({ params }: { params: { slug: string } }) {
+  const source = await readArticleSource(params.slug);
+  if (source === null) return notFound();
 
-  const source = await readFile(markdownPath, "utf-8");
   const { frontmatter, content } = parseFrontmatter(source);
 
   const processor = await getProcessor();

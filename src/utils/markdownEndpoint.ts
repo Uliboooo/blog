@@ -1,59 +1,23 @@
-import { readdir, readFile } from "node:fs/promises";
-import { join } from "node:path";
-import { getCollection } from "astro:content";
+// Raw markdown endpoint, served at both /md/<slug> and /md/<slug>.md.
+// The two routes under src/pages/md/ are one-line re-exports of what follows.
+
+import {
+  getPublishedArticlePaths,
+  notFound,
+  readArticleSource,
+} from "./articleSource";
 
 const markdownHeaders = {
+  // text/plain so the source is shown rather than downloaded or rendered.
   "Content-Type": "text/plain; charset=utf-8",
   "X-Content-Type-Options": "nosniff",
 };
 
-const slugPattern = /^[A-Za-z0-9_-]+$/;
-const contentRoot = join(process.cwd(), "src", "content");
+export const getStaticPaths = getPublishedArticlePaths;
 
-async function resolveMarkdownPath(slug: string) {
-  const target = slug.toLowerCase();
-  const entries = await readdir(contentRoot, { withFileTypes: true });
-
-  for (const entry of entries) {
-    if (!entry.isDirectory() || entry.name.toLowerCase() !== target) {
-      continue;
-    }
-
-    const articleDir = join(contentRoot, entry.name);
-    const files = await readdir(articleDir, { withFileTypes: true });
-    const markdownFile = files.find(
-      (file) => file.isFile() && file.name.toLowerCase() === `${target}.md`,
-    );
-
-    if (markdownFile) {
-      return join(articleDir, markdownFile.name);
-    }
-  }
-
-  return null;
-}
-
-export async function getPublishedMarkdownPaths() {
-  const posts = await getCollection("blog");
-
-  return posts
-    .filter((post) => post.data.published !== false)
-    .map((post) => ({
-      params: { slug: post.id.split("/")[0] },
-    }));
-}
-
-export async function getMarkdownResponse(slug: string) {
-  if (!slugPattern.test(slug)) {
-    return new Response("Not found", { status: 404 });
-  }
-
-  const markdownPath = await resolveMarkdownPath(slug);
-  if (!markdownPath) {
-    return new Response("Not found", { status: 404 });
-  }
-
-  const source = await readFile(markdownPath, "utf-8");
+export async function GET({ params }: { params: { slug: string } }) {
+  const source = await readArticleSource(params.slug);
+  if (source === null) return notFound();
 
   return new Response(source, { headers: markdownHeaders });
 }

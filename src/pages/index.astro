@@ -91,10 +91,17 @@ const sorted = [...astroPosts, ...externalPosts]
   </ul>
 </MainLayout>
 
-<script is:inline>
+<script>
+  import {
+    createSmoothScroller,
+    isTypingTarget,
+  } from "../scripts/smooth-scroll";
+
   (() => {
     // ── vim-like list navigation (j/k focus, Enter opens) ──
-    const items = Array.from(document.querySelectorAll(".article-title"));
+    const items = Array.from(
+      document.querySelectorAll<HTMLElement>(".article-title"),
+    );
     if (items.length === 0) return;
 
     let index = -1;
@@ -104,41 +111,10 @@ const sorted = [...astroPosts, ...externalPosts]
       });
     });
 
-    const isTypingTarget = (el) =>
-      el instanceof HTMLElement &&
-      (el.isContentEditable ||
-        ["INPUT", "TEXTAREA", "SELECT"].includes(el.tagName));
-
-    // Same continuously-eased scroll used on article pages, so rapid/held
-    // j/k presses chase a single moving target instead of each keypress
-    // firing its own competing `scrollIntoView(smooth)` animation.
     const SCROLL_PADDING = 24;
-    let targetY = null;
-    let rafId = null;
+    const scroller = createSmoothScroller();
 
-    const maxScroll = () =>
-      document.documentElement.scrollHeight - window.innerHeight;
-    const clamp = (v) => Math.max(0, Math.min(v, maxScroll()));
-
-    const animate = () => {
-      const current = window.scrollY;
-      const diff = targetY - current;
-      if (Math.abs(diff) < 1) {
-        window.scrollTo(0, targetY);
-        rafId = null;
-        targetY = null;
-        return;
-      }
-      window.scrollTo(0, current + diff * 0.3);
-      rafId = requestAnimationFrame(animate);
-    };
-
-    const setTarget = (y) => {
-      targetY = clamp(y);
-      if (rafId === null) rafId = requestAnimationFrame(animate);
-    };
-
-    const focusIndex = (i) => {
+    const focusIndex = (i: number) => {
       index = Math.max(0, Math.min(i, items.length - 1));
       const item = items[index];
       item.focus({ preventScroll: true });
@@ -146,13 +122,13 @@ const sorted = [...astroPosts, ...externalPosts]
       const rect = item.getBoundingClientRect();
       const itemTop = rect.top + window.scrollY;
       const itemBottom = itemTop + rect.height;
-      const visibleTop = targetY ?? window.scrollY;
+      const visibleTop = scroller.pendingTop();
       const visibleBottom = visibleTop + window.innerHeight;
 
       if (itemTop < visibleTop + SCROLL_PADDING) {
-        setTarget(itemTop - SCROLL_PADDING);
+        scroller.scrollTo(itemTop - SCROLL_PADDING);
       } else if (itemBottom > visibleBottom - SCROLL_PADDING) {
-        setTarget(itemBottom - window.innerHeight + SCROLL_PADDING);
+        scroller.scrollTo(itemBottom - window.innerHeight + SCROLL_PADDING);
       }
     };
 

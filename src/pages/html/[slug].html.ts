@@ -1,10 +1,2 @@
-import {
-  getHtmlResponse,
-  getPublishedHtmlPaths,
-} from "../../utils/htmlEndpoint";
-
-export const getStaticPaths = getPublishedHtmlPaths;
-
-export async function GET({ params }: { params: { slug: string } }) {
-  return getHtmlResponse(params.slug);
-}
+// /html/<slug>.html — same rendered HTML as /html/<slug>, at a file-like URL.
+export { getStaticPaths, GET } from "../../utils/htmlEndpoint";

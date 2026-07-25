@@ -11,29 +11,36 @@ const human = new Intl.DateTimeFormat("ja-JP", {
   timeZone: "Asia/Tokyo",
 }).format(build);
 import "../styles/global.css";
+import {
+  FOOTER_COPYRIGHT,
+  FOOTER_SOURCE_LABEL,
+  FOOTER_SOURCE_URL,
+  WHY_SNAILS_BODY,
+  WHY_SNAILS_HEADING,
+} from "../data/siteFooter";
 ---
 
 <footer>
   <div class="footer-content">
     <div class="copy-right">
-      <p>&copy; 2026 Uliboooo. All rights reserved.</p>
+      <p>{FOOTER_COPYRIGHT}</p>
     </div>
     <div class="site-info">
       <p>
         <a
-          href="https://github.com/Uliboooo/blog"
+          href={FOOTER_SOURCE_URL}
           target="_blank"
           rel="noopener noreferrer"
-          class="link--underline link--external">View Source</a
+          class="link--underline link--external">{FOOTER_SOURCE_LABEL}</a
         >
       </p>
     </div>
   </div>
   <section class="why-snails">
     <div class="why-snail-c">
-      <h2>Why "Compute on Snails" ?</h2>
+      <h2>{WHY_SNAILS_HEADING}</h2>
       <p>
-        ハードウェアに依らない抽象化された計算機を、「計算機の要件を満たすのならばカタツムリの上で計算してもいい」という冗談から。
+        {WHY_SNAILS_BODY}
       </p>
     </div>
   </section>

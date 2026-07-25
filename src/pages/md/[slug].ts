@@ -1,10 +1,2 @@
-import {
-  getMarkdownResponse,
-  getPublishedMarkdownPaths,
-} from "../../utils/markdownEndpoint";
-
-export const getStaticPaths = getPublishedMarkdownPaths;
-
-export async function GET({ params }: { params: { slug: string } }) {
-  return getMarkdownResponse(params.slug);
-}
+// /md/<slug> — raw markdown. See src/utils/markdownEndpoint.ts.
+export { getStaticPaths, GET } from "../../utils/markdownEndpoint";
