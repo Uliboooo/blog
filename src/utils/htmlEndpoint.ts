@@ -192,8 +192,23 @@ function buildDocument(frontmatter: Frontmatter, body: string) {
 
 export const getStaticPaths = getPublishedArticlePaths;
 
+// /html/<slug> and /html/<slug>.html render the identical document, so a build
+// would otherwise run the markdown pipeline twice per article. The second route
+// to ask for a slug reuses the first one's output.
+//
+// Build only: in `astro dev` the endpoint has to re-read and re-render on every
+// request, otherwise edits to an article would not show up without a restart.
+const documentCache = new Map<string, string>();
+
 export async function GET({ params }: { params: { slug: string } }) {
-  const source = await readArticleSource(params.slug);
+  const { slug } = params;
+
+  const cached = import.meta.env.PROD ? documentCache.get(slug) : undefined;
+  if (cached !== undefined) {
+    return new Response(cached, { headers: htmlHeaders });
+  }
+
+  const source = await readArticleSource(slug);
   if (source === null) return notFound();
 
   const { frontmatter, content } = parseFrontmatter(source);
@@ -201,7 +216,8 @@ export async function GET({ params }: { params: { slug: string } }) {
   const processor = await getProcessor();
   const { code } = await processor.render(content);
 
-  return new Response(buildDocument(frontmatter, stripScripts(code)), {
-    headers: htmlHeaders,
-  });
+  const document = buildDocument(frontmatter, stripScripts(code));
+  if (import.meta.env.PROD) documentCache.set(slug, document);
+
+  return new Response(document, { headers: htmlHeaders });
 }

@@ -1,13 +1,6 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
-import sharp from "sharp";
-import satori from "satori";
-import {
-  buildOgVNode,
-  loadOgFonts,
-  OG_IMAGE_HEIGHT,
-  OG_IMAGE_WIDTH,
-} from "../../utils/og";
+import { ogImageResponse } from "../../utils/ogImage";
 
 export const prerender = true;
 const BLOG_TITLE = "Compute on Snails";
@@ -25,21 +18,8 @@ export async function getStaticPaths() {
     }));
 }
 
-export const GET: APIRoute = async ({ props }) => {
-  const title = (props?.title as string | undefined) ?? BLOG_TITLE;
-  const description = props?.description as string | undefined;
-  const vnode = buildOgVNode(title, description);
-  const svg = await satori(vnode, {
-    width: OG_IMAGE_WIDTH,
-    height: OG_IMAGE_HEIGHT,
-    fonts: loadOgFonts(),
-  });
-  const png = await sharp(Buffer.from(svg)).png().toBuffer();
-
-  return new Response(png, {
-    headers: {
-      "Content-Type": "image/png",
-      "Cache-Control": "public, max-age=31536000, immutable",
-    },
-  });
-};
+export const GET: APIRoute = async ({ props }) =>
+  ogImageResponse(
+    (props?.title as string | undefined) ?? BLOG_TITLE,
+    props?.description as string | undefined,
+  );
