@@ -1,17 +1,11 @@
 // @ts-check
 import { defineConfig } from 'astro/config'
 import { unified } from '@astrojs/markdown-remark'
-import rehypeExternalLinks from 'rehype-external-links'
 import pkg from './package.json' with { type: 'json' }
 // import wasm from 'vite-plugin-wasm'
 // import topLevelAwait from 'vite-plugin-top-level-await'
 import { execSync } from 'node:child_process'
-import remarkCodeTitle from './src/plugins/remark-code-title.js'
-import remarkDirective from 'remark-directive'
-import remarkDirectiveHandler from './src/plugins/remark-directive-handler.js'
-import remarkTwitterEmbed from './src/plugins/remark-twitter-embed.js'
-import remarkTypst from './src/plugins/remark-typst.js'
-import rehypeFootnoteBackrefIcon from './src/plugins/rehype-footnote-backref-icon.js'
+import { remarkPlugins, rehypePlugins } from './src/markdown-pipeline.js'
 
 const commit = execSync('git rev-parse --short HEAD')
   .toString()
@@ -36,22 +30,7 @@ export default defineConfig({
   },
 
   markdown: {
-    processor: unified({
-      remarkPlugins: [remarkTypst, remarkCodeTitle, remarkDirective, remarkDirectiveHandler, remarkTwitterEmbed],
-      rehypePlugins: [
-        rehypeFootnoteBackrefIcon,
-        [
-          rehypeExternalLinks,
-          {
-            target: '_blank',
-            rel: ['noopener', 'noreferrer'],
-            properties: {
-              class: 'link--underline link--external',
-            },
-          },
-        ],
-      ],
-    }),
+    processor: unified({ remarkPlugins, rehypePlugins }),
   },
 
   vite: {

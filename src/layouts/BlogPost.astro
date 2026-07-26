@@ -30,6 +30,8 @@ const tocHeadings = headings.filter(
   (heading) => heading.depth >= 2 && heading.depth <= 3,
 );
 const url = new URL(Astro.url.pathname, Astro.site).href;
+// 環境変数は文字列。"true" のときだけ有効。デフォルト（未設定）は無効。
+const showViews = import.meta.env.PUBLIC_VIEW_COUNTER === "true";
 ---
 
 <MainLayout
@@ -66,10 +68,28 @@ const url = new URL(Astro.url.pathname, Astro.site).href;
           </div>
         )
       }
-      <span class="post-views" data-slug={slug} hidden>
-        <span class="post-views__n"></span>
-        <span class="post-views__label"> views</span>
+      <span class="raw-links">
+        <a
+          href={`/md/${slug}`}
+          class="link--underline link--external"
+          target="_blank"
+          rel="noopener noreferrer">md</a
+        >
+        <a
+          href={`/html/${slug}`}
+          class="link--underline link--external"
+          target="_blank"
+          rel="noopener noreferrer">html</a
+        >
       </span>
+      {
+        showViews && (
+          <span class="post-views" data-slug={slug} hidden>
+            <span class="post-views__n" />
+            <span class="post-views__label"> views</span>
+          </span>
+        )
+      }
     </div>
     {
       tocHeadings.length > 0 && (
@@ -164,29 +184,33 @@ const url = new URL(Astro.url.pathname, Astro.site).href;
     }
   </script>
 
-  <script is:inline>
-    (() => {
-      // ── view counter ──────────────────────────────────
-      const el = document.querySelector(".post-views");
-      const slug = el?.dataset.slug;
-      if (!el || !slug) return;
+  {
+    showViews && (
+      <script is:inline>
+        (() => {
+          // ── view counter ──────────────────────────────────
+          const el = document.querySelector(".post-views");
+          const slug = el?.dataset.slug;
+          if (!el || !slug) return;
 
-      // Always POST; the server dedups per visitor per day and returns the
-      // count either way. (No request lands on `astro dev`, which has no
-      // Function — the counter simply stays hidden there.)
-      fetch("/api/views/" + encodeURIComponent(slug), { method: "POST" })
-        .then((res) => (res.ok ? res.json() : Promise.reject()))
-        .then((data) => {
-          if (typeof data?.count !== "number") return;
-          const n = el.querySelector(".post-views__n");
-          if (n) n.textContent = data.count.toLocaleString("ja-JP");
-          el.hidden = false;
-        })
-        .catch(() => {
-          // Best-effort: leave the counter hidden, page is unaffected.
-        });
-    })();
-  </script>
+          // Always POST; the server dedups per visitor per day and returns the
+          // count either way. (No request lands on `astro dev`, which has no
+          // Function — the counter simply stays hidden there.)
+          fetch("/api/views/" + encodeURIComponent(slug), { method: "POST" })
+            .then((res) => (res.ok ? res.json() : Promise.reject()))
+            .then((data) => {
+              if (typeof data?.count !== "number") return;
+              const n = el.querySelector(".post-views__n");
+              if (n) n.textContent = data.count.toLocaleString("ja-JP");
+              el.hidden = false;
+            })
+            .catch(() => {
+              // Best-effort: leave the counter hidden, page is unaffected.
+            });
+        })();
+      </script>
+    )
+  }
 
   <script is:inline>
     (() => {
