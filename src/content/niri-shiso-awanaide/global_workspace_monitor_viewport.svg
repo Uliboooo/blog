@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1360 780" width="1360" height="780" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <style>
+    .space { fill: none; stroke: #898781; stroke-width: 2; stroke-dasharray: 8 8; }
+    .ws    { fill: #f1efe8; stroke: #5f5e5a; stroke-width: 1; }
+    .win   { fill: #e6f1fb; stroke: #185fa5; stroke-width: 1; }
+    .mon   { fill: none; stroke: #184f95; stroke-width: 3; stroke-dasharray: 14 10; }
+    .t     { fill: #52514e; font-size: 20px; }
+    .tl    { fill: #52514e; font-size: 22px; }
+    .tm    { fill: #184f95; font-size: 20px; }
+    .gaze  { fill: none; stroke: #184f95; stroke-width: 2; stroke-dasharray: 1 7; stroke-linecap: round; }
+    .body  { fill: #f1efe8; stroke: #5f5e5a; stroke-width: 1; }
+  </style>
+  <rect width="1360" height="780" fill="#ffffff"/>
+
+  <!-- one global space holding every workspace -->
+  <text class="tl" x="46" y="42">global workspace space</text>
+  <rect class="space" x="40" y="60" width="1280" height="420" rx="16"/>
+
+  <!-- ws 1 -->
+  <rect class="ws" x="70" y="105" width="224" height="330" rx="10"/>
+  <text class="t" x="88" y="140">ws 1</text>
+  <rect class="win" x="86" y="158" width="192" height="120" rx="8"/>
+  <rect class="win" x="86" y="292" width="192" height="128" rx="8"/>
+
+  <!-- ws 2 -->
+  <rect class="ws" x="318" y="105" width="224" height="330" rx="10"/>
+  <text class="t" x="336" y="140">ws 2</text>
+  <rect class="win" x="334" y="158" width="192" height="150" rx="8"/>
+  <rect class="win" x="334" y="322" width="90" height="98" rx="8"/>
+  <rect class="win" x="436" y="322" width="90" height="98" rx="8"/>
+
+  <!-- ws 3 -->
+  <rect class="ws" x="566" y="105" width="224" height="330" rx="10"/>
+  <text class="t" x="584" y="140">ws 3</text>
+  <rect class="win" x="582" y="158" width="192" height="262" rx="8"/>
+
+  <!-- ws 4 -->
+  <rect class="ws" x="814" y="105" width="224" height="330" rx="10"/>
+  <text class="t" x="832" y="140">ws 4</text>
+  <rect class="win" x="830" y="158" width="90" height="262" rx="8"/>
+  <rect class="win" x="932" y="158" width="90" height="120" rx="8"/>
+  <rect class="win" x="932" y="292" width="90" height="128" rx="8"/>
+
+  <!-- ws 5 -->
+  <rect class="ws" x="1062" y="105" width="224" height="330" rx="10"/>
+  <text class="t" x="1080" y="140">ws 5</text>
+  <rect class="win" x="1078" y="158" width="192" height="120" rx="8"/>
+
+  <!-- monitors: viewports peeking into the global space -->
+  <rect class="mon" x="304" y="85" width="252" height="370" rx="14"/>
+  <text class="tm" x="304" y="512">monitor 1</text>
+
+  <rect class="mon" x="800" y="85" width="252" height="370" rx="14"/>
+  <text class="tm" x="1052" y="512" text-anchor="end">monitor 2</text>
+
+  <!-- one observer: the field of view is bounded by the monitors, not by the space -->
+  <line class="gaze" x1="678" y1="638" x2="304" y2="455"/>
+  <line class="gaze" x1="678" y1="638" x2="556" y2="455"/>
+  <line class="gaze" x1="678" y1="638" x2="800" y2="455"/>
+  <line class="gaze" x1="678" y1="638" x2="1052" y2="455"/>
+  <circle class="body" cx="678" cy="638" r="24"/>
+  <path class="body" d="M 642 712 a 36 36 0 0 1 72 0 z"/>
+
+  <text class="t" x="680" y="758" text-anchor="middle">a monitor is just a viewport looking into the one global space</text>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1360 650" width="1360" height="650" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <style>
+    .ws   { fill: #f1efe8; stroke: #5f5e5a; stroke-width: 1; }
+    .win  { fill: #e6f1fb; stroke: #185fa5; stroke-width: 1; }
+    .winG { fill: #e1f5ee; stroke: #0f6e56; stroke-width: 1; }
+    .winR { fill: #faece7; stroke: #993c1d; stroke-width: 1; }
+    .mon  { fill: none; stroke: #184f95; stroke-width: 3; stroke-dasharray: 14 10; }
+    .t    { fill: #52514e; font-size: 20px; }
+    .tl   { fill: #52514e; font-size: 22px; }
+    .tr   { fill: #993c1d; font-size: 19px; }
+    .arw  { stroke: #898781; stroke-width: 3; fill: none; }
+  </style>
+  <defs>
+    <marker id="head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#898781"/>
+    </marker>
+  </defs>
+  <rect width="1360" height="650" fill="#ffffff"/>
+
+  <!-- traditional: the workspace stops at the edge of the display -->
+  <text class="tl" x="46" y="44">traditional: ws width = display width</text>
+  <rect class="ws" x="56" y="80" width="668" height="178" rx="10"/>
+  <rect class="win" x="76" y="101" width="188" height="136" rx="8"/>
+  <rect class="win" x="280" y="101" width="188" height="136" rx="8"/>
+  <rect class="win" x="484" y="101" width="188" height="136" rx="8"/>
+  <rect class="winR" x="688" y="101" width="188" height="136" rx="8"/>
+  <rect class="mon" x="40" y="64" width="700" height="210" rx="14"/>
+  <text class="tr" x="688" y="292">no room left — push it to another ws</text>
+
+  <!-- niri: the workspace keeps going past the display -->
+  <text class="tl" x="46" y="364">niri: ws width is unbounded</text>
+  <rect class="ws" x="56" y="400" width="1304" height="178" rx="10"/>
+  <rect class="winG" x="76" y="421" width="196" height="136" rx="8"/>
+  <rect class="winG" x="288" y="421" width="196" height="136" rx="8"/>
+  <rect class="winG" x="500" y="421" width="196" height="136" rx="8"/>
+  <rect class="winG" x="712" y="421" width="196" height="136" rx="8"/>
+  <rect class="winG" x="924" y="421" width="196" height="136" rx="8"/>
+  <rect class="mon" x="40" y="384" width="700" height="210" rx="14"/>
+  <line class="arw" x1="1150" y1="489" x2="1300" y2="489" marker-end="url(#head)"/>
+  <text class="t" x="46" y="632">the display scrolls along the strip instead of bounding it</text>
+</svg>

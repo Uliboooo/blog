@@ -1,14 +1,18 @@
 import { visit } from "unist-util-visit";
 
 const FOOTNOTE_OPEN = "#footnote[";
+const HEADING_MARKER = /^(={1,5})[ \t]+/;
 
 // Typst-style syntax on top of markdown:
 //   *strong* / _emphasis_  (CommonMark parses both as emphasis; the
 //   original delimiter is recovered from the source via position offsets)
 //   #footnote[content]     (inline footnote, auto-numbered)
+//   = heading              (`=` is h2 ... `=====` is h6; h1 is the title)
 export default function remarkTypst() {
   return (tree, file) => {
     const src = typeof file?.value === "string" ? file.value : String(file);
+
+    typstHeadings(tree);
 
     visit(tree, "emphasis", (node) => {
       const offset = node.position?.start?.offset;
@@ -77,6 +81,36 @@ export default function remarkTypst() {
       tree.children.push(...definitions);
     }
   };
+}
+
+// CommonMark parses a `= heading` line as a plain paragraph, so headings are
+// recovered from those paragraphs here. A marker line must form a paragraph of
+// its own (i.e. have a blank line before it): otherwise it is a lazy
+// continuation of the preceding paragraph and stays body text.
+function typstHeadings(tree) {
+  visit(tree, "paragraph", (node, _index, parent) => {
+    // A list item never holds a heading, and `- = ...` is ordinary text.
+    if (parent?.type === "listItem") return;
+
+    const first = node.children[0];
+    if (first?.type !== "text") return;
+
+    const match = HEADING_MARKER.exec(first.value);
+    if (!match) return;
+
+    // Multi-line paragraphs are left alone: the marker line cannot be split
+    // off without cutting through inline nodes.
+    if (node.children.some((child) => child.type === "text" && child.value.includes("\n"))) return;
+
+    const head = first.value.slice(match[0].length);
+    if (!head && node.children.length === 1) return;
+
+    if (head) first.value = head;
+    else node.children.shift();
+
+    node.type = "heading";
+    node.depth = match[1].length + 1;
+  });
 }
 
 // Finds the `]` matching an already-consumed `[`, scanning text siblings
