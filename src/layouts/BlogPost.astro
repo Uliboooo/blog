@@ -220,14 +220,37 @@ const showViews = import.meta.env.PUBLIC_VIEW_COUNTER === "true";
       overlay.setAttribute("role", "dialog");
       overlay.setAttribute("aria-modal", "true");
       overlay.setAttribute("aria-label", "画像を拡大表示");
-      overlay.innerHTML = '<img id="img-lightbox-img" alt="" />';
+      overlay.innerHTML =
+        '<button id="img-lightbox-prev" class="img-lightbox-nav" aria-label="前の画像">‹</button>' +
+        '<img id="img-lightbox-img" alt="" />' +
+        '<button id="img-lightbox-next" class="img-lightbox-nav" aria-label="次の画像">›</button>' +
+        '<span id="img-lightbox-count" aria-hidden="true"></span>';
       document.body.appendChild(overlay);
 
       const lbImg = overlay.querySelector("#img-lightbox-img");
+      const prevBtn = overlay.querySelector("#img-lightbox-prev");
+      const nextBtn = overlay.querySelector("#img-lightbox-next");
+      const countEl = overlay.querySelector("#img-lightbox-count");
 
-      const open = (src, alt) => {
-        lbImg.src = src;
-        lbImg.alt = alt;
+      const images = [...document.querySelectorAll(".prose img")].filter(
+        (img) => !img.alt?.includes("#no-lightbox"),
+      );
+      let index = -1;
+
+      const show = (i) => {
+        if (i < 0 || i >= images.length) return;
+        index = i;
+        lbImg.src = images[i].src;
+        lbImg.alt = images[i].alt;
+        const multi = images.length > 1;
+        prevBtn.hidden = !multi || i === 0;
+        nextBtn.hidden = !multi || i === images.length - 1;
+        countEl.hidden = !multi;
+        countEl.textContent = `${i + 1} / ${images.length}`;
+      };
+
+      const open = (i) => {
+        show(i);
         overlay.classList.add("is-open");
         document.documentElement.style.overflow = "hidden";
         overlay.focus();
@@ -242,16 +265,53 @@ const showViews = import.meta.env.PUBLIC_VIEW_COUNTER === "true";
       overlay.addEventListener("click", (e) => {
         if (e.target === overlay) close();
       });
+      prevBtn.addEventListener("click", () => show(index - 1));
+      nextBtn.addEventListener("click", () => show(index + 1));
 
+      // Registered before the vim-scroll handler below, so while the
+      // lightbox is open stopImmediatePropagation() keeps page shortcuts
+      // (h = home, j/k = scroll) from firing behind the modal.
       document.addEventListener("keydown", (e) => {
+        if (!overlay.classList.contains("is-open")) return;
+        if (e.metaKey || e.ctrlKey || e.altKey) return;
+        e.stopImmediatePropagation();
         if (e.key === "Escape") close();
+        else if (e.key === "ArrowLeft" || e.key === "h") show(index - 1);
+        else if (e.key === "ArrowRight" || e.key === "l") show(index + 1);
       });
 
-      const prose = document.querySelector(".prose");
-      prose?.querySelectorAll("img").forEach((img) => {
-        if (img.alt?.includes("#no-lightbox")) return;
+      // Swipe left/right to navigate on touch devices.
+      let touchX = null;
+      let touchY = null;
+      overlay.addEventListener(
+        "touchstart",
+        (e) => {
+          if (e.touches.length !== 1) {
+            touchX = null;
+            return;
+          }
+          touchX = e.touches[0].clientX;
+          touchY = e.touches[0].clientY;
+        },
+        { passive: true },
+      );
+      overlay.addEventListener(
+        "touchend",
+        (e) => {
+          if (touchX === null) return;
+          const dx = e.changedTouches[0].clientX - touchX;
+          const dy = e.changedTouches[0].clientY - touchY;
+          touchX = null;
+          if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+            show(index + (dx < 0 ? 1 : -1));
+          }
+        },
+        { passive: true },
+      );
+
+      images.forEach((img, i) => {
         img.style.cursor = "zoom-in";
-        img.addEventListener("click", () => open(img.src, img.alt));
+        img.addEventListener("click", () => open(i));
       });
     })();
   </script>

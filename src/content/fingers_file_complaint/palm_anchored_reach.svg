@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1360 780" width="1360" height="780" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <style>
+    .body   { fill: #f1efe8; stroke: #5f5e5a; stroke-width: 1; }
+    .key    { fill: #f1efe8; stroke: #5f5e5a; stroke-width: 1; }
+    .cov    { fill: #faece7; stroke: #993c1d; stroke-width: 1; }
+    .pad    { fill: #f1efe8; stroke: #5f5e5a; stroke-width: 1; }
+    .palm   { fill: #e1f5ee; stroke: #0f6e56; stroke-width: 1; }
+    .range  { fill: none; stroke: #993c1d; stroke-width: 3; stroke-dasharray: 14 10; }
+    .cross  { stroke: #993c1d; stroke-width: 2; }
+    .arw    { fill: none; stroke: #898781; stroke-width: 3; }
+    .t      { fill: #52514e; font-size: 20px; }
+    .tl     { fill: #52514e; font-size: 22px; }
+    .tk     { fill: #5f5e5a; font-size: 20px; text-anchor: middle; }
+    .tc     { fill: #993c1d; font-size: 20px; text-anchor: middle; }
+    .tg     { fill: #0f6e56; font-size: 20px; text-anchor: middle; }
+    .tp     { fill: #5f5e5a; font-size: 20px; text-anchor: middle; }
+  </style>
+  <defs>
+    <marker id="head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#898781"/>
+    </marker>
+  </defs>
+  <rect width="1360" height="780" fill="#ffffff"/>
+
+  <!-- laptop deck, top view -->
+  <text class="tl" x="46" y="44">laptop top view — palms anchored, half-circle reach</text>
+  <rect class="body" x="40" y="58" width="1280" height="642" rx="16"/>
+
+  <!-- legend: blue key = reachable -->
+  <rect class="cov" x="80" y="72" width="16" height="16" rx="4"/>
+  <text class="t" x="106" y="87">reachable with palms anchored</text>
+
+  <!-- row 1: number row (3,4 / 9,0,- are the top edge of the reach) -->
+  <rect class="key" x="69" y="110" width="74" height="56" rx="8"/>
+  <rect class="key" x="151" y="110" width="74" height="56" rx="8"/>
+  <rect class="key" x="233" y="110" width="74" height="56" rx="8"/>
+  <rect class="cov" x="315" y="110" width="74" height="56" rx="8"/>
+  <rect class="cov" x="397" y="110" width="74" height="56" rx="8"/>
+  <rect class="key" x="479" y="110" width="74" height="56" rx="8"/>
+  <rect class="key" x="561" y="110" width="74" height="56" rx="8"/>
+  <rect class="key" x="643" y="110" width="74" height="56" rx="8"/>
+  <rect class="key" x="725" y="110" width="74" height="56" rx="8"/>
+  <rect class="cov" x="807" y="110" width="74" height="56" rx="8"/>
+  <rect class="cov" x="889" y="110" width="74" height="56" rx="8"/>
+  <rect class="cov" x="971" y="110" width="74" height="56" rx="8"/>
+  <rect class="key" x="1053" y="110" width="74" height="56" rx="8"/>
+  <rect class="key" x="1135" y="110" width="156" height="56" rx="8"/>
+  <text class="tk" x="106" y="145">`</text>
+  <text class="tk" x="188" y="145">1</text>
+  <text class="tk" x="270" y="145">2</text>
+  <text class="tc" x="352" y="145">3</text>
+  <text class="tc" x="434" y="145">4</text>
+  <text class="tk" x="516" y="145">5</text>
+  <text class="tk" x="598" y="145">6</text>
+  <text class="tk" x="680" y="145">7</text>
+  <text class="tk" x="762" y="145">8</text>
+  <text class="tc" x="844" y="145">9</text>
+  <text class="tc" x="926" y="145">0</text>
+  <text class="tc" x="1008" y="145">-</text>
+  <text class="tk" x="1090" y="145">=</text>
+  <text class="tk" x="1213" y="145">back</text>
+
+  <!-- row 2: tab..\ all reachable -->
+  <rect class="cov" x="69" y="174" width="115" height="56" rx="8"/>
+  <rect class="cov" x="192" y="174" width="74" height="56" rx="8"/>
+  <rect class="cov" x="274" y="174" width="74" height="56" rx="8"/>
+  <rect class="cov" x="356" y="174" width="74" height="56" rx="8"/>
+  <rect class="cov" x="438" y="174" width="74" height="56" rx="8"/>
+  <rect class="cov" x="520" y="174" width="74" height="56" rx="8"/>
+  <rect class="cov" x="602" y="174" width="74" height="56" rx="8"/>
+  <rect class="cov" x="684" y="174" width="74" height="56" rx="8"/>
+  <rect class="cov" x="766" y="174" width="74" height="56" rx="8"/>
+  <rect class="cov" x="848" y="174" width="74" height="56" rx="8"/>
+  <rect class="cov" x="930" y="174" width="74" height="56" rx="8"/>
+  <rect class="cov" x="1012" y="174" width="74" height="56" rx="8"/>
+  <rect class="cov" x="1094" y="174" width="74" height="56" rx="8"/>
+  <rect class="cov" x="1176" y="174" width="115" height="56" rx="8"/>
+  <text class="tc" x="126" y="209">tab</text>
+  <text class="tc" x="229" y="209">q</text>
+  <text class="tc" x="311" y="209">w</text>
+  <text class="tc" x="393" y="209">e</text>
+  <text class="tc" x="475" y="209">r</text>
+  <text class="tc" x="557" y="209">t</text>
+  <text class="tc" x="639" y="209">y</text>
+  <text class="tc" x="721" y="209">u</text>
+  <text class="tc" x="803" y="209">i</text>
+  <text class="tc" x="885" y="209">o</text>
+  <text class="tc" x="967" y="209">p</text>
+  <text class="tc" x="1049" y="209">[</text>
+  <text class="tc" x="1131" y="209">]</text>
+  <text class="tc" x="1233" y="209">\</text>
+
+  <!-- row 3: caps..enter all reachable -->
+  <rect class="cov" x="69" y="238" width="135" height="56" rx="8"/>
+  <rect class="cov" x="212.5" y="238" width="74" height="56" rx="8"/>
+  <rect class="cov" x="294.5" y="238" width="74" height="56" rx="8"/>
+  <rect class="cov" x="376.5" y="238" width="74" height="56" rx="8"/>
+  <rect class="cov" x="458.5" y="238" width="74" height="56" rx="8"/>
+  <rect class="cov" x="540.5" y="238" width="74" height="56" rx="8"/>
+  <rect class="cov" x="622.5" y="238" width="74" height="56" rx="8"/>
+  <rect class="cov" x="704.5" y="238" width="74" height="56" rx="8"/>
+  <rect class="cov" x="786.5" y="238" width="74" height="56" rx="8"/>
+  <rect class="cov" x="868.5" y="238" width="74" height="56" rx="8"/>
+  <rect class="cov" x="950.5" y="238" width="74" height="56" rx="8"/>
+  <rect class="cov" x="1032.5" y="238" width="74" height="56" rx="8"/>
+  <rect class="cov" x="1114.5" y="238" width="176.5" height="56" rx="8"/>
+  <text class="tc" x="136.5" y="273">caps</text>
+  <text class="tc" x="249.5" y="273">a</text>
+  <text class="tc" x="331.5" y="273">s</text>
+  <text class="tc" x="413.5" y="273">d</text>
+  <text class="tc" x="495.5" y="273">f</text>
+  <text class="tc" x="577.5" y="273">g</text>
+  <text class="tc" x="659.5" y="273">h</text>
+  <text class="tc" x="741.5" y="273">j</text>
+  <text class="tc" x="823.5" y="273">k</text>
+  <text class="tc" x="905.5" y="273">l</text>
+  <text class="tc" x="987.5" y="273">;</text>
+  <text class="tc" x="1069.5" y="273">'</text>
+  <text class="tc" x="1202.5" y="273">enter</text>
+
+  <!-- row 4: shift..shift all reachable -->
+  <rect class="cov" x="69" y="302" width="176.5" height="56" rx="8"/>
+  <rect class="cov" x="253.5" y="302" width="74" height="56" rx="8"/>
+  <rect class="cov" x="335.5" y="302" width="74" height="56" rx="8"/>
+  <rect class="cov" x="417.5" y="302" width="74" height="56" rx="8"/>
+  <rect class="cov" x="499.5" y="302" width="74" height="56" rx="8"/>
+  <rect class="cov" x="581.5" y="302" width="74" height="56" rx="8"/>
+  <rect class="cov" x="663.5" y="302" width="74" height="56" rx="8"/>
+  <rect class="cov" x="745.5" y="302" width="74" height="56" rx="8"/>
+  <rect class="cov" x="827.5" y="302" width="74" height="56" rx="8"/>
+  <rect class="cov" x="909.5" y="302" width="74" height="56" rx="8"/>
+  <rect class="cov" x="991.5" y="302" width="74" height="56" rx="8"/>
+  <rect class="cov" x="1073.5" y="302" width="217.5" height="56" rx="8"/>
+  <text class="tc" x="157" y="337">shift</text>
+  <text class="tc" x="290.5" y="337">z</text>
+  <text class="tc" x="372.5" y="337">x</text>
+  <text class="tc" x="454.5" y="337">c</text>
+  <text class="tc" x="536.5" y="337">v</text>
+  <text class="tc" x="618.5" y="337">b</text>
+  <text class="tc" x="700.5" y="337">n</text>
+  <text class="tc" x="782.5" y="337">m</text>
+  <text class="tc" x="864.5" y="337">,</text>
+  <text class="tc" x="946.5" y="337">.</text>
+  <text class="tc" x="1028.5" y="337">/</text>
+  <text class="tc" x="1182" y="337">shift</text>
+
+  <!-- row 5: bottom row, space is the center of the arc -->
+  <rect class="key" x="69" y="366" width="115" height="56" rx="8"/>
+  <rect class="key" x="192" y="366" width="115" height="56" rx="8"/>
+  <rect class="key" x="315" y="366" width="115" height="56" rx="8"/>
+  <rect class="cov" x="438" y="366" width="484" height="56" rx="8"/>
+  <rect class="key" x="930" y="366" width="115" height="56" rx="8"/>
+  <rect class="key" x="1053" y="366" width="115" height="56" rx="8"/>
+  <rect class="key" x="1176" y="366" width="115" height="56" rx="8"/>
+  <text class="tk" x="126.5" y="401">fn</text>
+  <text class="tk" x="249.5" y="401">ctrl</text>
+  <text class="tk" x="372.5" y="401">alt</text>
+  <text class="tc" x="680" y="386">space</text>
+  <text class="tk" x="987.5" y="401">alt</text>
+  <text class="tk" x="1110.5" y="401">ctrl</text>
+  <text class="tk" x="1233.5" y="401">fn</text>
+
+  <!-- center mark of the arc: middle of the space bar -->
+  <line class="cross" x1="668" y1="404" x2="692" y2="404"/>
+  <line class="cross" x1="680" y1="392" x2="680" y2="416"/>
+
+  <!-- reach boundary: half circle centered on the space bar -->
+  <path class="range" d="M 50 420 A 630 330 0 0 1 1310 420"/>
+
+  <!-- trackpad, with the thumb dropping down from space -->
+  <rect class="pad" x="500" y="455" width="360" height="200" rx="10"/>
+  <text class="tp" x="680" y="562">trackpad</text>
+  <path class="arw" d="M 760 428 C 772 440 770 442 762 450" marker-end="url(#head)"/>
+  <text class="t" x="782" y="447">thumb</text>
+
+  <!-- palm anchors: heels of the hands stay fixed beside the pad -->
+  <ellipse class="palm" cx="400" cy="570" rx="65" ry="45"/>
+  <ellipse class="palm" cx="960" cy="570" rx="65" ry="45"/>
+  <text class="tg" x="400" y="645">palm anchor</text>
+  <text class="tg" x="960" y="645">palm anchor</text>
+
+  <!-- caption -->
+  <text class="t" x="680" y="748" text-anchor="middle">palms stay anchored beside the pad — the hands cover a half circle centered on the space bar</text>
+</svg>

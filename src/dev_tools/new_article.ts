@@ -65,7 +65,7 @@ const generate_slug_from_gemini = async (title: string) => {
     fail("GEMINI_API_KEY is required to generate slug for Japanese titles.");
   }
 
-  const model = "gemini-3.1-flash-lite";
+  const model = "gemini-3.5-flash-lite";
 
   const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${api_key}`;
   const prompt = [
