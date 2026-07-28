@@ -7,6 +7,8 @@ tags: ["works"]
 published: true
 ---
 
+<a href="../about_me" class="link--underline link--external" target="_blank" rel="noopener noreferrer">About Me</a>
+
 ## ghost_git_writer
 
 LLMでGitコミットメッセージ、README、または差分要約を作成するツール。本当はサブコマンドではなく別コマンドとして実装するべきだったためいつか分けることを検討中...
