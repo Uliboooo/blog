@@ -144,7 +144,7 @@ waylandの壁紙を制御するツールは多いですが私はなんとなく�
 特にこだわりはない。USレイアウトのラップトップを国内で調達できるのがMacbookかThinkPadか、くらいか感じなので... (DELLもあったかな?) 強いて言うならもっと輝度が高くまででるマシンにすればよかったとは。窓が近いとつらい。300nitsがMAXなので。
 
 [^1]: 他にもいろんな便利機能(statuscolumn, indent guides, etc...)があって便利。細かいpluginsを吸収してくれる
-[^2]: [Neovim toggle-term内のスペースが重い](https://blog.uliboooo.dev/neovim-toggleterm-spc-lag/)
+[^2]: <a href="../neovim-toggleterm-spc-lag" class="link--underline link--external" target="_blank" rel="noopener noreferrer">Neovim toggle-term内のスペースが重い</a>
 [^3]: `/foo/index.ts`じゃなくて`/foo/foo.ts`とかにしたくなるっていう。pickerでもディレクトリ命も検索対象だけどファイル名で絞れたほうが楽なので。
 [^4]: 左から温度: `btop`, 音量: `wiremix`, BT: `bluetui`, Net: `nmtui`が起動する。
 

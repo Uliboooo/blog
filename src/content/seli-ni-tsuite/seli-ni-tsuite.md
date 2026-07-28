@@ -1,6 +1,7 @@
 ---
 title: "瀬梨(Seli)について"
 date: 2026-06-25
+latest_edit_at: 2026-07-28
 writer: "Uliboooo"
 description: "小説とか用の、Techじゃない創作の名義です"
 tags: ["me"]
@@ -9,7 +10,8 @@ published: true
 
 創作物などに向けた名義。Ulibooooの中の人ともいう。百合好き。
 
-[Ulibooooについて](https://blog.uliboooo.dev/about_me)
+<a href="../about_me" class="link--underline link--external" target="_blank" rel="noopener noreferrer">Ulibooooについてはこちら</a>
+
 
 ## Works
 
