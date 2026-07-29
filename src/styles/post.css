@@ -12,7 +12,7 @@
   padding-right: 10px;
 }
 
-/* ── post meta(日付・タグ・views) ─────────────────── */
+/* ── post meta(日付・タグ) ────────────────────────── */
 
 .prose .post-meta {
   display: flex;
@@ -35,17 +35,6 @@
   }
 
   /* .tags / .tag はglobal.cssの共通定義を使用 */
-
-  .post-views {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.25rem;
-    font-variant-numeric: tabular-nums;
-
-    &[hidden] {
-      display: none;
-    }
-  }
 
   .raw-links {
     display: inline-flex;
