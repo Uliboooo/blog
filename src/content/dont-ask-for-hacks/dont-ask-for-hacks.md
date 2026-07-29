@@ -11,9 +11,10 @@ published: false
 
 ここ数ヶ月、vimやらneovimやらhelixを触ってきた。helixはpluginシステムはなく[^1]基本的に拡張性は`config.toml`, `languages.toml`程度。vim, neovimと異なるのはその多くのモダン機能をbuilt-inにしてzero-configを目指したエディタということであり、以下の引用の通り、強い拡張の必要性を無くそうという思想。
 
-> Helix is a pragmatic editor: it should behave as you'd expect out of the box,  
-> Helixは実用的なエディタです。導入したそのままで期待通りに動作すべきであり、  
-[あるIssueの一部より](https://github.com/helix-editor/helix/discussions/3806#discussioncomment-6686976)
+#quote(attribution: "あるIssueの一部より", url: "https://github.com/helix-editor/helix/discussions/3806#discussioncomment-6686976")[
+Helix is a pragmatic editor: it should behave as you'd expect out of the box,  
+Helixは実用的なエディタです。導入したそのままで期待通りに動作すべきであり、
+]
 
 この思想によってlspもtree-sitterもformatterも自動で設定される。`--health`オプションで現在どのlspなどが使えるかがわかるので`grep`や`rg`で確認してみるといいかもしれない。
 

@@ -230,6 +230,31 @@
   }
 }
 
+/* 出典付きの引用(`#quote(attribution:, url:)[...]`) */
+.prose figure.quote {
+  margin: 20px 0;
+}
+
+.prose figure.quote blockquote {
+  margin: 0;
+}
+
+.prose figure.quote figcaption {
+  /* blockquoteの本文と頭を揃える(border 4px + padding 15px) */
+  padding-left: 19px;
+  margin-top: 0.4rem;
+  font-size: 0.8em;
+  color: var(--text-muted);
+}
+
+.prose figure.quote cite {
+  font-style: normal;
+}
+
+.prose figure.quote cite::before {
+  content: "— ";
+}
+
 .prose .message {
   padding: 1rem 1.25rem;
   margin: 1.5rem 0;
