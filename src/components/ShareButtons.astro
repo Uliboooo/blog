@@ -16,6 +16,10 @@ const shareLinks = [
     name: "Hatena",
     href: `https://b.hatena.ne.jp/entry/s/${url.replace(/^https?:\/\//, "")}`,
   },
+  {
+    name: "マシュマロで匿名の感想を",
+    href: "https://marshmallow-qa.com/db8xew1t5oa5l19",
+  },
 ];
 ---
 
@@ -56,9 +60,10 @@ const shareLinks = [
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 0.25rem 0.8rem;
     align-items: center;
+    gap: 0.25rem 0.8rem;
     font-size: 1rem;
+    line-height: 1.5;
     margin-top: 2rem;
     a {
       font-size: 1rem;
@@ -77,6 +82,16 @@ const shareLinks = [
     align-items: center;
     gap: 0.4rem;
     flex-wrap: wrap;
+  }
+
+  /* 日本語フォントと欧文フォントで行ボックスの高さが異なっても、
+     各リンクを同じ高さの中央に揃える。 */
+  .share-links > .external-link,
+  #share-btn {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.5em;
+    line-height: 1.5;
   }
 
   .share-meta {
@@ -115,7 +130,7 @@ const shareLinks = [
 
   @media (max-width: 640px) {
     #share-btn {
-      display: block;
+      display: inline-flex;
     }
   }
 </style>

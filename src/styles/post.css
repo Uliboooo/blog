@@ -163,6 +163,8 @@
   font-family: var(--base-fonts-sans);
   font-weight: 430;
   font-optical-sizing: auto;
+  word-break: keep-all;
+  word-break: auto-phrase;
 }
 
 .prose .post-description {

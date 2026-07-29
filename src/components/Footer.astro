@@ -32,7 +32,9 @@ const human = new Intl.DateTimeFormat("ja-JP", {
     <div class="why-snail-c">
       <h2>Why "Compute on Snails" ?</h2>
       <p>
-        ハードウェアに依らない抽象化された計算機を、「計算機の要件を満たすのならばカタツムリの上で計算してもいい」という冗談から。
+        ハードウェアに依らない抽象化された計算機を、「計算機の要件を満たすのならばカタツムリの上で計算してもいい」という<span
+          >冗談</span
+        >から。
       </p>
     </div>
   </section>
@@ -72,6 +74,8 @@ const human = new Intl.DateTimeFormat("ja-JP", {
         p {
           font-size: 0.8rem;
           text-wrap: pretty;
+          word-break: keep-all;
+          word-break: auto-phrase;
         }
       }
     }
