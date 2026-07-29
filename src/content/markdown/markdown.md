@@ -9,9 +9,9 @@ published: true
 
 ## Markdownとは
 
-> Markdown（マークダウン）とは、プレーンテキスト形式で書式付きテキストを記述する軽量マークアップ言語である。
-
-https://ja.wikipedia.org/wiki/Markdown
+#quote(attribution: "Markdown - Wikipedia", url: "https://ja.wikipedia.org/wiki/Markdown")[
+Markdown（マークダウン）とは、プレーンテキスト形式で書式付きテキストを記述する軽量マークアップ言語である。
+]
 
 テキストによる表現においてメタ的な表現[^1]をしたいことがある。例えば太字による強意の表現、打ち消し線による取り消しの表現、見出しなどの構造を文章に与える、等。こういう表現は一般的にはWordやメモ帳のツールを使ってそのソフトウェアに依存した状態でメタ的な表現として与えることが多いでしょう。
 

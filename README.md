@@ -8,7 +8,9 @@ markdownパイプラインは`src/markdown-pipeline.js`に集約されていて�
 
 ### Typst風記法(remark-typst)
 
-`*strong*` / `_emphasis_` / `#footnote[内容]` / 行頭`=`見出し(`=`がh2)。詳細は[writeing_rule.md](./writeing_rule.md)を参照。
+`*strong*` / `_emphasis_` / `#footnote[内容]` / 行頭`=`見出し(`=`がh2) / `#quote(...)[引用文]`。詳細は[writeing_rule.md](./writeing_rule.md)を参照。
+
+出典付き引用は`#quote(attribution: "Markdown - Wikipedia", url: "https://ja.wikipedia.org/wiki/Markdown")[引用文]`のように書くと`<figure><blockquote cite="..."> + <figcaption><cite>`になる(引数は両方任意)。
 
 ### ディレクティブ(remark-directive)
 

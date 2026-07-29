@@ -9,9 +9,9 @@ published: true
 
 ## ChromeBook (OS)とは?
 
-> Google が開発した ChromeOS は、すべての Chromebook に搭載されています。ChromeOS デバイス管理によって、従業員のオンボーディングやデバイスのリモート管理などを行えます。
-
-https://chromeos.google/
+#quote(attribution: "ChromeOS - Google", url: "https://chromeos.google/")[
+Google が開発した ChromeOS は、すべての Chromebook に搭載されています。ChromeOS デバイス管理によって、従業員のオンボーディングやデバイスのリモート管理などを行えます。
+]
 
 GoogleのPC向けなOS。特徴としては処理の多くをクラウドベースにすることで、本体のスペックを削り低コスト化している点です。そのためchromebookとして販売されているラップトップの性能は大概ショボいです。
 

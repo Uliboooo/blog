@@ -32,9 +32,9 @@ niri 26.04 (Nixpkgs)
 
 そもそもHyprlandとNiriのもっとも大きな違いであり特徴は**無限スクロール**でしょう。
 
-> Windows are arranged in columns on an infinite strip going to the right. Opening a new window never causes existing windows to resize.
-
-[Niri - Github](https://github.com/niri-wm/niri)
+#quote(attribution: "Niri - Github", url: "https://github.com/niri-wm/niri")[
+Windows are arranged in columns on an infinite strip going to the right. Opening a new window never causes existing windows to resize.
+]
 
 そしてこのNiriの**無限スクロール**は本質的にHyprlandよりworkspaceの概念に近いように感じました。
 
