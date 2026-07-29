@@ -166,7 +166,7 @@
 /* ── typography(本文・見出し) ─────────────────────── */
 
 .prose p {
-  font-size: 0.97em;
+  font-size: 0.999em;
   line-height: 1.8;
   margin-top: 1rem;
   margin-bottom: 1rem;
