@@ -1,9 +1,18 @@
+/* post.css — 記事ページ(BlogPost.astro)専用のスタイル。
+   基本は.prose配下に閉じる。:targetとlightboxだけはセレクタ上グローバルだが、
+   このファイルがBlogPost.astroからしかimportされないため実質postページ限定。
+   色はglobal.cssのカスタムプロパティを参照する(dark上書きは変数側で吸収)。 */
+
+/* ── base ─────────────────────────────────────────── */
+
 .prose {
   /* 本文の基準サイズ。post内の文字サイズはここを基準にemで指定する */
   font-size: 16px;
   padding-left: 10px;
   padding-right: 10px;
 }
+
+/* ── post meta(日付・タグ・views) ─────────────────── */
 
 .prose .post-meta {
   display: flex;
@@ -12,7 +21,7 @@
   gap: 0.5rem 0.8rem;
   margin-top: 0.5rem;
   margin-bottom: 1.5rem;
-  color: #666;
+  color: var(--text-muted);
   font-size: 0.85em;
 
   .last-modified {
@@ -25,22 +34,7 @@
     }
   }
 
-  .tags {
-    display: inline-flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-
-  .tag {
-    display: inline-block;
-    color: #333;
-
-    &::before {
-      content: "#";
-      color: #666;
-      margin-right: 0.15rem;
-    }
-  }
+  /* .tags / .tag はglobal.cssの共通定義を使用 */
 
   .post-views {
     display: inline-flex;
@@ -61,17 +55,7 @@
 
 }
 
-:root.dark .prose .post-meta {
-  color: #B0B0B0;
-
-  .tag {
-    color: #D1D1D1;
-
-    &::before {
-      color: #B0B0B0;
-    }
-  }
-}
+/* ── toc / details ────────────────────────────────── */
 
 .prose .toc {
   --toc-summary-color: var(--heading-color);
@@ -115,7 +99,7 @@
 }
 
 .prose .details[open] {
-  border-bottom: 1.5px solid #545454;
+  border-bottom: 1.5px solid var(--border-strong);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -179,6 +163,8 @@
   margin-left: 1rem;
 }
 
+/* ── typography(本文・見出し) ─────────────────────── */
+
 .prose p {
   font-size: 0.97em;
   line-height: 1.8;
@@ -231,6 +217,8 @@
   margin-right: 0.5rem;
 }
 
+/* ── blockquote / callout(:::message, :::alert) ──── */
+
 .prose blockquote {
   margin-right: 0;
   border-left: 4px solid var(--blockquote-border);
@@ -245,8 +233,8 @@
 .prose .message {
   padding: 1rem 1.25rem;
   margin: 1.5rem 0;
-  border-left: 4px solid #eab308;
-  background-color: rgba(234, 179, 8, 0.05);
+  border-left: 4px solid var(--callout-message-border);
+  background-color: var(--callout-message-bg);
   border-radius: 0 8px 8px 0;
 }
 
@@ -255,27 +243,17 @@
   font-size: 0.9em;
 }
 
-:root.dark .prose .message {
-  background-color: rgba(234, 179, 8, 0.1);
-  border-left-color: #facc15;
-}
-
 .prose .alert {
   padding: 1rem 1.25rem;
   margin: 1.5rem 0;
-  border-left: 4px solid #ef4444;
-  background-color: rgba(239, 68, 68, 0.05);
+  border-left: 4px solid var(--callout-alert-border);
+  background-color: var(--callout-alert-bg);
   border-radius: 0 8px 8px 0;
 }
 
 .prose .alert p {
   margin: 0;
   font-size: 0.9em;
-}
-
-:root.dark .prose .alert {
-  background-color: rgba(239, 68, 68, 0.1);
-  border-left-color: #f87171;
 }
 
 /* ── pros / cons list ─────────────────────────────── */
@@ -334,30 +312,19 @@
   font-weight: 700;
 }
 
-/* contents */
+/* contents (マーカー色はlightで本文色、darkで緑/赤 — global.cssの変数を参照) */
 .prose .pros li::before,
 .prose li.pros::before,
 .prose ul.pros li::before {
   content: "+";
+  color: var(--pros-color);
 }
 
 .prose .cons li::before,
 .prose li.cons::before,
 .prose ul.cons li::before {
   content: "−";
-}
-
-/* dark mode */
-:root.dark .prose .pros li::before,
-:root.dark .prose li.pros::before,
-:root.dark .prose ul.pros li::before {
-  color: #4ade80;
-}
-
-:root.dark .prose .cons li::before,
-:root.dark .prose li.cons::before,
-:root.dark .prose ul.cons li::before {
-  color: #f87171;
+  color: var(--cons-color);
 }
 
 /* footnote sup がライン高さを押し広げないようにする */
@@ -408,6 +375,8 @@
   animation: target-highlight 2s ease-out;
 }
 
+/* ── lists / images ───────────────────────────────── */
+
 .prose .external-link {
   margin-left: 0.2rem;
   margin-right: 0.1rem;
@@ -452,11 +421,11 @@
   height: auto;
 }
 
-/* ── row-image ────────────────────────── */
+/* ── image-row ────────────────────────── */
 /* Markdown wraps consecutive images in a <p>, so the flex container is the
    paragraph inside the directive's div, not the div itself. */
 
-.prose .row-image p {
+.prose .image-row p {
   display: flex;
   flex-direction: row;
   gap: 0.6rem;
@@ -469,15 +438,15 @@
 }
 
 /* Safari (ignored by browsers that support scrollbar-color) */
-.prose .row-image p::-webkit-scrollbar {
+.prose .image-row p::-webkit-scrollbar {
   height: 6px;
 }
 
-.prose .row-image p::-webkit-scrollbar-track {
+.prose .image-row p::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.prose .row-image p::-webkit-scrollbar-thumb {
+.prose .image-row p::-webkit-scrollbar-thumb {
   background: var(--blockquote-border);
   border-radius: 3px;
 }
@@ -488,18 +457,18 @@
    the auto margins (which collapse to 0 when the row overflows).
    Placed after the alt-size rules (#small/#medium/…) so `width: auto`
    wins over any alt suffix inside a row. */
-.prose .row-image img {
+.prose .image-row img {
   flex: 0 0 auto;
   height: min(15rem, 55vw);
   width: auto;
   border-radius: 4px;
 }
 
-.prose .row-image img:first-child {
+.prose .image-row img:first-child {
   margin-left: auto;
 }
 
-.prose .row-image img:last-child {
+.prose .image-row img:last-child {
   margin-right: auto;
 }
 
@@ -507,27 +476,29 @@
    a pair splits the width in half, a single image keeps its natural size
    capped at the container width. 3+ images use the fixed-height scroll
    behavior above. */
-.prose .row-image img:only-child {
+.prose .image-row img:only-child {
   flex: 0 1 auto;
   height: auto;
   max-width: 100%;
 }
 
-.prose .row-image img:first-child:nth-last-child(2),
-.prose .row-image img:first-child:nth-last-child(2)~img {
+.prose .image-row img:first-child:nth-last-child(2),
+.prose .image-row img:first-child:nth-last-child(2)~img {
   flex: 1 1 0;
   min-width: 0;
   height: auto;
 }
 
 @media (max-width: 480px) {
-  .prose .row-image p {
+  .prose .image-row p {
     gap: 0.4rem;
   }
 }
 
+/* ── code(コードブロック・コピーボタン) ───────────── */
+
 .prose pre {
-  background-color: #24292e;
+  background-color: var(--code-bg);
   border-radius: 8px;
   padding: 1rem;
 
@@ -544,9 +515,9 @@
   font-size: 0.8em;
   line-height: 1.4;
   letter-spacing: 0.02em;
-  color: #f8f8f2;
+  color: var(--code-fg);
   font-family: var(--base-fonts-mono);
-  background-color: #24292e;
+  background-color: var(--code-bg);
   border-radius: 8px 8px 0 0;
   padding: 0.25rem 0.75rem;
   display: flex;
@@ -564,7 +535,7 @@
 .prose pre code {
   padding: 0;
   margin: 0;
-  color: #f8f8f2;
+  color: var(--code-fg);
   display: block;
   font-family: var(--base-fonts-mono);
   white-space: pre;
@@ -580,7 +551,7 @@
   border-radius: 6px;
   border: 1px solid rgba(255, 255, 255, 0.25);
   background: rgba(255, 255, 255, 0.08);
-  color: #f8f8f2;
+  color: var(--code-fg);
   cursor: pointer;
   opacity: 0.75;
 }
@@ -635,6 +606,8 @@
   }
 }
 
+/* ── links(記事内リンクの下線・altサフィックス装飾) ── */
+
 .prose a {
   color: var(--a-link-in-post);
   text-decoration: none;
@@ -651,19 +624,16 @@
   background-size: 100% 1px;
 }
 
-.prose a.no-deco-link,
 .prose a:has(img[alt*="#no-deco"]) {
   background-image: none !important;
   text-decoration: none !important;
 }
 
-.prose a.no-deco-link:hover,
 .prose a:has(img[alt*="#no-deco"]):hover {
   background-size: 0 0 !important;
   color: inherit;
 }
 
-.prose a.no-deco-link::after,
 .prose a:has(img[alt*="#no-deco"])::after {
   display: none !important;
 }

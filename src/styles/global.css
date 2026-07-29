@@ -1,4 +1,9 @@
-/* global.css */
+/* global.css — 全ページ共通(MainLayout.astroからimport)。
+   テーマ変数はここの:root / :root.darkに集約する。
+   記事ページ固有のスタイルはpost.cssへ。 */
+
+/* ── fonts ────────────────────────────────────────── */
+
 @font-face {
   font-family: 'Annotation Mono';
   src: url('/fonts/annotation_mono/AnnotationMono-VF.ttf') format('truetype');
@@ -14,6 +19,8 @@
   /* font-weight: 100 900; */
   /* font-style: normal; */
 }
+
+/* ── theme variables ──────────────────────────────── */
 
 /* Default (light) theme: Uncoated Paper
    https://gist.github.com/Uliboooo/93be316ea170ad4a9f66a487a117c517
@@ -38,9 +45,25 @@
   --table-stripe-bg: #f6f2e9;
   --table-hover-bg: #ead2d9;
 
+  /* 両テーマ共通(darkでの上書きなし) */
+  --accent: #da70d6;
+  --border-strong: #545454;
+  --code-bg: #24292e;
+  --code-fg: #f8f8f2;
+
+  --text-muted: #666;
+  --tag-text: #333;
+  --callout-message-border: #eab308;
+  --callout-message-bg: rgba(234, 179, 8, 0.05);
+  --callout-alert-border: #ef4444;
+  --callout-alert-bg: rgba(239, 68, 68, 0.05);
+  /* pros/consマーカー: lightは本文色のまま */
+  --pros-color: currentColor;
+  --cons-color: currentColor;
+  --floating-btn-shadow: rgba(0, 0, 0, 0.15);
+
   --base-fonts-sans: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Roboto", "Noto Sans JP", sans;
   --base-fonts-mono: "Monaspace Radon", "Annotation Mono", "Fira Code", Consolas, 'Liberation Mono', Menlo, monospace;
-  /* --spacemono-font: "monospace Radon"; */
   --header-title-color: #77766d;
 }
 
@@ -64,12 +87,21 @@
   --table-stripe-bg: #252525;
   --table-hover-bg: #3d3d3d;
 
-  --base-fonts-sans: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Roboto", "Noto Sans JP", sans;
-  --base-fonts-mono: "Annotation Mono", "Fira Code", Consolas, 'Liberation Mono', Menlo, monospace;
-  --header-title-color: #B8B8B8;
-  --spacemono-font: "monospace Radon";
+  --text-muted: #b0b0b0;
+  --tag-text: #d1d1d1;
+  --callout-message-border: #facc15;
+  --callout-message-bg: rgba(234, 179, 8, 0.1);
+  --callout-alert-border: #f87171;
+  --callout-alert-bg: rgba(239, 68, 68, 0.1);
+  --pros-color: #4ade80;
+  --cons-color: #f87171;
+  --floating-btn-shadow: rgba(0, 0, 0, 0.4);
 
+  --base-fonts-mono: "Annotation Mono", "Fira Code", Consolas, 'Liberation Mono', Menlo, monospace;
+  --header-title-color: #b8b8b8;
 }
+
+/* ── reset / base layout ──────────────────────────── */
 
 *,
 *::before,
@@ -98,7 +130,7 @@ body {
     font-size: 16px;
     line-height: 1.7;
     margin-bottom: 1.5em;
-    font-family: "Noto Sans JP";
+    font-family: var(--base-fonts-sans);
   }
 }
 
@@ -120,6 +152,8 @@ body {
     /* font-size: 80%; */
   }
 }
+
+/* ── links ────────────────────────────────────────── */
 
 a:link {
   color: var(--a-link);
@@ -174,37 +208,44 @@ a:visited {
   transform: translate(1px, -1px);
 }
 
-#download-link {
-  /* ID selector for specific download links */
+/* アクセント色のグラデーション下線(記事一覧タイトル・404のHomeリンクで使用)。
+   a:link / a:visited に勝つよう要素名付きで指定(同ファイル内で後勝ち) */
+a.link--underline-accent,
+a.link--underline-accent:visited {
+  color: var(--link-color);
+  text-decoration: none;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 0 1px;
+  transition: background-size 0.3s ease-in-out;
+  padding-bottom: 1px;
 }
 
-.link--download::after,
-a[download]::after {
-  content: "";
+a.link--underline-accent:hover {
+  color: var(--accent);
+  background-size: 100% 1.5px;
+}
+
+/* タグ(トップの記事一覧と記事メタで共通) */
+.tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag {
   display: inline-block;
-  width: 0.9em;
-  height: 0.9em;
-  margin-left: 4px;
-
-  background-color: currentColor;
-
-  -webkit-mask-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"%3E%3C/path%3E%3Cpolyline points="7 10 12 15 17 10"%3E%3C/polyline%3E%3Cline x1="12" y1="15" x2="12" y2="3"%3E%3C/line%3E%3C/svg%3E');
-  mask-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"%3E%3C/path%3E%3Cpolyline points="7 10 12 15 17 10"%3E%3C/polyline%3E%3Cline x1="12" y1="15" x2="12" y2="3"%3E%3C/line%3E%3C/svg%3E');
-
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-
-  transition: transform 0.2s ease;
+  color: var(--tag-text);
 }
 
-.link--download:hover::after,
-a[download]:hover::after {
-  transform: translateY(2px);
+.tag::before {
+  content: "#";
+  color: var(--text-muted);
+  margin-right: 0.15rem;
 }
+
+/* ── table ────────────────────────────────────────── */
 
 table {
   width: 100%;
@@ -231,7 +272,8 @@ tr:hover {
   background-color: var(--table-hover-bg);
 }
 
-/* Footnotes (#footnote[...] via remark-typst) */
+/* ── footnotes (#footnote[...] via remark-typst) ──── */
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -269,22 +311,4 @@ section.footnotes p {
   width: 1em;
   height: 1em;
   vertical-align: -0.125em;
-}
-
-.head_contents {
-
-  a.dark,
-  a.dark:visited {
-    text-decoration: none;
-    color: #F7F2F2;
-  }
-
-  ul {
-
-    li a.dark,
-    li a.dark:visited {
-      text-decoration: none;
-      color: #F7F2F2;
-    }
-  }
 }
