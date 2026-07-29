@@ -20,7 +20,13 @@ const navItems = [
         {
           navItems.map((item) => (
             <li class="head-item">
-              <a href={item.href} class="link--underline link-external">
+              <a
+                href={item.href}
+                class:list={[
+                  "link--underline",
+                  { "link--external": item.href.startsWith("http") },
+                ]}
+              >
                 {item.label}
               </a>
             </li>
@@ -44,7 +50,7 @@ const navItems = [
 
 <style>
   header {
-    border-bottom: 1px solid #545454;
+    border-bottom: 1px solid var(--border-strong);
     padding-top: 5px;
     padding-bottom: 5px;
     font-size: 1.1rem;
@@ -68,7 +74,7 @@ const navItems = [
       #title_p {
         font-size: 1.4rem;
         margin: 0;
-        font-family: var(--base-fonts);
+        font-family: var(--base-fonts-sans);
         font-weight: bold;
       }
 
@@ -96,20 +102,21 @@ const navItems = [
       gap: 0.6rem;
       align-items: center;
       padding-left: 10px;
-
-      #sns_links {
-        font-size: 1rem;
-      }
-
-      #toggle-theme {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      #toggle-theme svg {
-        display: block;
-      }
     }
+  }
+
+  #sns_links {
+    font-size: 1rem;
+  }
+
+  #theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #theme-toggle svg {
+    display: block;
   }
 
   .link--underline,
@@ -131,7 +138,6 @@ const navItems = [
   }
 
   @media (max-width: 640px) {
-    font-size: 90%;
     header {
       font-size: 90%;
     }

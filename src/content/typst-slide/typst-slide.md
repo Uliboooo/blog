@@ -50,12 +50,12 @@ level 2,3はそれぞれ小見出しになる。
 -
 ```
 
-:::row-image
+:::image-row
 ![1#medium](./pages/pros.png)
 ![2#medium](./pages/pros_cont.png)
 :::
 
-:::row-image
+:::image-row
 ![3#medium](./pages/cons.png)
 ![4#medium](./pages/cons_cont.png)
 :::
@@ -131,7 +131,7 @@ PDFにexportする関係上、アニメーションというよりはそのエ�
 
 は以下の2枚のPDFページとなって生成される。これを1枚ずつ全画面表示できるPDFビューア(`pdfpc`とか)。
 
-:::row-image
+:::image-row
 ![1#medium](./pdf1.png)
 ![2#medium](./pdf2.png)
 :::
