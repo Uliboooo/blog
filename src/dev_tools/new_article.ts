@@ -71,6 +71,7 @@ const generate_slug_from_gemini = async (title: string) => {
   const prompt = [
     "Generate a concise URL slug in lowercase ASCII for the blog title below.",
     "Use only letters a-z, numbers 0-9, and hyphens. Return ONLY the slug.",
+    "If the title isn’t in English, translate it naturally and generate a slug.",
     `Title: ${title}`,
   ].join("\n");
 
