@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 200 200"
+     width="200"
+     height="200">
+
+  <!-- Outer -->
+  <circle cx="100" cy="100" r="80" fill="#c7d2fe"/>
+
+  <!-- 2nd -->
+  <circle cx="100" cy="100" r="60" fill="#7dd3fc"/>
+
+  <!-- 3rd -->
+  <circle cx="100" cy="100" r="40" fill="#4ade80"/>
+
+  <!-- Center -->
+  <circle cx="100" cy="100" r="20" fill="#eab308"/>
+
+  <!-- Outline -->
+  <g fill="none" stroke="#374151" stroke-width="2">
+    <circle cx="100" cy="100" r="20"/>
+    <circle cx="100" cy="100" r="40"/>
+    <circle cx="100" cy="100" r="60"/>
+    <circle cx="100" cy="100" r="80"/>
+  </g>
+
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 200 200"
+     width="200"
+     height="200">
+
+  <!-- Triangles -->
+  <polygon points="100,100 100.0,20.0 156.6,43.4" fill="#fca5a5" stroke="#333"/>
+  <polygon points="100,100 156.6,43.4 180.0,100.0" fill="#fdba74" stroke="#333"/>
+  <polygon points="100,100 180.0,100.0 156.6,156.6" fill="#fde68a" stroke="#333"/>
+  <polygon points="100,100 156.6,156.6 100.0,180.0" fill="#bef264" stroke="#333"/>
+  <polygon points="100,100 100.0,180.0 43.4,156.6" fill="#86efac" stroke="#333"/>
+  <polygon points="100,100 43.4,156.6 20.0,100.0" fill="#67e8f9" stroke="#333"/>
+  <polygon points="100,100 20.0,100.0 43.4,43.4" fill="#93c5fd" stroke="#333"/>
+  <polygon points="100,100 43.4,43.4 100.0,20.0" fill="#d8b4fe" stroke="#333"/>
+
+  <!-- Outline -->
+  <polygon
+    points="100.0,20.0 156.6,43.4 180.0,100.0 156.6,156.6 100.0,180.0 43.4,156.6 20.0,100.0 43.4,43.4"
+    fill="none"
+    stroke="#000"
+    stroke-width="2"/>
+</svg>
