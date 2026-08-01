@@ -93,7 +93,7 @@ const sorted = [...astroPosts, ...externalPosts]
 
 <script is:inline>
   (() => {
-    // ── vim-like list navigation (j/k focus, Enter opens) ──
+    // ── vim-like list navigation (j/k focus, Enter opens, / searches) ──
     const items = Array.from(document.querySelectorAll(".article-title"));
     if (items.length === 0) return;
 
@@ -166,6 +166,10 @@ const sorted = [...astroPosts, ...externalPosts]
           break;
         case "k":
           focusIndex(index - 1);
+          break;
+        case "/":
+          // 検索ページへ。あちらは"/"で検索窓にフォーカスが入る。
+          window.location.href = "/search";
           break;
         default:
           return;

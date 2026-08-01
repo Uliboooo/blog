@@ -12,9 +12,12 @@ const toDateString = (date: Date) => date.toISOString().slice(0, 10);
 
 export async function GET({ site }: { site: URL }) {
   const posts = await getCollection("blog");
-  const urls = [
+  const urls: { loc: string; lastmod?: string }[] = [
     {
       loc: new URL("/", site).href,
+    },
+    {
+      loc: new URL("/search/", site).href,
     },
     ...posts
       .filter((post) => post.data.published !== false)

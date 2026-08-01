@@ -38,13 +38,16 @@ const url = new URL(Astro.url.pathname, Astro.site).href;
   ogImage={ogImage}
   ogType="article"
 >
-  <article class="prose">
+  <article class="prose" data-pagefind-body>
     <h1>{title}</h1>
     {trimmedDescription && <p class="post-description">{trimmedDescription}</p>}
-    <div class="post-meta">
+    <div class="post-meta" data-pagefind-ignore="index">
       {
         date && (
-          <time datetime={date.toISOString()}>
+          <time
+            datetime={date.toISOString()}
+            data-pagefind-meta={`date:${date.toLocaleDateString("ja-JP")}`}
+          >
             {date.toLocaleDateString("ja-JP")}
           </time>
         )
@@ -61,12 +64,14 @@ const url = new URL(Astro.url.pathname, Astro.site).href;
         tags && tags.length > 0 && (
           <div class="tags">
             {tags.map((tag) => (
-              <span class="tag">{tag}</span>
+              <span class="tag" data-pagefind-filter="tag">
+                {tag}
+              </span>
             ))}
           </div>
         )
       }
-      <span class="raw-links">
+      <span class="raw-links" data-pagefind-ignore>
         <a
           href={`/md/${slug}`}
           class="link--underline link--external"
@@ -83,7 +88,7 @@ const url = new URL(Astro.url.pathname, Astro.site).href;
     </div>
     {
       tocHeadings.length > 0 && (
-        <details class="toc">
+        <details class="toc" data-pagefind-ignore>
           <summary>目次</summary>
           <nav aria-label="Table of contents">
             <ul>
