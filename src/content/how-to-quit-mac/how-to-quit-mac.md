@@ -3,7 +3,7 @@ title: "Macを辞めるには"
 date: 2026-06-28
 writer: "Uliboooo"
 description: "MacBookからThinkPad(NixOS)へ移行するには"
-tags: ["mac", "nix", "linux", "column"]
+tags: ["column", "linux", "mac", "nix"]
 published: false
 ---
 
@@ -39,9 +39,7 @@ MacBook Proということもあり、スピーカーやディスプレイなど
 
 ### 動画,音声の編集
 
-
 ### ラジオ収録
-
 
 ### フォント
 

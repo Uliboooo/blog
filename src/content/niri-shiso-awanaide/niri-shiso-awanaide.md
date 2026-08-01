@@ -3,7 +3,7 @@ title: "niriはいいけど根本的に思想が合わない"
 date: 2026-07-26
 writer: "Uliboooo"
 description: "惜しいけどきっとここは折り合わない"
-tags: ["niri", "hyprland"]
+tags: ["hyprland", "niri"]
 published: true
 ---
 

@@ -3,7 +3,7 @@ title: "nvimのrustデバッガーへプロジェクトごとに引数を設定�
 date: 2026-06-27
 writer: "Uliboooo"
 description: ""
-tags: ["nvim", "rust", "debug"]
+tags: ["debug", "nvim", "rust"]
 published: true
 ---
 
@@ -40,7 +40,7 @@ lldb plugin(nvim-dap)の設定をいじる。argsにfunctionで毎回`.nvim/debu
       }
     end,
   }
-  ```
+```
 
 プロジェクトディレクトリに`.nvim/debug.lua`を置く。
 

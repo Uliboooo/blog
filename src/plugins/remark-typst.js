@@ -40,7 +40,11 @@ export default function remarkTypst() {
         const open = child.value.indexOf(FOOTNOTE_OPEN);
         if (open === -1) continue;
 
-        const match = findClosing(node.children, i, open + FOOTNOTE_OPEN.length);
+        const match = findClosing(
+          node.children,
+          i,
+          open + FOOTNOTE_OPEN.length,
+        );
         if (!match) continue;
 
         const identifier = `fn-${++counter}`;
@@ -52,7 +56,10 @@ export default function remarkTypst() {
         // of the closing text node.
         const content = [];
         if (match.endIndex === i) {
-          const inner = child.value.slice(open + FOOTNOTE_OPEN.length, match.endOffset);
+          const inner = child.value.slice(
+            open + FOOTNOTE_OPEN.length,
+            match.endOffset,
+          );
           if (inner) content.push({ type: "text", value: inner });
         } else {
           if (contentHead) content.push({ type: "text", value: contentHead });
@@ -69,10 +76,16 @@ export default function remarkTypst() {
           children: [{ type: "paragraph", children: content }],
         });
 
-        const closingTail = node.children[match.endIndex].value.slice(match.endOffset + 1);
+        const closingTail = node.children[match.endIndex].value.slice(
+          match.endOffset + 1,
+        );
         const replacement = [];
         if (before) replacement.push({ type: "text", value: before });
-        replacement.push({ type: "footnoteReference", identifier, label: identifier });
+        replacement.push({
+          type: "footnoteReference",
+          identifier,
+          label: identifier,
+        });
         if (closingTail) replacement.push({ type: "text", value: closingTail });
 
         node.children.splice(i, match.endIndex - i + 1, ...replacement);
@@ -105,7 +118,12 @@ function typstHeadings(tree) {
 
     // Multi-line paragraphs are left alone: the marker line cannot be split
     // off without cutting through inline nodes.
-    if (node.children.some((child) => child.type === "text" && child.value.includes("\n"))) return;
+    if (
+      node.children.some(
+        (child) => child.type === "text" && child.value.includes("\n"),
+      )
+    )
+      return;
 
     const head = first.value.slice(match[0].length);
     if (!head && node.children.length === 1) return;
@@ -132,7 +150,9 @@ function typstQuotes(tree, src) {
       if (child.type !== "paragraph" || !child.position) continue;
 
       const start = child.position.start.offset;
-      const match = QUOTE_OPEN.exec(src.slice(start, child.position.end.offset));
+      const match = QUOTE_OPEN.exec(
+        src.slice(start, child.position.end.offset),
+      );
       if (!match) continue;
 
       // Content spans from just past `[` to the matching `]`.
@@ -157,7 +177,11 @@ function typstQuotes(tree, src) {
         .map((block) => sliceBlock(block, from, to))
         .filter(Boolean);
 
-      node.children.splice(i, last - i + 1, buildQuote(parseArgs(match[1]), body));
+      node.children.splice(
+        i,
+        last - i + 1,
+        buildQuote(parseArgs(match[1]), body),
+      );
     }
   });
 }
@@ -193,7 +217,9 @@ function buildQuote({ attribution, url }, body) {
       {
         type: "quoteCaption",
         data: { hName: "figcaption" },
-        children: [{ type: "quoteCite", data: { hName: "cite" }, children: [source] }],
+        children: [
+          { type: "quoteCite", data: { hName: "cite" }, children: [source] },
+        ],
       },
     ],
   };
@@ -229,10 +255,14 @@ function sliceBlock(node, from, to) {
   }
 
   if (kept.length === 0) return null;
-  if (kept.every((child) => child.type === "text" && !child.value.trim())) return null;
+  if (kept.every((child) => child.type === "text" && !child.value.trim()))
+    return null;
 
   let contentStart = Math.max(kept[0].position?.start?.offset ?? from, from);
-  let contentEnd = Math.min(kept[kept.length - 1].position?.end?.offset ?? to, to);
+  let contentEnd = Math.min(
+    kept[kept.length - 1].position?.end?.offset ?? to,
+    to,
+  );
 
   // The opener and the closing bracket sit on their own lines in the common
   // case, which leaves the body with a leading/trailing newline.

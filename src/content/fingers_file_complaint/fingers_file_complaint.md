@@ -69,7 +69,7 @@ _"Keychron B1 Pro"(6,930円)_ とかがありますが、それくらいでメ�
 > My muscle memory has veto power over my wallet.\
 > — 「マッスルメモリーが財布に拒否権を持ってる」
 
->I want it, my brain wants it, but my pinky says no.\
+> I want it, my brain wants it, but my pinky says no.\
 > — 小指だけ反対してる
 
 などの表現があるそう。これらはおもに配列とかの話でしょうね。英語圏の無生物等々を主語にする文化は割と好き。

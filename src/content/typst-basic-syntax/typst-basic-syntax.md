@@ -3,7 +3,7 @@ title: "typst basic syntaxメモ"
 date: 2026-06-29
 writer: "Uliboooo"
 description: ""
-tags: ["typst", "memo"]
+tags: ["memo", "typst"]
 published: true
 ---
 
@@ -22,7 +22,6 @@ published: true
 ```typst
 _emphasis_
 ```
-
 
 ## 日本語で単語中の改行を禁止
 
@@ -48,9 +47,7 @@ this is an apple.#footnotes[but it is may poison apple.]
 
 番号付けを自分でやらなくよくて便利。`touying`[^1]なども対応しているので便利(👇)。
 
-
 ![footnote_eg](./footnotes_eg.png)
-
 
 ## heading
 
@@ -80,4 +77,5 @@ to start...
 ![num#middle](./heading_num.png)
 
 [^1]: typstでslideぽいPDFを生成するやつ[Getting Stated](https://touying-typ.github.io/docs/start?utm_source=chatgpt.com)
+
 [^2]: [typst\.app](https://typst.app/docs/reference/model/heading/)

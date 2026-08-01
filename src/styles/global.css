@@ -5,8 +5,8 @@
 /* ── fonts ────────────────────────────────────────── */
 
 @font-face {
-  font-family: 'Annotation Mono';
-  src: url('/fonts/annotation_mono/AnnotationMono-VF.ttf') format('truetype');
+  font-family: "Annotation Mono";
+  src: url("/fonts/annotation_mono/AnnotationMono-VF.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -14,7 +14,8 @@
 
 @font-face {
   font-family: "Monaspace Radon";
-  src: url("/fonts/monospace/Monaspace_Radon/MonaspaceRadonNF-SemiWideRegular.woff2") format("woff2");
+  src: url("/fonts/monospace/Monaspace_Radon/MonaspaceRadonNF-SemiWideRegular.woff2")
+    format("woff2");
   font-display: swap;
   /* font-weight: 100 900; */
   /* font-style: normal; */
@@ -62,15 +63,19 @@
   --cons-color: currentColor;
   --floating-btn-shadow: rgba(0, 0, 0, 0.15);
 
-  --base-fonts-sans: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Roboto", "Noto Sans JP", sans;
-  --base-fonts-mono: "Monaspace Radon", "Annotation Mono", "Fira Code", Consolas, 'Liberation Mono', Menlo, monospace;
+  --base-fonts-sans:
+    "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans",
+    "Roboto", "Noto Sans JP", sans;
+  --base-fonts-mono:
+    "Monaspace Radon", "Annotation Mono", "Fira Code", Consolas,
+    "Liberation Mono", Menlo, monospace;
   --header-title-color: #77766d;
 }
 
 :root.dark {
   --background: #1a1a1a;
-  --text: #F7F2F2;
-  --heading-color: #F7F2F2;
+  --text: #f7f2f2;
+  --heading-color: #f7f2f2;
   --a-link: #8ab4f8;
   --a-link-in-post: #9cc0fa;
   --a-link-in-post-hovered: #ffb3ff;
@@ -97,7 +102,9 @@
   --cons-color: #f87171;
   --floating-btn-shadow: rgba(0, 0, 0, 0.4);
 
-  --base-fonts-mono: "Annotation Mono", "Fira Code", Consolas, 'Liberation Mono', Menlo, monospace;
+  --base-fonts-mono:
+    "Annotation Mono", "Fira Code", Consolas, "Liberation Mono", Menlo,
+    monospace;
   --header-title-color: #b8b8b8;
 }
 
@@ -178,13 +185,19 @@ a:visited {
   background-size: 0% 1.5px;
   background-repeat: no-repeat;
   background-position: left bottom;
-  transition: background-size 0.3s ease, color 0.2s ease, opacity 0.2s ease;
+  transition:
+    background-size 0.3s ease,
+    color 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .link--underline:hover {
   background-size: 100% 1.5px;
   color: var(--a-link-in-post-hovered);
-  background-image: linear-gradient(var(--a-under-in-post-hovered), var(--a-under-in-post-hovered));
+  background-image: linear-gradient(
+    var(--a-under-in-post-hovered),
+    var(--a-under-in-post-hovered)
+  );
   opacity: 0.7;
 }
 

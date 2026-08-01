@@ -1,21 +1,19 @@
 // @ts-check
-import { defineConfig } from 'astro/config'
-import { unified } from '@astrojs/markdown-remark'
-import pkg from './package.json' with { type: 'json' }
+import { defineConfig } from "astro/config";
+import { unified } from "@astrojs/markdown-remark";
+import pkg from "./package.json" with { type: "json" };
 // import wasm from 'vite-plugin-wasm'
 // import topLevelAwait from 'vite-plugin-top-level-await'
-import { execSync } from 'node:child_process'
-import { remarkPlugins, rehypePlugins } from './src/markdown-pipeline.js'
+import { execSync } from "node:child_process";
+import { remarkPlugins, rehypePlugins } from "./src/markdown-pipeline.js";
 
-const commit = execSync('git rev-parse --short HEAD')
-  .toString()
-  .trim()
+const commit = execSync("git rev-parse --short HEAD").toString().trim();
 
 export default defineConfig({
-  site: 'https://blog.uliboooo.dev',
+  site: "https://blog.uliboooo.dev",
 
   redirects: {
-    '/blog/[slug]': '/[slug]',
+    "/blog/[slug]": "/[slug]",
   },
 
   server: {
@@ -25,7 +23,7 @@ export default defineConfig({
 
   image: {
     service: {
-      entrypoint: 'astro/assets/services/sharp',
+      entrypoint: "astro/assets/services/sharp",
     },
   },
 
@@ -36,9 +34,9 @@ export default defineConfig({
   vite: {
     optimizeDeps: {
       exclude: [
-        '@myriaddreamin/typst.ts',
-        '@myriaddreamin/typst-ts-renderer',
-        '@myriaddreamin/typst-ts-web-compiler',
+        "@myriaddreamin/typst.ts",
+        "@myriaddreamin/typst-ts-renderer",
+        "@myriaddreamin/typst-ts-web-compiler",
       ],
     },
     define: {
@@ -47,4 +45,4 @@ export default defineConfig({
       __COMMIT_HASH__: JSON.stringify(commit),
     },
   },
-})
+});

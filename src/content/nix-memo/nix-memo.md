@@ -3,7 +3,7 @@ title: "nixメモ"
 date: 2026-06-30
 writer: "Uliboooo"
 description: "nixに関するメモ書き"
-tags: ["nix", "memo"]
+tags: ["memo", "nix"]
 published: true
 ---
 
@@ -60,6 +60,7 @@ home-managerのコマンド版というか、imperative(命令的)な操作で�
     ├──  desktop.nix
     └──  thinkpad.nix
 ```
+
 :::
 
 ```bash
@@ -100,5 +101,3 @@ in
   # ~~~
 }
 ```
-
-

@@ -40,20 +40,20 @@ svgは[resvg](https://github.com/linebender/resvg)など。詳しくは[Installa
 
 `␣`はスペースのこと。
 
-| key | desc |
-| :---: | :---: |
-| `g␣` | パス入力ジャンプ |
-| `gh` | homeへジャンプ |
-| `␣` | 選択 |
-| `y` | コピー |
-| `p` | ペースト |
-| `x` | カット |
-| `r` | 名前変更 |
-| `z` | fuzzy検索 |
-| `t` | タブ作成 |
-| `[` | 左のタブへ |
-| `]` | 右のタブへ |
-| `tab` | 情報 |
+|  key  |       desc       |
+| :---: | :--------------: |
+| `g␣`  | パス入力ジャンプ |
+| `gh`  |  homeへジャンプ  |
+|  `␣`  |       選択       |
+|  `y`  |      コピー      |
+|  `p`  |     ペースト     |
+|  `x`  |      カット      |
+|  `r`  |     名前変更     |
+|  `z`  |    fuzzy検索     |
+|  `t`  |     タブ作成     |
+|  `[`  |    左のタブへ    |
+|  `]`  |    右のタブへ    |
+| `tab` |       情報       |
 
 tabキーでファイル/ディレクトリの情報も見れる。
 
@@ -160,6 +160,7 @@ TUIというかCLIというかって感じですが、対象をファジー検�
 `fzf`単体で使うというよりは選択したい対象のリストを`fzf`に与えて、`fzf`内で選択して返ってきたもの(=選択したもの)を使う感じ。neovimのファイル検索系のプラグインでも多用されている。
 
 例えば
+
 ```zsh: ~/.zshrc
 function g() {
   cd "$(ghq root)/$(ghq list | fzf --preview 'ls $(ghq root)/{}')"
@@ -214,6 +215,7 @@ hl.window_rule({
 ---
 
 古いhyprland(luaじゃないバージョン)なら以下
+
 ```conf: ~/.config/hypr/hyprland.conf
 windowrule = match:class ^(dev-float)$, float true
 windowrule = match:class ^(dev-float)$, center true
@@ -238,4 +240,3 @@ windowrule = match:class ^(dev-float)$, size 1200 900
 ---
 
 終わり。最後までありがとうございました。
-

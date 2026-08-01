@@ -3,7 +3,7 @@ title: "HyprlanderはNiriの夢を見るのか"
 date: 2026-07-09
 writer: "Uliboooo"
 description: "Hyprlandに慣れた人間がNiriに触れた感想"
-tags: ["wm", "hyprland", "niri", "wayland"]
+tags: ["hyprland", "niri", "wayland", "wm"]
 published: true
 ---
 
@@ -12,7 +12,7 @@ published: true
 
 - ちょいちょいCapital letterをサボってる
 - 私の理解ではniriのwsは横にスクロールするリボン全体
-:::
+  :::
 
 私のhyprlandとniriの設定👇。基本的に下記のハッシュ時点の設定の話。
 
@@ -99,4 +99,3 @@ Hyprlandにもlayoutの一つとして`Scrolling Layout`というものがあり
 https://x.com/mekann2904/status/2075160041435656578
 
 https://wiki.hypr.land/Configuring/Layouts/Scrolling-Layout/
-

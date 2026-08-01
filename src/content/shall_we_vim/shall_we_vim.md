@@ -3,7 +3,7 @@ title: "Shall We Vim?"
 date: 2026-05-15
 writer: "Uliboooo"
 description: "vim URLs"
-tags: ["vim", "editor"]
+tags: ["editor", "vim"]
 published: true
 ---
 

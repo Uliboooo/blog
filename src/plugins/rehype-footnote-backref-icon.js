@@ -61,7 +61,7 @@ const rehypeFootnoteBackrefIcon = () => {
         node.children = node.children.map((child) =>
           child.type === "text" && child.value.trim() === BACKREF_GLYPH
             ? buildIcon()
-            : child
+            : child,
         );
         return;
       }

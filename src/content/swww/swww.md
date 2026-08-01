@@ -3,7 +3,7 @@ title: "swwwを使った背景制御ツールをbashで作る"
 date: 2026-03-22
 writer: "Uliboooo"
 description: "自作ツール"
-tags: ["wallpaper", "linux"]
+tags: ["linux", "wallpaper"]
 published: true
 ---
 
@@ -29,7 +29,7 @@ Daemon_Manager: systemd
 
 - 壁紙の操作は`cycle_wallpapaer.sh`内で`swww`コマンドを用いる
 - スクリプトはモードとして順`seq`,逆`rev`,ランダム`rnd`,スライドのポーズ`pse`の4つ
-    - `pse`はsystemdのstart, stopをトグルする
+  - `pse`はsystemdのstart, stopをトグルする
 - 15分(:00,15,30,45分)ごとにランダムで切り替わるようにuser systemdでスクリプトを叩く
 - 現在の壁紙のパスは`$HOME/dotfiles/.config/hypr/env/CURRENT_PAPER`にテキストとして保持
 

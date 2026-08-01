@@ -129,6 +129,14 @@ bun run tags -- --generate-rules --write-rules
 
 `aliases`は左側を右側の正規表記へ置換する。`ignoreSimilar`は類似タグの警告を抑制する。`neovim`と`nvim`のような意味上の同義語は自動生成では判断できないため、ここに手動で追加する。
 
+### push前のまとめ準備
+
+```sh
+bun run prepare:git
+```
+
+タグの正規化・重複除去・辞書順ソート、`src/content`配下の画像圧縮、ソース／設定ファイルのPrettier整形、production buildを順に実行する。Gitコマンド（add・commit・pushを含む）は一切実行しないため、このコマンドの後に内容を確認してからGit操作へ進める。画像は元より小さくなる場合だけ上書きし、バックアップファイルは作成しない。まず変更内容だけ確認する場合は`bun run prepare:git -- --check`、buildを省く場合は`--skip-build`を付ける。旧名の`bun run prepare:push`も互換用エイリアスとして利用できる。
+
 ## 相互リンク
 
 募集中です。以下に例。200x40px

@@ -26,9 +26,9 @@ like a enum
 
 ```ts
 function f(x: A | B) {
-    if (typeof x === A) {
-        // x is A
-    }
+  if (typeof x === A) {
+    // x is A
+  }
 }
 ```
 
@@ -38,7 +38,7 @@ function f(x: A | B) {
 
 ```ts
 type T = {
-    a?: string;
+  a?: string;
 };
 ```
 

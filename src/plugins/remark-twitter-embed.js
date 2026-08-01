@@ -14,7 +14,9 @@ const extractTweetUrl = (node) => {
 
   const child = node.children[0];
   const url =
-    child.type === "link" && child.children?.length === 1 && child.children[0]?.type === "text"
+    child.type === "link" &&
+    child.children?.length === 1 &&
+    child.children[0]?.type === "text"
       ? child.url
       : child.type === "text"
         ? child.value.trim()

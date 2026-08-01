@@ -3,7 +3,7 @@ title: "Neovim toggle-term内のスペースが重い"
 date: 2026-07-01
 writer: "Uliboooo"
 description: "SPCのtimeoutが原因でした"
-tags: ["nvim", "term", "fix"]
+tags: ["fix", "nvim", "term"]
 published: true
 ---
 

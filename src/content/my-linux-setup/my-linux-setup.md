@@ -3,7 +3,7 @@ title: "私のLinux環境を晒す(自慢)"
 date: 2026-07-01
 writer: "Uliboooo"
 description: "hyprlandとかぁ"
-tags: ["nvim", "env", "dev", "column"]
+tags: ["column", "dev", "env", "nvim"]
 published: true
 ---
 
@@ -56,12 +56,12 @@ vscode -> nvim -> helix -> nvimといった感じで、一瞬helixを使って�
 このhelix -> nvimの過程でいくつかnvimに逆輸入した機能があり、
 
 - `<Leader>`をSpace barに
-    - :+ Ctrlより親指で押しやすい位置にある
-    - :- 通常の入力とprefixとの判定で詰まることがある[^2]
+  - :+ Ctrlより親指で押しやすい位置にある
+  - :- 通常の入力とprefixとの判定で詰まることがある[^2]
 - ファイラーをfzfなpickerに
-    - 基本的には[snacks.nvim](https://github.com/folke/snacks.nvim)を使ってる[^1]
-    - :+ 1発でファイルを開ける
-    - :- ツリー構造は見にくい(`/foo/index.ts`とかが苦手になる[^3])
+  - 基本的には[snacks.nvim](https://github.com/folke/snacks.nvim)を使ってる[^1]
+  - :+ 1発でファイルを開ける
+  - :- ツリー構造は見にくい(`/foo/index.ts`とかが苦手になる[^3])
 
 左がfzfなfile picker, 右がlspの一覧。どちらの似たUIで操作できるのでスイッチコストが低め。lsp経由のcode actionsなども似たUIなので楽。
 
@@ -98,7 +98,6 @@ vscode -> nvim -> helix -> nvimといった感じで、一瞬helixを使って�
 hyprlandにはsub mapというものがあり、特定のモードによってキーバインドを変更出来ます。
 
 そこで私は`SUPER + R`でresizeモードに入り、`hjkl`でウィンドウをリサイズできるようにしています。
-
 
 <blockquote class="twitter-tweet">
     <p lang="ja" dir="ltr"></p>
@@ -144,8 +143,11 @@ waylandの壁紙を制御するツールは多いですが私はなんとなく�
 特にこだわりはない。USレイアウトのラップトップを国内で調達できるのがMacbookかThinkPadか、くらいか感じなので... (DELLもあったかな?) 強いて言うならもっと輝度が高くまででるマシンにすればよかったとは。窓が近いとつらい。300nitsがMAXなので。
 
 [^1]: 他にもいろんな便利機能(statuscolumn, indent guides, etc...)があって便利。細かいpluginsを吸収してくれる
+
 [^2]: <a href="../neovim-toggleterm-spc-lag" class="link--underline link--external" target="_blank" rel="noopener noreferrer">Neovim toggle-term内のスペースが重い</a>
+
 [^3]: `/foo/index.ts`じゃなくて`/foo/foo.ts`とかにしたくなるっていう。pickerでもディレクトリ命も検索対象だけどファイル名で絞れたほうが楽なので。
+
 [^4]: 左から温度: `btop`, 音量: `wiremix`, BT: `bluetui`, Net: `nmtui`が起動する。
 
 ## 編集履歴

@@ -53,7 +53,10 @@ export async function getPublishedHtmlPaths() {
 // article. Build the processor once and reuse it across slugs.
 let processorPromise: ReturnType<typeof createMarkdownProcessor> | null = null;
 function getProcessor() {
-  processorPromise ??= createMarkdownProcessor({ remarkPlugins, rehypePlugins });
+  processorPromise ??= createMarkdownProcessor({
+    remarkPlugins,
+    rehypePlugins,
+  });
   return processorPromise;
 }
 
@@ -67,7 +70,8 @@ function escapeHtml(value: string) {
 }
 
 function toDate(value: unknown): Date | null {
-  if (value instanceof Date) return Number.isNaN(value.getTime()) ? null : value;
+  if (value instanceof Date)
+    return Number.isNaN(value.getTime()) ? null : value;
   if (typeof value === "string" || typeof value === "number") {
     const date = new Date(value);
     return Number.isNaN(date.getTime()) ? null : date;

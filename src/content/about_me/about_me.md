@@ -49,4 +49,3 @@ letter-spacing: 0.01em;
 
 [![uliboooo-banner#download#small](./banners/uliboooo_b.webp)](https://raw.githubusercontent.com/Uliboooo/blog/main/src/content/about_me/banners/uliboooo.webp)
 [![keita_kawase_banner#no-deco](./banners/keita_kawase.png)](https://keitagame.github.io/)
-

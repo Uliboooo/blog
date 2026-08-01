@@ -43,7 +43,6 @@ Hyprlandでworkspaceを円形に一覧するツール。Rust, GTK4, Layer shell.
 
 ## 初心者向けLinux doc
 
-
 大学のLinuxサークル(申請中)のメンバー([@liar2357](https://github.com/liar235)と[@Uliboooo(me)](https://github.com/Uliboooo))と共同でリリースを行ったサイトです。Linuxを始めるにあたっての基礎的な学習を行う事を目的としたサイトです。
 
 私は主に文書を、[@liar2357](https://github.com/liar2357)はサイト(React等)のシステムを構築しました。
@@ -145,4 +144,3 @@ x.comへアクセスした際に[hacker news](https://news.ycombinator.com/)に�
 [Github Repository](https://github.com/Uliboooo/blog)
 
 Astroとcloudflare pagesで静的配信しています。外部リンクへの自動属性付与などいろいろ楽に書けるようにしてます。
-

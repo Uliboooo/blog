@@ -19,6 +19,6 @@ _italic_
 ~~nonte~~
 
 | foo | bar |
-| :--- | :--- |
+| :-- | :-- |
 | foo | bar |
 | foo | bar |

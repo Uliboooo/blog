@@ -3,7 +3,7 @@ title: "Helixは中途半端では"
 date: 2026-07-31
 writer: "Uliboooo"
 description: "file pickerすらも廃せば?"
-tags: ["helix", "column"]
+tags: ["column", "helix"]
 published: false
 ---
 
@@ -35,8 +35,4 @@ Neovimなどで`lspconfig`を書くといった手間がない感じでそれは
 = いろいろ機能は無い
 
 - そもそもUnixを名乗るのであれば、ファイルピッカーいらんだろとは
-    - ほんとにシンプルなエディタにするならyaziからスポット的に起動するとか
-
-
-
-
+  - ほんとにシンプルなエディタにするならyaziからスポット的に起動するとか

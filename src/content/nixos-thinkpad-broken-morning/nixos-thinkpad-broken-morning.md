@@ -3,7 +3,7 @@ title: "朝起きたらNixOSなThinkPadが壊れていたので、OSを入れ替
 date: 2026-06-06
 writer: "Uliboooo"
 description: "ぶっ壊れたNixOS ThinkPadを復旧させたかった話"
-tags: ["nix", "linux", "repair"]
+tags: ["linux", "nix", "repair"]
 published: true
 ---
 
@@ -21,10 +21,11 @@ published: true
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 :::message
+
 - NixOSが原因かは不明
 - なんならHyprlandとgdmの相性の悪さかも
 - いろいろ助言くれた方たち、ありがとうございました
-:::
+  :::
 
 ---
 
@@ -35,13 +36,13 @@ published: true
 ## 現状(Fri Jun 5 14:00)
 
 - 朝起きたらNixOSがインストールされたThinkPad(以下nixpad)が死んでいた
-    - 具体的には起動後にnixの世代選択画面が表示され、その後bootは進むが途中(ないしboot後に)GUIのログイン画面が起動しない
-    - と思ったらTTYへの切り替えもできない
-    - => おそらくBootが完了してない
+  - 具体的には起動後にnixの世代選択画面が表示され、その後bootは進むが途中(ないしboot後に)GUIのログイン画面が起動しない
+  - と思ったらTTYへの切り替えもできない
+  - => おそらくBootが完了してない
 - 当日は試験だっため予備のmacで無事
 - 帰ってきた <- 今ここ
 - AIと問答したところ、バッテリー切れのシャットダウンによるファイルシステム破損の可能性
-    - 詳細は後述
+  - 詳細は後述
 
 ## バッテリー切れの可能性
 
@@ -171,4 +172,3 @@ gdm: GdmDisplay: Session never registered, failing
 => 治らず
 
 **終わり**
-

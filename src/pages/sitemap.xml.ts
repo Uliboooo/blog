@@ -33,16 +33,15 @@ export async function GET({ site }: { site: URL }) {
   const body = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-    ...urls.map(
-      (url) =>
-        [
-          "  <url>",
-          `    <loc>${escapeXml(url.loc)}</loc>`,
-          url.lastmod ? `    <lastmod>${url.lastmod}</lastmod>` : undefined,
-          "  </url>",
-        ]
-          .filter(Boolean)
-          .join("\n"),
+    ...urls.map((url) =>
+      [
+        "  <url>",
+        `    <loc>${escapeXml(url.loc)}</loc>`,
+        url.lastmod ? `    <lastmod>${url.lastmod}</lastmod>` : undefined,
+        "  </url>",
+      ]
+        .filter(Boolean)
+        .join("\n"),
     ),
     "</urlset>",
     "",

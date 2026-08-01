@@ -3,7 +3,7 @@ title: "ハックを求めないでほしい"
 date: 2026-06-21
 writer: "Uliboooo"
 description: "カーソル移動のハッカーになりたいわけじゃないのよ. あるいはHelixの悪口"
-tags: ["editor", "vim", "helix"]
+tags: ["editor", "helix", "vim"]
 published: false
 ---
 
@@ -50,5 +50,6 @@ Neovimのdotfiles盆栽に飽きていた私には衝撃とまでは言わない
 
 ## VS CodeやZedは?
 
-[^1]: [Plugin system #3806](https://github.com/helix-editor/helix/discussions/3806)
-にもあるようにまあ~~クソ~~長い議論は合ったようで、ただ個人的にもHelixとpluginっていうのはあんまり相性がいいとも思わない。というかhackerたちはpluginがあれば拡張性への欲望を抑えられないので。
+[^1]:
+    [Plugin system #3806](https://github.com/helix-editor/helix/discussions/3806)
+    にもあるようにまあ~~クソ~~長い議論は合ったようで、ただ個人的にもHelixとpluginっていうのはあんまり相性がいいとも思わない。というかhackerたちはpluginがあれば拡張性への欲望を抑えられないので。

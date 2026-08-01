@@ -3,7 +3,7 @@ title: "タイリングの話をしないHyprlandの紹介"
 date: 2026-03-26
 writer: "Uliboooo"
 description: "Hyprlandの紹介"
-tags: ["tiling", "linux"]
+tags: ["linux", "tiling"]
 published: true
 ---
 
@@ -61,13 +61,13 @@ https://wiki.hypr.land/Useful-Utilities/Status-Bars/
 
 例えば私は先程のツールたちを以下に選んでいます。多分比較的標準的な構成。
 
-|||
-| :---: | :---: |
-| 壁紙制御 | `awww(swww)` |
-| ロック画面 | `hyprlock` |
-| 通知センター | `Swaync` |
-| アプリランチャー | `fuzzel` |
-| スクショツール | `Hyprshot` |
+|                  |              |
+| :--------------: | :----------: |
+|     壁紙制御     | `awww(swww)` |
+|    ロック画面    |  `hyprlock`  |
+|   通知センター   |   `Swaync`   |
+| アプリランチャー |   `fuzzel`   |
+|  スクショツール  |  `Hyprshot`  |
 
 またツールだけでなくこれらの設定も自由に記述できる上にCLIなどから操作するものが多いため、bashスクリプトやsystemd timerを用いて操作の自動化なども行えます。既存のツールの挙動が気に入らない場合などに自分で挙動を決めることができます。また最近はAIもあるので比較的Bashも楽に書けます。
 
@@ -92,5 +92,7 @@ Hyprlandは自由度がとても高いということはわかっていただい
 特にSpecial workspaceは致命的。
 
 [^1]: 設定のやりようで、キー数の限界までwsの数を増やすことはできる
+
 [^2]: Swayかなんかは同梱されてるものがあった気がする
+
 [^3]: ここまでのカスタムならKDEの方が楽なのはそう

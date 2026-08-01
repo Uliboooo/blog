@@ -18,8 +18,11 @@ const fail = (message: string): never => {
 };
 
 const readFrontmatter = (source: string, filePath: string): Article => {
-  const frontmatter = source.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/)?.[1];
-  if (frontmatter === undefined) return fail(`Missing frontmatter: ${filePath}`);
+  const frontmatter = source.match(
+    /^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/,
+  )?.[1];
+  if (frontmatter === undefined)
+    return fail(`Missing frontmatter: ${filePath}`);
 
   const title = frontmatter.match(/^title:\s*["']?(.*?)["']?\s*$/m)?.[1];
   const published = frontmatter.match(/^published:\s*(true|false)\s*$/m)?.[1];
@@ -39,13 +42,14 @@ if (!Bun.which("nvim")) {
 }
 
 const glob = new Glob("**/*.md");
-const articles = await Array.fromAsync(glob.scan({ cwd: contentRoot })).then(async (files) =>
-  Promise.all(
-    files.map(async (file) => {
-      const filePath = path.join(contentRoot, file);
-      return readFrontmatter(await Bun.file(filePath).text(), filePath);
-    }),
-  ),
+const articles = await Array.fromAsync(glob.scan({ cwd: contentRoot })).then(
+  async (files) =>
+    Promise.all(
+      files.map(async (file) => {
+        const filePath = path.join(contentRoot, file);
+        return readFrontmatter(await Bun.file(filePath).text(), filePath);
+      }),
+    ),
 );
 
 if (articles.length === 0) {
@@ -71,9 +75,9 @@ if ((await fzf.exited) !== 0 || !selected) {
   process.exit(0);
 }
 
-const selectedPath = selected
-  .split("\t")
-  .at(-1) ?? fail("Could not read the selected article path.");
+const selectedPath =
+  selected.split("\t").at(-1) ??
+  fail("Could not read the selected article path.");
 
 const nvim = Bun.spawn(["nvim", selectedPath], {
   stdin: "inherit",

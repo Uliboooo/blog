@@ -19,11 +19,13 @@ const contentDirectory = path.join(root, "src/content");
 const externalDataPath = path.join(root, "src/data/external.json");
 const rulesPath = path.join(root, "src/dev_tools/tag-rules.json");
 const fix = process.argv.includes("--fix");
+const sort = process.argv.includes("--sort");
 const check = process.argv.includes("--check");
 const generateRules = process.argv.includes("--generate-rules");
 const writeRules = process.argv.includes("--write-rules");
 const validOptions = new Set([
   "--fix",
+  "--sort",
   "--check",
   "--generate-rules",
   "--write-rules",
@@ -41,12 +43,18 @@ if (writeRules && !generateRules) {
   process.exit(2);
 }
 
+if (sort && !fix && !check) {
+  console.error("--sort requires --fix or --check.");
+  process.exit(2);
+}
+
 if (process.argv.includes("--help") || process.argv.includes("-h")) {
-  console.log(`Usage: bun run tags [--fix] [--check]
+  console.log(`Usage: bun run tags [--fix] [--sort] [--check]
 
 Checks tag spelling and normalization in src/content and src/data/external.json.
 
   --fix    apply safe normalization, aliases, and remove duplicate tags per entry
+  --sort   sort tags alphabetically after normalization (requires --fix or --check)
   --check                 exit with status 1 when the report contains actionable issues
   --generate-rules        print conservative alias rules inferred from similar tags
   --generate-rules --write-rules
@@ -196,6 +204,11 @@ for (const occurrence of occurrences) {
   });
   normalized.forEach((tag) => canonicalTags.add(tag));
   const deduplicated = [...new Set(normalized)];
+  const nextTags = sort
+    ? [...deduplicated].sort((left, right) =>
+        left.localeCompare(right, "en-US", { sensitivity: "base" }),
+      )
+    : deduplicated;
 
   occurrence.tags.forEach((tag, index) => {
     if (tag !== normalized[index]) {
@@ -209,10 +222,13 @@ for (const occurrence of occurrences) {
       `${displayFile(occurrence.file)}: duplicate tags after normalization`,
     );
   }
+  if (sort && deduplicated.join("\0") !== nextTags.join("\0")) {
+    issues.push(`${displayFile(occurrence.file)}: tags are not sorted`);
+  }
 
-  if (fix && occurrence.tags.join("\0") !== deduplicated.join("\0")) {
+  if (fix && occurrence.tags.join("\0") !== nextTags.join("\0")) {
     const realFile = occurrence.file.split("#", 1)[0];
-    writes.set(realFile, occurrence.update(deduplicated));
+    writes.set(realFile, occurrence.update(nextTags));
   }
 }
 

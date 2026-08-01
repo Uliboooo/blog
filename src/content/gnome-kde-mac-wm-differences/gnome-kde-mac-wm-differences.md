@@ -3,7 +3,7 @@ title: "GNOME/KDEとMacのWMは何が違うのか?"
 date: 2026-06-09
 writer: "Uliboooo"
 description: "どちらも同じStacking WMだが操作感は異なる。その差を考える記事"
-tags: ["wm", "mac", "linux", "column"]
+tags: ["column", "linux", "mac", "wm"]
 published: false
 ---
 
