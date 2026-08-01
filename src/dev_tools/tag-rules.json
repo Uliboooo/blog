@@ -1,0 +1,10 @@
+{
+  "aliases": {
+    "colomn": "column",
+    "neovim": "nvim"
+  },
+  "ignoreSimilar": [
+    ["fix", "nix"],
+    ["nvim", "vim"]
+  ]
+}

@@ -4,7 +4,10 @@
     "title": "nvimでsnacks.nvimを使ったら色々便利になった",
     "date": "2026-03-07",
     "url": "https://zenn.dev/uliboooo/articles/6d60a46f01b94c",
-    "tags": ["zenn", "nvim"],
+    "tags": [
+      "zenn",
+      "nvim"
+    ],
     "published": true
   },
   {
@@ -12,7 +15,11 @@
     "title": "2026年にLinuxはデスクトップOSとして使えるのか",
     "date": "2026-03-07",
     "url": "https://zenn.dev/uliboooo/articles/fd25d0e655e20c",
-    "tags": ["zenn", "Linux", "Desktop"],
+    "tags": [
+      "zenn",
+      "linux",
+      "desktop"
+    ],
     "published": true
   }
 ]

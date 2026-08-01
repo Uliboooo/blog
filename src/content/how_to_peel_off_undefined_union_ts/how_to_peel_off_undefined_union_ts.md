@@ -2,7 +2,7 @@
 title: "TSでundefined unitonの剥がし方"
 date: 2026-05-12
 writer: "Uliboooo"
-tags: ["TS"]
+tags: ["ts"]
 published: false
 ---
 

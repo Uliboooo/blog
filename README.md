@@ -14,14 +14,14 @@ markdownパイプラインは`src/markdown-pipeline.js`に集約されていて�
 
 ### ディレクティブ(remark-directive)
 
-| 記法 | 出力 |
-| --- | --- |
-| `:::message` | 黄色の注意ボックス |
-| `:::alert` | 赤色の警告ボックス |
-| `:::details[ラベル]` | 折りたたみ(`<details>`/`<summary>`) |
-| `:::image-row` | 画像の横並び(下記) |
-| `:::pros` / `:::cons` | `+` / `−` 付きリスト |
-| その他任意の名前 | その名前がclassになった`<div>`(インラインは`<span>`) |
+| 記法                  | 出力                                                 |
+| --------------------- | ---------------------------------------------------- |
+| `:::message`          | 黄色の注意ボックス                                   |
+| `:::alert`            | 赤色の警告ボックス                                   |
+| `:::details[ラベル]`  | 折りたたみ(`<details>`/`<summary>`)                  |
+| `:::image-row`        | 画像の横並び(下記)                                   |
+| `:::pros` / `:::cons` | `+` / `−` 付きリスト                                 |
+| その他任意の名前      | その名前がclassになった`<div>`(インラインは`<span>`) |
 
 `:::image-row`内の画像は1枚なら原寸(コンテナ幅まで)、2枚なら半分ずつ、3枚以上は高さを揃えて横スクロール。
 
@@ -46,16 +46,16 @@ fn main() {}
 
 altテキストに`#xxx`を含めるとサイズ・挙動を制御できる。
 
-| サフィックス | 効果 |
-| --- | --- |
-| `#auto` | 原寸(width: auto) |
-| `#small` | 200px |
-| `#medium` | 48% |
-| `#middle` | 50% |
-| `#upper` | 80% |
+| サフィックス   | 効果                                       |
+| -------------- | ------------------------------------------ |
+| `#auto`        | 原寸(width: auto)                          |
+| `#small`       | 200px                                      |
+| `#medium`      | 48%                                        |
+| `#middle`      | 50%                                        |
+| `#upper`       | 80%                                        |
 | `#no-lightbox` | クリック拡大(ライトボックス)の対象外にする |
-| `#no-deco` | リンク画像の下線・外部リンクアイコンを消す |
-| `#download` | リンクにダウンロードアイコンを付ける |
+| `#no-deco`     | リンク画像の下線・外部リンクアイコンを消す |
+| `#download`    | リンクにダウンロードアイコンを付ける       |
 
 記事内の画像はクリックでライトボックス表示(`h`/`l`・矢印キーで前後、`Esc`で閉じる)。
 
@@ -75,9 +75,62 @@ altテキストに`#xxx`を含めるとサイズ・挙動を制御できる。
 
 frontmatterスキーマ(`src/content.config.ts`): `title`, `date`, `published`(必須) / `latest_edit_at`, `description`, `tags`(任意)。
 
+### タグのチェック・正規化
+
+`bun run tags`で`src/content`内の記事と`src/data/external.json`のタグを検査できる。Unicode正規化・前後空白除去・小文字化、および`src/dev_tools/tag-rules.json`に定義した別名を適用対象として報告する。
+
+#### 基本操作
+
+```sh
+bun run tags
+```
+
+報告だけを行い、ファイルは変更しない。たとえば`Linux`は`linux`、`colomn`は設定済みの`column`として表示される。
+
+```sh
+bun run tags -- --fix
+```
+
+報告された安全な変更を適用する。タグは小文字・NFKC正規化され、別名へ置換され、同一記事内で重複したタグは1つにまとめられる。実行前に`bun run tags`で差分を確認すること。
+
+```sh
+bun run tags:check
+```
+
+CIなどの確認用。正規化が必要なタグまたは未抑制の類似タグがある場合、終了コード`1`で終了する。
+
+#### 別名ルールの生成
+
+```sh
+bun run tags -- --generate-rules
+```
+
+既存タグから別名ルールの候補を表示する。4文字以上かつ編集距離1以内の表記ゆれだけを対象にし、出現回数が多い方へ寄せる保守的な推定を行う。表示のみで、設定ファイルは変更しない。
+
+候補を確認してから反映する場合は、次を実行する。
+
+```sh
+bun run tags -- --generate-rules --write-rules
+```
+
+#### ルールの編集
+
+プロジェクト固有の同義語や、意図的に似ているが別物のタグは[タグルール](./src/dev_tools/tag-rules.json)に記述する。
+
+```json
+{
+  "aliases": {
+    "neovim": "nvim",
+    "colomn": "column"
+  },
+  "ignoreSimilar": [["nvim", "vim"]]
+}
+```
+
+`aliases`は左側を右側の正規表記へ置換する。`ignoreSimilar`は類似タグの警告を抑制する。`neovim`と`nvim`のような意味上の同義語は自動生成では判断できないため、ここに手動で追加する。
+
 ## 相互リンク
 
 募集中です。以下に例。200x40px
 
 [![pre](./links_preview.png)](https://blog.uliboooo.dev/about_me/#links)
-

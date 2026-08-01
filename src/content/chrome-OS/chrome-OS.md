@@ -3,7 +3,7 @@ title: "ChromeBookに流行って欲しい"
 date: 2026-02-01
 writer: "Uliboooo"
 description: "Linuxを流行らせるにはchromeOSの普及が効果的?"
-tags: ["chromeOS", "Linux", "OS"]
+tags: ["chromeos", "linux", "os"]
 published: true
 ---
 

@@ -3,7 +3,7 @@ title: "Discord hotkey"
 date: 2026-05-17
 writer: "Uliboooo"
 description: "Discord hotkey メモ"
-tags: ["Discord"]
+tags: ["discord"]
 published: true
 ---
 

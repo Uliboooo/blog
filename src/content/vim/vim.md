@@ -3,7 +3,7 @@ title: "Vim"
 date: 2026-03-30
 writer: "Uliboooo"
 description: "Vim"
-tags: ["Vim"]
+tags: ["vim"]
 published: false
 ---
 

@@ -3,7 +3,7 @@ title: "全プログラマに送る便利な表記一覧"
 date: 2026-02-14
 writer: "Uliboooo"
 description: "全プログラマに送る便利な表記一覧"
-tags: ["colomn"]
+tags: ["column"]
 published: true
 ---
 

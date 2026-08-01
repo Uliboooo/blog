@@ -3,7 +3,7 @@ title: "Linuxのデスクトップ環境について。GNOMEとhyprlandはどち
 date: 2026-02-08
 writer: "Uliboooo"
 description: ""
-tags: ["Linux", "DE"]
+tags: ["linux", "de"]
 published: true
 ---
 
