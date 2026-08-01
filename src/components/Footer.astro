@@ -74,7 +74,9 @@ const human = new Intl.DateTimeFormat("ja-JP", {
         p {
           font-size: 0.8rem;
           text-wrap: pretty;
-          word-break: keep-all;
+          /* auto-phrase 非対応ブラウザ向けの fallback は normal。
+             keep-all だと日本語が折り返せず1行が伸びて溢れる */
+          word-break: normal;
           word-break: auto-phrase;
         }
       }
@@ -84,6 +86,14 @@ const human = new Intl.DateTimeFormat("ja-JP", {
     footer {
       .footer-content {
         gap: 0.2rem;
+      }
+
+      .why-snails {
+        .why-snail-c {
+          p {
+            font-size: 0.8rem;
+          }
+        }
       }
     }
   }

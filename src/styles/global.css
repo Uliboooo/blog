@@ -115,6 +115,12 @@ body {
   overflow-x: hidden;
 }
 
+html {
+  /* iOS Safari が小さめの文字を勝手に拡大するのを止める */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   font-family: var(--base-fonts-sans);
   background-color: var(--background);
