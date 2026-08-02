@@ -6,5 +6,3 @@ description: "教科書で勉強してる人少なそうだよね..."
 tags: ["column"]
 published: false
 ---
-
-
