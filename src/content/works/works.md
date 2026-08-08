@@ -13,6 +13,8 @@ published: true
 
 LLMでGitコミットメッセージ、README、または差分要約を作成するツール。本当はサブコマンドではなく別コマンドとして実装するべきだったためいつか分けることを検討中...
 
+TSへ書き換えて別コマンドになった。
+
 [Github Repository](https://github.com/Uliboooo/ghost_git_writer)
 
 ![ggw#upper](./eg-of-ggw.png)

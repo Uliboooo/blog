@@ -19,7 +19,7 @@ published: true
 (19) A college student who loves software and text. There are four o's. I write CLI tools and stuff in Rust. Lately I'm also into Gleam and language processor. Favorite symbol is `|>`. I suck at games (especially when you need AIM—it's a total disaster).
 
 > 好きな物:
-> 文字, パスタ, かわいいもの, 雨, 睡眠, 紙袋, 鈴, 硝子
+> 文字, パスタ, かわいいもの, 雨, 睡眠, 紙袋, 鈴, 硝子, 整理(続かない)
 
 > 嫌いなもの:
 > 右クリック, 細かいUI, 多機能, 複雑な料金プラン
