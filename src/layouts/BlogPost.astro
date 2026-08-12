@@ -123,7 +123,18 @@ const url = new URL(Astro.url.pathname, Astro.site).href;
         title instanceof HTMLElement && title.classList.contains("code-title")
           ? title
           : null;
-      const container = titleTarget ?? pre;
+      let container = titleTarget;
+
+      // Keep the button outside the horizontally scrolling <pre>. An
+      // absolutely positioned child of <pre> belongs to its scrollable
+      // contents, so it otherwise moves away as the code is scrolled.
+      if (!container) {
+        const wrapper = document.createElement("div");
+        wrapper.className = "code-block";
+        pre.before(wrapper);
+        wrapper.appendChild(pre);
+        container = wrapper;
+      }
 
       if (container.querySelector(".code-copy-button")) continue;
 

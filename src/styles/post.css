@@ -526,7 +526,14 @@
   max-width: 100%;
   overflow-x: auto;
   box-sizing: border-box;
+}
+
+.prose .code-block {
   position: relative;
+}
+
+.prose .code-block > pre {
+  margin: 1em 0;
 }
 
 .prose .code-title {
@@ -575,7 +582,7 @@
   opacity: 0.75;
 }
 
-.prose pre .code-copy-button {
+.prose .code-block > .code-copy-button {
   position: absolute;
   top: 0.6rem;
   right: 0.6rem;
