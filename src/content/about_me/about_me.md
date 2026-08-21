@@ -26,10 +26,6 @@ published: true
 
 <a href="../works" class="link--underline link--external" target="_blank" rel="noopener noreferrer">Works(作ったものとか)</a>
 
-## SNS
-
-[GitHub](https://github.com/Uliboooo), [X](https://x.com/Uliboooo), [マシュマロ](https://marshmallow-qa.com/db8xew1t5oa5l19?t=CH4dwd&utm_medium=url_text&utm_source=promotion), [Bsky](https://bsky.app/profile/uliboooo.bsky.social), [Zenn](https://zenn.dev/uliboooo), [note](https://note.com/uliboooo), [CodeBerg](https://codeberg.org/seli_am2)
-
 ## Capabilities
 
 大体RustとかFP系の言語でCLIとかLib書いてる。
@@ -37,6 +33,12 @@ published: true
 [Rust](https://github.com/Uliboooo?tab=repositories&q=&type=public&language=rust&sort=), [Shell](https://github.com/Uliboooo?tab=repositories&q=&type=public&language=shell&sort=), [CLI Development](https://github.com/Uliboooo?tab=repositories&q=cli&type=public&language=&sort=), [Lib Development](https://github.com/Uliboooo?tab=repositories&q=lib&type=public&language=&sort=)
 
 webは苦手ですが最近ちょっとだけ手を出しています。Astro大好き。
+
+## SNS
+
+[GitHub](https://github.com/Uliboooo), [Twitter](https://x.com/Uliboooo), [マシュマロ](https://marshmallow-qa.com/db8xew1t5oa5l19?t=CH4dwd&utm_medium=url_text&utm_source=promotion), [Bsky](https://bsky.app/profile/uliboooo.bsky.social), [Zenn](https://zenn.dev/uliboooo), [note](https://note.com/uliboooo), [CodeBerg](https://codeberg.org/seli_am2)
+
+[9b9df4e9-4b43-4b0e-afbf ](https://x.com/mimifuwacc?s=11)
 
 ## Links
 
