@@ -1,5 +1,49 @@
 import { visit } from "unist-util-visit";
 
+function isAnonymousRowDelimiter(node) {
+  return (
+    node.type === "paragraph" &&
+    node.children?.length === 1 &&
+    node.children[0].type === "text" &&
+    node.children[0].value === ":::"
+  );
+}
+
+function groupAnonymousRowItems(node) {
+  const children = [];
+  let itemChildren = null;
+  let openingDelimiter = null;
+
+  for (const child of node.children || []) {
+    if (isAnonymousRowDelimiter(child)) {
+      if (itemChildren === null) {
+        itemChildren = [];
+        openingDelimiter = child;
+      } else {
+        children.push({
+          type: "containerDirective",
+          name: "row-item",
+          attributes: {},
+          children: itemChildren,
+        });
+        itemChildren = null;
+        openingDelimiter = null;
+      }
+    } else if (itemChildren === null) {
+      children.push(child);
+    } else {
+      itemChildren.push(child);
+    }
+  }
+
+  // Preserve malformed/unclosed input instead of silently swallowing it.
+  if (itemChildren !== null) {
+    children.push(openingDelimiter, ...itemChildren);
+  }
+
+  node.children = children;
+}
+
 export default function remarkDirectiveHandler() {
   return (tree, file) => {
     visit(tree, (node) => {
@@ -8,6 +52,35 @@ export default function remarkDirectiveHandler() {
         node.type === "leafDirective" ||
         node.type === "textDirective"
       ) {
+        // Direct child containers in a row are layout items. Keeping this in
+        // the AST (rather than relying on a particular child name) lets
+        // authors use any `:::` block as a figure/card-like unit.
+        if (node.type === "containerDirective" && node.name === "row") {
+          groupAnonymousRowItems(node);
+
+          const blockChildren = node.children?.filter(
+            (child) => child.type === "containerDirective",
+          );
+
+          if (blockChildren?.length) {
+            node.attributes = {
+              ...node.attributes,
+              class: [node.attributes?.class, "row--blocks"]
+                .filter(Boolean)
+                .join(" "),
+            };
+
+            for (const child of blockChildren) {
+              child.attributes = {
+                ...child.attributes,
+                class: [child.attributes?.class, "row__item"]
+                  .filter(Boolean)
+                  .join(" "),
+              };
+            }
+          }
+        }
+
         const data = node.data || (node.data = {});
 
         if (node.name === "details") {

@@ -356,6 +356,49 @@
   line-height: 0;
 }
 
+/* ── footnote popup ───────────────────────────────── */
+
+.footnote-popup {
+  position: fixed;
+  z-index: 1000;
+  width: max-content;
+  max-width: min(28rem, calc(100vw - 24px));
+  max-height: calc(100vh - 24px);
+  overflow-y: auto;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--line-color);
+  border-radius: 6px;
+  background: var(--background);
+  color: var(--heading-prefix);
+  opacity: 0;
+  transform: translateY(3px);
+  transition:
+    opacity 120ms ease,
+    transform 120ms ease;
+}
+
+.footnote-popup[hidden] {
+  display: none;
+}
+
+.footnote-popup.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.footnote-popup p {
+  margin: 0;
+  font-family: var(--base-fonts-sans);
+  font-size: 13px;
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+  font-weight: 430;
+}
+
+.footnote-popup p + p {
+  margin-top: 0.55rem;
+}
+
 @keyframes toc-item-in {
   from {
     opacity: 0;
@@ -510,6 +553,63 @@
 
 @media (max-width: 480px) {
   .prose .image-row p {
+    gap: 0.4rem;
+  }
+}
+
+/* ── row ──────────────────────────────── */
+/* Each nested `:::` block is one generic row item. */
+.prose .row--blocks {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin: 1rem 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--blockquote-border) transparent;
+}
+
+.prose .row--blocks > .row__item {
+  flex: 0 0 auto;
+  margin-block: 0;
+  max-width: min(100%, 24rem);
+}
+
+.prose .row--blocks > .row__item:only-child {
+  max-width: 100%;
+}
+
+.prose .row--blocks > .row__item:first-child:nth-last-child(2),
+.prose .row--blocks > .row__item:first-child:nth-last-child(2) ~ .row__item {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: none;
+}
+
+.prose .row--blocks > .row__item > :first-child {
+  margin-top: 0;
+}
+
+.prose .row--blocks > .row__item > :last-child {
+  margin-bottom: 0;
+}
+
+.prose .row--blocks::-webkit-scrollbar {
+  height: 6px;
+}
+
+.prose .row--blocks::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.prose .row--blocks::-webkit-scrollbar-thumb {
+  background: var(--blockquote-border);
+  border-radius: 3px;
+}
+
+@media (max-width: 480px) {
+  .prose .row--blocks {
     gap: 0.4rem;
   }
 }

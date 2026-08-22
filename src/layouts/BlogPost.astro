@@ -111,6 +111,99 @@ const url = new URL(Astro.url.pathname, Astro.site).href;
   </article>
 
   <script is:inline>
+    (() => {
+      const root = document.querySelector(".prose");
+      const references = root?.querySelectorAll("[data-footnote-ref]") ?? [];
+      if (references.length === 0) return;
+
+      const popup = document.createElement("aside");
+      popup.id = "footnote-popup";
+      popup.className = "footnote-popup";
+      popup.setAttribute("role", "note");
+      popup.hidden = true;
+      root.appendChild(popup);
+
+      let activeReference = null;
+      let closeTimer;
+
+      const positionPopup = (reference) => {
+        const gap = 10;
+        const viewportPadding = 12;
+        const referenceRect = reference.getBoundingClientRect();
+        const rootRect = root.getBoundingClientRect();
+        const popupRect = popup.getBoundingClientRect();
+        const left = Math.min(
+          window.innerWidth - popupRect.width - viewportPadding,
+          Math.max(viewportPadding, rootRect.left),
+        );
+        const top = referenceRect.bottom + gap;
+
+        popup.style.left = `${left}px`;
+        popup.style.top = `${top}px`;
+        popup.style.maxHeight = `${Math.max(
+          80,
+          window.innerHeight - top - viewportPadding,
+        )}px`;
+        popup.dataset.placement = "below";
+      };
+
+      const showPopup = (reference) => {
+        clearTimeout(closeTimer);
+        const href = reference.getAttribute("href");
+        if (!href?.startsWith("#")) return;
+
+        const definition = document.getElementById(
+          decodeURIComponent(href.slice(1)),
+        );
+        if (!definition) return;
+
+        const content = definition.cloneNode(true);
+        content.removeAttribute("id");
+        content
+          .querySelectorAll("[data-footnote-backref]")
+          .forEach((backref) => backref.remove());
+        popup.replaceChildren(...content.childNodes);
+        popup.hidden = false;
+        activeReference = reference;
+        reference.setAttribute("aria-describedby", popup.id);
+        positionPopup(reference);
+        requestAnimationFrame(() => popup.classList.add("is-visible"));
+      };
+
+      const hidePopup = () => {
+        closeTimer = window.setTimeout(() => {
+          popup.classList.remove("is-visible");
+          activeReference?.removeAttribute("aria-describedby");
+          activeReference = null;
+          window.setTimeout(() => {
+            if (!popup.classList.contains("is-visible")) popup.hidden = true;
+          }, 120);
+        }, 100);
+      };
+
+      for (const reference of references) {
+        reference.addEventListener("mouseenter", () => showPopup(reference));
+        reference.addEventListener("mouseleave", hidePopup);
+        reference.addEventListener("focus", () => showPopup(reference));
+        reference.addEventListener("blur", hidePopup);
+      }
+
+      popup.addEventListener("mouseenter", () => clearTimeout(closeTimer));
+      popup.addEventListener("mouseleave", hidePopup);
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (activeReference) positionPopup(activeReference);
+        },
+        { passive: true },
+      );
+      window.addEventListener("resize", () => {
+        if (activeReference) positionPopup(activeReference);
+      });
+    })();
+  </script>
+
+  <script is:inline>
     const root = document.querySelector(".prose");
     const codeBlocks = root?.querySelectorAll("pre > code") ?? [];
 
@@ -235,16 +328,12 @@ const url = new URL(Astro.url.pathname, Astro.site).href;
       prevBtn.addEventListener("click", () => show(index - 1));
       nextBtn.addEventListener("click", () => show(index + 1));
 
-      // Registered before the vim-scroll handler below, so while the
-      // lightbox is open stopImmediatePropagation() keeps page shortcuts
-      // (h = home, j/k = scroll) from firing behind the modal.
       document.addEventListener("keydown", (e) => {
         if (!overlay.classList.contains("is-open")) return;
         if (e.metaKey || e.ctrlKey || e.altKey) return;
-        e.stopImmediatePropagation();
         if (e.key === "Escape") close();
-        else if (e.key === "ArrowLeft" || e.key === "h") show(index - 1);
-        else if (e.key === "ArrowRight" || e.key === "l") show(index + 1);
+        else if (e.key === "ArrowLeft") show(index - 1);
+        else if (e.key === "ArrowRight") show(index + 1);
       });
 
       // Swipe left/right to navigate on touch devices.
@@ -283,81 +372,4 @@ const url = new URL(Astro.url.pathname, Astro.site).href;
     })();
   </script>
 
-  <script is:inline>
-    (() => {
-      // ── vim-like scroll keys (j/k, gg/G, h) ────────────
-      const SCROLL_STEP = 100;
-      let lastGTime = 0;
-
-      // A single continuously-eased scroll target, so rapid/held j/k
-      // presses accumulate into one smooth chase instead of each
-      // keydown starting its own competing `scrollBy(..., smooth)`
-      // animation (which is what caused the stutter on fast repeats).
-      let targetY = null;
-      let rafId = null;
-
-      const maxScroll = () =>
-        document.documentElement.scrollHeight - window.innerHeight;
-      const clamp = (v) => Math.max(0, Math.min(v, maxScroll()));
-
-      const animate = () => {
-        const current = window.scrollY;
-        const diff = targetY - current;
-        if (Math.abs(diff) < 1) {
-          window.scrollTo(0, targetY);
-          rafId = null;
-          targetY = null;
-          return;
-        }
-        window.scrollTo(0, current + diff * 0.3);
-        rafId = requestAnimationFrame(animate);
-      };
-
-      const setTarget = (y) => {
-        targetY = clamp(y);
-        if (rafId === null) rafId = requestAnimationFrame(animate);
-      };
-
-      const nudge = (delta) => setTarget((targetY ?? window.scrollY) + delta);
-
-      const isTypingTarget = (el) =>
-        el instanceof HTMLElement &&
-        (el.isContentEditable ||
-          ["INPUT", "TEXTAREA", "SELECT"].includes(el.tagName));
-
-      document.addEventListener("keydown", (e) => {
-        if (e.metaKey || e.ctrlKey || e.altKey) return;
-        if (isTypingTarget(e.target)) return;
-
-        switch (e.key) {
-          case "j":
-            nudge(SCROLL_STEP);
-            break;
-          case "k":
-            nudge(-SCROLL_STEP);
-            break;
-          case "h":
-            window.location.href = "/";
-            break;
-          case "G":
-            setTarget(maxScroll());
-            break;
-          case "g": {
-            const now = Date.now();
-            if (now - lastGTime < 400) {
-              setTarget(0);
-              lastGTime = 0;
-            } else {
-              lastGTime = now;
-            }
-            break;
-          }
-          default:
-            return;
-        }
-
-        e.preventDefault();
-      });
-    })();
-  </script>
 </MainLayout>
