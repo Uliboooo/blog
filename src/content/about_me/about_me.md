@@ -14,31 +14,37 @@ published: true
 
 ![my draw#small](./logo.png)
 
-(19) ソフトウェアと文字が好きな大学生。oは4つです。RustでCLIツールなどを書いてる。最近はGleamとか処理系にも興味ある。好きな記号は`|>`。ゲームは下手(AIMが必要だと特に壊滅的)。
+(19) ソフトウェアと文字が好きな大学生。oは4つです。RustでCLIツールなどを書いてる。最近はGleamとか処理系にも興味ある。好きな記号は`|>`。
 
-(19) A college student who loves software and text. There are four o's. I write CLI tools and stuff in Rust. Lately I'm also into Gleam and language processor. Favorite symbol is `|>`. I suck at games (especially when you need AIM—it's a total disaster).
+:::details[English]
+(19) A college student who loves software and text. There are four o's. I write CLI tools and stuff in Rust. Lately I'm also into Gleam and language processor. Favorite symbol is `|>`. 
+:::
 
 > 好きな物:
-> 文字, パスタ, かわいいもの, 雨, 睡眠, 紙袋, 鈴, 硝子, 整理(続かない)
+> 文字, パスタ, かわいい, 雨, 睡眠, 硝子
 
 > 嫌いなもの:
-> 右クリック, 細かいUI, 多機能, 複雑な料金プラン
+> 右クリック, 細かいUI, 多機能, 複雑なもの
 
-<a href="../works" class="link--underline link--external" target="_blank" rel="noopener noreferrer">Works(作ったものとか)</a>
+## やってること
 
-## Capabilities
+大体RustとかFP系の言語でCLIとかLib書いてる。 <a href="../works" class="link--underline link--external" target="_blank" rel="noopener noreferrer">Works(作ったものとか)</a>
 
-大体RustとかFP系の言語でCLIとかLib書いてる。
+はGithubにあるrepo検索結果。
 
-[Rust](https://github.com/Uliboooo?tab=repositories&q=&type=public&language=rust&sort=), [Shell](https://github.com/Uliboooo?tab=repositories&q=&type=public&language=shell&sort=), [CLI Development](https://github.com/Uliboooo?tab=repositories&q=cli&type=public&language=&sort=), [Lib Development](https://github.com/Uliboooo?tab=repositories&q=lib&type=public&language=&sort=)
+[Rust](https://github.com/Uliboooo?tab=repositories&q=&type=public&language=rust&sort=), [Shell](https://github.com/Uliboooo?tab=repositories&q=&type=public&language=shell&sort=), [CLI Development](https://github.com/Uliboooo?tab=repositories&q=cli&type=public&language=&sort=), [Lib Development](https://github.com/Uliboooo?tab=repositories&q=lib&type=public&language=&sort=), [Web](https://github.com/Uliboooo?tab=repositories&q=website&type=&language=&sort=)
 
-webは苦手ですが最近ちょっとだけ手を出しています。Astro大好き。
+webは苦手ですが最近ちょっとだけ手を出しています。Astro大好き。あとは文書の記述や管理にも興味はある(図書館学? アーカイブス学?)
 
-## SNS
+## SNS/Contact
 
-[GitHub](https://github.com/Uliboooo), [Twitter](https://x.com/Uliboooo), [マシュマロ](https://marshmallow-qa.com/db8xew1t5oa5l19?t=CH4dwd&utm_medium=url_text&utm_source=promotion), [Bsky](https://bsky.app/profile/uliboooo.bsky.social), [Zenn](https://zenn.dev/uliboooo), [note](https://note.com/uliboooo), [CodeBerg](https://codeberg.org/seli_am2)
+[GitHub](https://github.com/Uliboooo), [Twitter](https://x.com/Uliboooo), [マシュマロ](https://marshmallow-qa.com/db8xew1t5oa5l19), [Bsky](https://bsky.app/profile/uliboooo.bsky.social), [Zenn](https://zenn.dev/uliboooo), [note](https://note.com/uliboooo), <a href="mailto:seli.am2@proton.me" target="_blank" rel="noopener noreferrer" class="link--underline link--external"><span>seli.am2</span>@<span>proton.me</span></a>
 
-[9b9df4e9-4b43-4b0e-afbf ](https://x.com/mimifuwacc?s=11)
+<a href="https://x.com/mimifuwacc/status/2078596708804796738"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="link--underline link--external">
+    9b9df4e9-4b43-4b0e-afbf</a>
 
 ## Links
 

@@ -65,7 +65,7 @@
 
   --base-fonts-sans:
     "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans",
-    "Roboto", "Noto Sans JP", sans;
+    "Roboto", "Noto Sans JP", "Monaspace Radon", sans;
   --base-fonts-mono:
     "Monaspace Radon", "Annotation Mono", "Fira Code", Consolas,
     "Liberation Mono", Menlo, monospace;

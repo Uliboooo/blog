@@ -8,6 +8,8 @@ tags: ["me"]
 published: true
 ---
 
+![face#small](./face.jpg)
+
 創作物などに向けた名義。Ulibooooの中の人ともいう。百合好き。
 
 <a href="../about_me" class="link--underline link--external" target="_blank" rel="noopener noreferrer">Ulibooooについてはこちら</a>
