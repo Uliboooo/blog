@@ -171,6 +171,7 @@
     word-break: normal;
   }
 }
+
 .prose .post-description {
   margin: 0.4rem 0 0.8rem;
   font-size: 0.95em;
@@ -221,7 +222,7 @@
   margin: 20px 0;
 
   p {
-    font-size: 0.88em;
+    font-size: 0.9em;
   }
 }
 
@@ -238,7 +239,7 @@
   /* blockquoteの本文と頭を揃える(border 4px + padding 15px) */
   padding-left: 19px;
   margin-top: 0.4rem;
-  font-size: 0.8em;
+  font-size: 0.9em;
   color: var(--text-muted);
 }
 
@@ -395,7 +396,7 @@
   font-weight: 430;
 }
 
-.footnote-popup p + p {
+.footnote-popup p+p {
   margin-top: 0.55rem;
 }
 
@@ -545,7 +546,7 @@
 }
 
 .prose .image-row img:first-child:nth-last-child(2),
-.prose .image-row img:first-child:nth-last-child(2) ~ img {
+.prose .image-row img:first-child:nth-last-child(2)~img {
   flex: 1 1 0;
   min-width: 0;
   height: auto;
@@ -570,28 +571,28 @@
   scrollbar-color: var(--blockquote-border) transparent;
 }
 
-.prose .row--blocks > .row__item {
+.prose .row--blocks>.row__item {
   flex: 0 0 auto;
   margin-block: 0;
   max-width: min(100%, 24rem);
 }
 
-.prose .row--blocks > .row__item:only-child {
+.prose .row--blocks>.row__item:only-child {
   max-width: 100%;
 }
 
-.prose .row--blocks > .row__item:first-child:nth-last-child(2),
-.prose .row--blocks > .row__item:first-child:nth-last-child(2) ~ .row__item {
+.prose .row--blocks>.row__item:first-child:nth-last-child(2),
+.prose .row--blocks>.row__item:first-child:nth-last-child(2)~.row__item {
   flex: 1 1 0;
   min-width: 0;
   max-width: none;
 }
 
-.prose .row--blocks > .row__item > :first-child {
+.prose .row--blocks>.row__item> :first-child {
   margin-top: 0;
 }
 
-.prose .row--blocks > .row__item > :last-child {
+.prose .row--blocks>.row__item> :last-child {
   margin-bottom: 0;
 }
 
@@ -644,7 +645,7 @@
   gap: 0.5rem;
 }
 
-.prose .code-title + pre {
+.prose .code-title+pre {
   margin-top: 0;
   border-top: 1px solid #ffffff;
   border-top-left-radius: 0;
@@ -730,10 +731,8 @@
 .prose a {
   color: var(--a-link-in-post);
   text-decoration: none;
-  background-image: linear-gradient(
-    var(--a-under-in-post-hovered),
-    var(--a-under-in-post-hovered)
-  );
+  background-image: linear-gradient(var(--a-under-in-post-hovered),
+      var(--a-under-in-post-hovered));
   background-repeat: no-repeat;
   background-position: left bottom;
   background-size: 0 1px;

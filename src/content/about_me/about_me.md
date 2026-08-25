@@ -14,21 +14,34 @@ published: true
 
 ![my draw#small](./logo.png)
 
-(19) ソフトウェアと文字が好きな大学生。oは4つです。RustでCLIツールなどを書いてる。最近はGleamとか処理系にも興味ある。好きな記号は`|>`。
+(<span class="age"></span>) oは4つです。RustでCLIツールなどを書いてる。最近はGleamとか処理系にも興味ある。好きな記号は`|>`。
 
 :::details[English]
-(19) A college student who loves software and text. There are four o's. I write CLI tools and stuff in Rust. Lately I'm also into Gleam and language processor. Favorite symbol is `|>`. 
+(<span class="age"></span>) A college student who loves software and text. There are four o's. I write CLI tools and stuff in Rust. Lately I'm also into Gleam and language processor. Favorite symbol is `|>`.
 :::
 
+<script>
+    const birth_day = Math.floor(
+      new Date("2007-03-20T20:30:00+09:00").getTime() / 1000
+    );
+    const current = Math.floor(Date.now() / 1000);
+
+    //        60 * 60 * 24 * 365.2425👇
+    const age = Math.floor((current - birth_day) / 31556952);
+    document.querySelectorAll(".age").forEach((element) => {
+      element.textContent = `${age}`;
+    });
+</script>
+
 > 好きな物:
-> 文字, パスタ, かわいい, 雨, 睡眠, 硝子
+> 文字, パスタ, かわいいもの, 雨, 睡眠, 硝子, Rosé Pine Dawn
 
 > 嫌いなもの:
-> 右クリック, 細かいUI, 多機能, 複雑なもの
+> 細かいUI, 多機能, 複雑なもの
 
 ## やってること
 
-大体RustとかFP系の言語でCLIとかLib書いてる。 <a href="../works" class="link--underline link--external" target="_blank" rel="noopener noreferrer">Works(作ったものとか)</a>
+大体RustとかFP系の言語でCLIとかライブラリとか書いてる。 <a href="../works" class="link--underline link--external" target="_blank" rel="noopener noreferrer">Works(作ったものとか)</a>
 
 はGithubにあるrepo検索結果。
 
