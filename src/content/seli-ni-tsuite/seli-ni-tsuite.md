@@ -23,3 +23,7 @@ published: true
 ### 少年よ、これは夜という呪い
 
 [カクヨム](https://kakuyomu.jp/works/2912051603284212547), [X](https://x.com/uliboooo/status/2073050829461053751)
+
+### 終末世界には先輩がいる
+
+https://x.com/Uliboooo/status/2092239764305162358

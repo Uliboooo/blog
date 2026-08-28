@@ -34,7 +34,7 @@ published: true
 </script>
 
 > 好きな物:
-> 文字, パスタ, かわいいもの, 雨, 睡眠, 硝子, Rosé Pine Dawn
+> 文字, パスタ, かわいいもの, 雨, 睡眠, 硝子, Rosé Pine Dawn, 人形
 
 > 嫌いなもの:
 > 細かいUI, 多機能, 複雑なもの
@@ -58,6 +58,35 @@ webは苦手ですが最近ちょっとだけ手を出しています。Astro大
     rel="noopener noreferrer"
     class="link--underline link--external">
     9b9df4e9-4b43-4b0e-afbf</a>
+
+## Dev environment
+
+基本的にはデスクトップOSはLinux(NixOS)を使ってる。
+
+```
+╭──────────────── System ────────────────╮
+│  󰍹 OS       NixOS 26.11 (Zokor) x86_64
+│   Kernel   Linux 7.2.0
+│   Font     MonaspaceRadonVar-Regular (12pt)
+│  󰇀 Cursor   Bibata-Modern-Ice (20pt)
+╰────────────────────────────────────────╯
+╭─────────────── Software ───────────────╮
+│  󱂬 WM       niri 26.04 (Wayland)
+│   Packages 4265 (nix-system), 3897 (nix-user)
+│  󰞷 Shell    fish 4.8.1
+│   Terminal kitty 0.48.2
+╰────────────────────────────────────────╯
+╭─────────────── Hardware ───────────────╮
+│  󰻠 CPU      Intel Core i5-12400 (12) @ 4.4 GHz
+│  󰢮 GPU      Intel UHD Graphics 730 @ 1.45 GHz [Integrated]
+│  󰍛 Memory   15.95 GiB / 31.11 GiB (51%)
+│  󰋊 Disk     394.5GiB / 458.7GiB (91%) - ext4
+│   Base     B760M-STX
+│  󰍹 Display  3840x2160 @ 60Hz
+╰────────────────────────────────────────╯
+```
+
+[more info](https://github.com/Uliboooo/dotfiles)
 
 ## Links
 

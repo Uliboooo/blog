@@ -130,11 +130,10 @@ const url = new URL(Astro.url.pathname, Astro.site).href;
         const gap = 10;
         const viewportPadding = 12;
         const referenceRect = reference.getBoundingClientRect();
-        const rootRect = root.getBoundingClientRect();
         const popupRect = popup.getBoundingClientRect();
         const left = Math.min(
           window.innerWidth - popupRect.width - viewportPadding,
-          Math.max(viewportPadding, rootRect.left),
+          Math.max(viewportPadding, referenceRect.left),
         );
         const top = referenceRect.bottom + gap;
 
