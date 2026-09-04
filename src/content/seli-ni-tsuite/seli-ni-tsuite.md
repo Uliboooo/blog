@@ -14,6 +14,8 @@ published: true
 
 <a href="../about_me" class="link--underline link--external" target="_blank" rel="noopener noreferrer">Ulibooooについてはこちら</a>
 
+https://x.com/Uliboooo/status/2095843377787072649
+
 ## Works
 
 ### お酒と柑橘の匂い
