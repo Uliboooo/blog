@@ -4,7 +4,7 @@ date: 2026-08-25
 writer: "Uliboooo"
 description: "人を模して近づこうと作られたもの"
 tags: ["column"]
-published: true
+published: false
 ---
 
 自分語り?

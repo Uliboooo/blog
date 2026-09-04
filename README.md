@@ -82,6 +82,8 @@ altテキストに`#xxx`を含めるとサイズ・挙動を制御できる。
 ### その他
 
 - 記事中の行に裸のツイートURL(`https://x.com/.../status/...`)を置くと埋め込みに変換
+- 記事中の行に裸のYouTube URL(`https://www.youtube.com/watch?v=...` または `https://youtu.be/...`)を置くと、レスポンシブな動画埋め込みに変換
+- 記事中の行に裸のLab86 Music Link URL(`https://music.lab86.io/link/...`)を置くと、曲名・アーティスト・ジャケットを取得してブログ内の音楽カードに変換
 - 外部リンクは自動で`target="_blank"` + 外部リンク装飾
 - 脚注の戻りリンク`↩`はSVGアイコンに置換(iOSの絵文字化対策)
 - 各記事はraw表示エンドポイントあり: `/md/<slug>`(markdown)、`/html/<slug>`(HTML)

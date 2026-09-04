@@ -1,7 +1,7 @@
 ---
 title: "About Me"
 date: 2026-03-17
-latest_edit_at: 2026-07-28
+latest_edit_at: 2026-09-03
 writer: "Uliboooo"
 description: "Ulibooooについて"
 tags: ["me"]
@@ -14,7 +14,7 @@ published: true
 
 ![my draw#small](./logo.png)
 
-(<span class="age"></span>) oは4つです。RustでCLIツールなどを書いてる。最近はGleamとか処理系にも興味ある。好きな記号は`|>`。
+(<span class="age"></span>) oは4つです。RustでCLIツールなどを書いてる。最近はGleamとか言語処理系にも興味ある。好きな記号は`|>`。
 
 :::details[English]
 (<span class="age"></span>) A college student who loves software and text. There are four o's. I write CLI tools and stuff in Rust. Lately I'm also into Gleam and language processor. Favorite symbol is `|>`.
@@ -34,7 +34,7 @@ published: true
 </script>
 
 > 好きな物:
-> 文字, パスタ, かわいいもの, 雨, 睡眠, 硝子, Rosé Pine Dawn, 人形
+> 文字, パスタ, かわいいもの, 雨, 傘, 硝子, Rosé Pine Dawn, 人形
 
 > 嫌いなもの:
 > 細かいUI, 多機能, 複雑なもの
@@ -45,13 +45,22 @@ published: true
 
 はGithubにあるrepo検索結果。
 
-[Rust](https://github.com/Uliboooo?tab=repositories&q=&type=public&language=rust&sort=), [Shell](https://github.com/Uliboooo?tab=repositories&q=&type=public&language=shell&sort=), [CLI Development](https://github.com/Uliboooo?tab=repositories&q=cli&type=public&language=&sort=), [Lib Development](https://github.com/Uliboooo?tab=repositories&q=lib&type=public&language=&sort=), [Web](https://github.com/Uliboooo?tab=repositories&q=website&type=&language=&sort=)
+[Rust](https://github.com/Uliboooo?tab=repositories&q=&type=public&language=rust&sort=),
+[Shell](https://github.com/Uliboooo?tab=repositories&q=&type=public&language=shell&sort=),
+[CLI Development](https://github.com/Uliboooo?tab=repositories&q=cli&type=public&language=&sort=),
+[Lib Development](https://github.com/Uliboooo?tab=repositories&q=lib&type=public&language=&sort=),
+[Web](https://github.com/Uliboooo?tab=repositories&q=website&type=&language=&sort=)
 
 webは苦手ですが最近ちょっとだけ手を出しています。Astro大好き。あとは文書の記述や管理にも興味はある(図書館学? アーカイブス学?)
 
 ## SNS/Contact
 
-[GitHub](https://github.com/Uliboooo), [Twitter](https://x.com/Uliboooo), [マシュマロ](https://marshmallow-qa.com/db8xew1t5oa5l19), [Bsky](https://bsky.app/profile/uliboooo.bsky.social), [Zenn](https://zenn.dev/uliboooo), [note](https://note.com/uliboooo), <a href="mailto:seli.am2@proton.me" target="_blank" rel="noopener noreferrer" class="link--underline link--external"><span>seli.am2</span>@<span>proton.me</span></a>
+[GitHub](https://github.com/Uliboooo),
+[Twitter](https://x.com/Uliboooo),
+[マシュマロ](https://marshmallow-qa.com/db8xew1t5oa5l19),
+[Zenn](https://zenn.dev/uliboooo),
+[note](https://note.com/uliboooo),
+<a href="mailto:seli.am2@proton.me" target="_blank" rel="noopener noreferrer" class="link--underline link--external"><span>seli.am2</span>@<span>proton.me</span></a>
 
 <a href="https://x.com/mimifuwacc/status/2078596708804796738"
     target="_blank"
@@ -63,7 +72,7 @@ webは苦手ですが最近ちょっとだけ手を出しています。Astro大
 
 基本的にはデスクトップOSはLinux(NixOS)を使ってる。
 
-```
+```text
 ╭──────────────── System ────────────────╮
 │  󰍹 OS       NixOS 26.11 (Zokor) x86_64
 │   Kernel   Linux 7.2.0
@@ -79,12 +88,14 @@ webは苦手ですが最近ちょっとだけ手を出しています。Astro大
 ╭─────────────── Hardware ───────────────╮
 │  󰻠 CPU      Intel Core i5-12400 (12) @ 4.4 GHz
 │  󰢮 GPU      Intel UHD Graphics 730 @ 1.45 GHz [Integrated]
-│  󰍛 Memory   15.95 GiB / 31.11 GiB (51%)
-│  󰋊 Disk     394.5GiB / 458.7GiB (91%) - ext4
+│  󰍛 Memory   31.11 GiB
+│  󰋊 Disk     458.7GiB - ext4
 │   Base     B760M-STX
 │  󰍹 Display  3840x2160 @ 60Hz
 ╰────────────────────────────────────────╯
 ```
+
+https://x.com/Uliboooo/status/2084895400067313751
 
 [more info](https://github.com/Uliboooo/dotfiles)
 
