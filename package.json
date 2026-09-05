@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && pagefind --site dist",
+    "build": "astro build",
     "preview": "astro preview",
     "cf-dev": "wrangler pages dev ./dist",
     "astro": "astro",
@@ -29,11 +29,9 @@
     "satori-html": "^0.3.2"
   },
   "devDependencies": {
-    "@pagefind/default-ui": "^1.5.2",
     "@types/bun": "^1.4.0",
     "@types/node": "^25.9.5",
     "@types/prompts": "^2.4.9",
-    "pagefind": "^1.5.2",
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.8.1",
