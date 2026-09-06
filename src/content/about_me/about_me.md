@@ -57,6 +57,7 @@ webは苦手ですが最近ちょっとだけ手を出しています。Astro大
 
 [GitHub](https://github.com/Uliboooo),
 [Twitter](https://x.com/Uliboooo),
+[Instagram](https://www.instagram.com/uliboooo)
 [マシュマロ](https://marshmallow-qa.com/db8xew1t5oa5l19),
 [Zenn](https://zenn.dev/uliboooo),
 [note](https://note.com/uliboooo),
