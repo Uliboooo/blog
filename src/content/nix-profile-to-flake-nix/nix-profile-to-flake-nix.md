@@ -1,7 +1,6 @@
 ---
 title: "nix profile install xxxしか書いてないpkgをflake.nixに記述する"
 date: 2026-08-08
-writer: "Uliboooo"
 description: "profileは試すにはいいけどね"
 tags: ["nix"]
 published: true

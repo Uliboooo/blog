@@ -1,7 +1,6 @@
 ---
 title: "確率的存在文字"
 date: 2026-07-16
-writer: "Uliboooo"
 description: "夢想"
 tags: ["poem"]
 published: true

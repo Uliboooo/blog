@@ -1,7 +1,6 @@
 ---
 title: "nvimのrustデバッガーへプロジェクトごとに引数を設定する"
 date: 2026-06-27
-writer: "Uliboooo"
 description: ""
 tags: ["debug", "nvim", "rust"]
 published: true

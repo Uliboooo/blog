@@ -1,7 +1,6 @@
 ---
 title: "ハックを求めないでほしい"
 date: 2026-06-21
-writer: "Uliboooo"
 description: "カーソル移動のハッカーになりたいわけじゃないのよ. あるいはHelixの悪口"
 tags: ["editor", "helix", "vim"]
 published: false

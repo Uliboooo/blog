@@ -2,10 +2,15 @@
 import MainLayout from "../layouts/MainLayout.astro";
 ---
 
-<MainLayout title="Search - Compute on Snails" description="記事本文を検索">
+<MainLayout
+  title="Search - Compute on Snails"
+  description="Search article text and URLs"
+>
   <h2>Search</h2>
   <form id="grep-form" role="search">
-    <label class="sr-only" for="grep-query">本文を正規表現で検索</label>
+    <label class="sr-only" for="grep-query">
+      Search article text and URLs with a regular expression
+    </label>
     <div class="grep-input-row">
       <input
         id="grep-query"
@@ -14,12 +19,12 @@ import MainLayout from "../layouts/MainLayout.astro";
         autocomplete="off"
         spellcheck="false"
         autofocus
-        placeholder="本文を正規表現で検索"
+        placeholder="Search article text and URLs with regex…"
       />
-      <button type="submit">検索</button>
+      <button type="submit">Search</button>
     </div>
     <label class="grep-option">
-      <input id="grep-case-sensitive" type="checkbox" /> 大文字・小文字を区別
+      <input id="grep-case-sensitive" type="checkbox" /> Case-sensitive
     </label>
   </form>
   <p id="grep-status" role="status" aria-live="polite"></p>
@@ -84,7 +89,7 @@ import MainLayout from "../layouts/MainLayout.astro";
     updateUrl(query);
     grepResults?.replaceChildren();
     if (!query) {
-      if (grepStatus) grepStatus.textContent = "正規表現を入力してください。";
+      if (grepStatus) grepStatus.textContent = "Enter a regular expression.";
       return;
     }
 
@@ -93,25 +98,31 @@ import MainLayout from "../layouts/MainLayout.astro";
       expression = new RegExp(query, caseSensitive.checked ? "gu" : "giu");
     } catch (error) {
       if (grepStatus) {
-        grepStatus.textContent = `正規表現エラー: ${(error as Error).message}`;
+        grepStatus.textContent = `Invalid regular expression: ${(error as Error).message}`;
       }
       return;
     }
 
-    if (grepStatus) grepStatus.textContent = "検索中…";
+    if (grepStatus) grepStatus.textContent = "Searching…";
     try {
       const articles = await loadIndex();
-      let matchCount = 0;
+      let lineMatchCount = 0;
+      let urlMatchCount = 0;
       let articleCount = 0;
 
       for (const article of articles) {
+        const fullUrl = new URL(article.url, location.origin).href;
+        expression.lastIndex = 0;
+        const urlMatches = expression.test(`${article.url}\n${fullUrl}`);
+        if (urlMatches) urlMatchCount += 1;
+
         const matched = article.lines.flatMap((line, index) => {
           expression.lastIndex = 0;
           const matches = expression.test(line.text);
-          if (matches) matchCount += 1;
+          if (matches) lineMatchCount += 1;
           return matches ? [index] : [];
         });
-        if (!matched.length) continue;
+        if (!urlMatches && !matched.length) continue;
         articleCount += 1;
 
         const section = document.createElement("section");
@@ -124,6 +135,17 @@ import MainLayout from "../layouts/MainLayout.astro";
         articleLink.textContent = article.title;
         heading.append(articleLink);
         section.append(heading);
+
+        if (urlMatches) {
+          const urlLink = document.createElement("a");
+          urlLink.className = "grep-url";
+          urlLink.href = article.url;
+          urlLink.target = "_blank";
+          urlLink.rel = "noopener noreferrer";
+          expression.lastIndex = 0;
+          appendHighlighted(urlLink, fullUrl, expression);
+          section.append(urlLink);
+        }
 
         const ranges: Array<[number, number]> = [];
         for (const index of matched) {
@@ -162,11 +184,11 @@ import MainLayout from "../layouts/MainLayout.astro";
       }
 
       if (grepStatus) {
-        grepStatus.textContent = `${articleCount}記事、${matchCount}行一致`;
+        grepStatus.textContent = `${articleCount} articles, ${lineMatchCount} text lines, ${urlMatchCount} URLs matched`;
       }
     } catch {
       if (grepStatus) {
-        grepStatus.textContent = "検索インデックスを読み込めませんでした。";
+        grepStatus.textContent = "Could not load the search index.";
       }
     }
   }
@@ -261,6 +283,15 @@ import MainLayout from "../layouts/MainLayout.astro";
   #grep-results .grep-result h3 {
     margin-bottom: 0.5rem;
     font-size: 1.1rem;
+  }
+
+  #grep-results .grep-url {
+    display: block;
+    overflow-wrap: anywhere;
+    margin: -0.2rem 0 0.75rem;
+    color: var(--text-muted);
+    font-family: var(--base-fonts-mono);
+    font-size: 0.82rem;
   }
 
   #grep-results .grep-context {

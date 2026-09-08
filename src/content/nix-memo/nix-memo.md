@@ -1,7 +1,6 @@
 ---
 title: "nixメモ"
 date: 2026-06-30
-writer: "Uliboooo"
 description: "nixに関するメモ書き"
 tags: ["memo", "nix"]
 published: true

@@ -1,7 +1,6 @@
 ---
 title: "Linuxのデスクトップ環境について。GNOMEとhyprlandはどちらがいいのか?"
 date: 2026-02-08
-writer: "Uliboooo"
 description: ""
 tags: ["de", "linux"]
 published: true

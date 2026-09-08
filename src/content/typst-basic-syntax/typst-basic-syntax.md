@@ -1,7 +1,6 @@
 ---
 title: "typst basic syntaxメモ"
 date: 2026-06-29
-writer: "Uliboooo"
 description: ""
 tags: ["memo", "typst"]
 published: true

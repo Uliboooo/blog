@@ -1,9 +1,8 @@
 ---
 title: "works"
 date: 2026-07-28
-writer: "Uliboooo"
 description: "作ったものとか"
-tags: ["works"]
+tags: ["me"]
 published: true
 ---
 

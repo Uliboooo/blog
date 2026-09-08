@@ -1,7 +1,6 @@
 ---
 title: "typstでスライドを怠惰に作りたい"
 date: 2026-07-03
-writer: "Uliboooo"
 description: "typstでslidesを作るための最小メモ"
 tags: ["typst"]
 published: true

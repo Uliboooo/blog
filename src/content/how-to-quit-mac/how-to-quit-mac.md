@@ -1,7 +1,6 @@
 ---
 title: "Macを辞めるには"
 date: 2026-06-28
-writer: "Uliboooo"
 description: "MacBookからThinkPad(NixOS)へ移行するには"
 tags: ["column", "linux", "mac", "nix"]
 published: false

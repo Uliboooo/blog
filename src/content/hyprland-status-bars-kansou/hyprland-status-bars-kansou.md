@@ -1,7 +1,6 @@
 ---
 title: "Hyprland Status Bar達の感想"
 date: 2026-06-29
-writer: "Uliboooo"
 description: "Hlと一緒に試したstatus barsの感想"
 tags: ["column", "hyprland", "wayland"]
 published: true

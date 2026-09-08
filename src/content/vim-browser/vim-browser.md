@@ -1,7 +1,6 @@
 ---
 title: "ブラウザをvimする"
 date: 2026-08-01
-writer: "Uliboooo"
 description: "Vimiumとかメジャーサイトのキーバインドとか"
 tags: ["browser", "vim"]
 published: true

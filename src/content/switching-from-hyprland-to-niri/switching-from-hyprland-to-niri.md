@@ -1,7 +1,6 @@
 ---
 title: "Hyprlandユーザーからniriへ, 良いとこ悪いとこ"
 date: 2026-08-03
-writer: "Uliboooo"
 description: ""
 tags: ["hyprland", "niri", "wm"]
 published: true

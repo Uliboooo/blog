@@ -1,7 +1,6 @@
 ---
 title: "qrencodeのつかいかた"
 date: 2026-03-19
-writer: "Uliboooo"
 description: 'QRコード生成ツール"qrencode"の使い方についての備忘録"'
 tags: ["me"]
 published: true

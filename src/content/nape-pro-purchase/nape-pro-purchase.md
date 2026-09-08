@@ -1,7 +1,6 @@
 ---
 title: "Nape Proを買ったよ"
 date: 2026-08-28
-writer: "Uliboooo"
 description: "まだ慣れない..."
 tags: ["gadget"]
 published: false

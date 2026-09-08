@@ -1,7 +1,6 @@
 ---
 title: "朝起きたらNixOSなThinkPadが壊れていたので、OSを入れ替えた"
 date: 2026-06-06
-writer: "Uliboooo"
 description: "ぶっ壊れたNixOS ThinkPadを復旧させたかった話"
 tags: ["linux", "nix", "repair"]
 published: true
@@ -13,12 +12,7 @@ published: true
 
 理由としては「面倒。忙しい。手っ取り早い解決手段がある」ので。
 
-<blockquote class="twitter-tweet">
-    <p lang="ja" dir="ltr">こうして何も解決能力を得ないまま事態が収束していく...<br />でもあと1hで美容室行って実家帰らんといかんのですよぉ</p>
-    &mdash; Uliboooo (@Uliboooo)
-    <a href="https://x.com/Uliboooo/status/2062778014069674394">Jun 5, 2026</a>
-</blockquote>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+https://x.com/senox78/status/2062778014069674394
 
 :::message
 

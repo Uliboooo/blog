@@ -1,7 +1,6 @@
 ---
 title: "Move to TUI"
 date: 2026-05-19
-writer: "Uliboooo"
 description: "TUI tools as GUI alternatives"
 tags: ["tui"]
 published: true

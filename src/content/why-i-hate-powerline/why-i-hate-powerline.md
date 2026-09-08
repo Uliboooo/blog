@@ -1,7 +1,6 @@
 ---
 title: "powerlineが嫌い"
 date: 2026-08-02
-writer: "Uliboooo"
 description: "あれって順序性のあるものにしか使いたくない"
 tags: ["column", "vent"]
 published: true

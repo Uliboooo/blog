@@ -1,7 +1,6 @@
 ---
 title: "Excelは組版じゃない"
 date: 2026-07-29
-writer: "Uliboooo"
 description: ".xlsxで提出の授業を許さない"
 tags: ["vent"]
 published: true

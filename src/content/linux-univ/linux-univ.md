@@ -1,7 +1,6 @@
 ---
 title: "Linuxで大学は過ごせるのか?"
 date: 2026-07-29
-writer: "Uliboooo"
 description: "大学, 学科による()"
 tags: ["column"]
 published: false

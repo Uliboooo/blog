@@ -1,7 +1,6 @@
 ---
 title: "私のLinux環境を晒す(自慢)"
 date: 2026-07-01
-writer: "Uliboooo"
 description: "hyprlandとかぁ"
 tags: ["column", "dev", "env", "nvim"]
 published: true
@@ -101,7 +100,7 @@ hyprlandにはsub mapというものがあり、特定のモードによって�
 
 <blockquote class="twitter-tweet">
     <p lang="ja" dir="ltr"></p>
-    <a href="https://x.com/Uliboooo/status/2071042133914755396?s=20"></a>
+    <a href="https://x.com/senox78/status/2071042133914755396?s=20"></a>
 </blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 

@@ -1,7 +1,6 @@
 ---
 title: "MSとそれなりに和解できたと思っていた"
 date: 2026-08-22
-writer: "Uliboooo"
 description: "プログラミング宗教"
 tags: ["column"]
 published: true

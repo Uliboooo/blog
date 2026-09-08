@@ -2,6 +2,7 @@ import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
 import { createMarkdownProcessor } from "@astrojs/markdown-remark";
 import { remarkPlugins, rehypePlugins } from "../markdown-pipeline.js";
+import externalPosts from "../data/external.json";
 
 export const prerender = true;
 
@@ -104,6 +105,15 @@ export const GET: APIRoute = async () => {
       title: post.data.title,
       url: `/${post.id.split("/")[0]}`,
       lines,
+    });
+  }
+
+  for (const post of externalPosts) {
+    if (!post.published) continue;
+    articles.push({
+      title: post.title,
+      url: post.url,
+      lines: [],
     });
   }
 

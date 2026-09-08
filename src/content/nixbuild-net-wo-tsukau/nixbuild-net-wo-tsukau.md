@@ -1,7 +1,6 @@
 ---
 title: "nixbuild.netを使う"
 date: 2026-07-15
-writer: "Uliboooo"
 description: "flakeのbuildが重いのだ..."
 tags: ["nix"]
 published: false

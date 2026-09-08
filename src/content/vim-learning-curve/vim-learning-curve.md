@@ -1,7 +1,6 @@
 ---
 title: "Vimの学習曲線は緩やか"
 date: 2026-05-31
-writer: "Uliboooo"
 description: "Vimの学習についての個人的な話"
 tags: ["lean", "note", "vim"]
 published: false

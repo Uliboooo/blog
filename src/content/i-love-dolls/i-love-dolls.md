@@ -1,7 +1,6 @@
 ---
 title: "人形が好き"
 date: 2026-08-25
-writer: "Uliboooo"
 description: "人を模して近づこうと作られたもの"
 tags: ["column"]
 published: false
@@ -12,7 +11,7 @@ published: false
 
 ---
 
-<!-- https://x.com/Uliboooo/status/2091965596896526599 -->
+<!-- https://x.com/senox78/status/2091965596896526599 -->
 
 ## 思えば昔から
 

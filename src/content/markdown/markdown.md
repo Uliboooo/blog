@@ -1,7 +1,6 @@
 ---
 title: "Markdownの本質はレンダリングできない環境でのメタ表現である"
 date: 2026-02-16
-writer: "Uliboooo"
 description: ""
 tags: ["column"]
 published: true

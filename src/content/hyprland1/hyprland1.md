@@ -1,7 +1,6 @@
 ---
 title: "タイリングの話をしないHyprlandの紹介"
 date: 2026-03-26
-writer: "Uliboooo"
 description: "Hyprlandの紹介"
 tags: ["linux", "tiling"]
 published: true

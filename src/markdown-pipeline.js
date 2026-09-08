@@ -11,7 +11,6 @@ import remarkDirectiveHandler from "./plugins/remark-directive-handler.js";
 import remarkMusicLab86Embed from "./plugins/remark-music-lab86-embed.js";
 import remarkTwitterEmbed from "./plugins/remark-twitter-embed.js";
 import remarkTypst from "./plugins/remark-typst.js";
-import remarkYoutubeEmbed from "./plugins/remark-youtube-embed.js";
 import rehypeFootnoteBackrefIcon from "./plugins/rehype-footnote-backref-icon.js";
 
 export const remarkPlugins = [
@@ -21,7 +20,6 @@ export const remarkPlugins = [
   remarkDirectiveHandler,
   remarkMusicLab86Embed,
   remarkTwitterEmbed,
-  remarkYoutubeEmbed,
 ];
 
 export const rehypePlugins = [

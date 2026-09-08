@@ -1,7 +1,6 @@
 ---
 title: "HyprlanderはNiriの夢を見るのか"
 date: 2026-07-09
-writer: "Uliboooo"
 description: "Hyprlandに慣れた人間がNiriに触れた感想"
 tags: ["hyprland", "niri", "wayland", "wm"]
 published: true
@@ -82,7 +81,7 @@ Niriはちゃんと1つの作業空間が1つのworkspaceに対応する感じ�
 
 あと、急にこの記事を書いている理由ですが以下のツイートが原因です。
 
-https://x.com/Uliboooo/status/2024732378162483241?s=20
+https://x.com/senox78/status/2024732378162483241?s=20
 
 雑に回答するならば
 

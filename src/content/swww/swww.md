@@ -1,7 +1,6 @@
 ---
 title: "swwwを使った背景制御ツールをbashで作る"
 date: 2026-03-22
-writer: "Uliboooo"
 description: "自作ツール"
 tags: ["linux", "wallpaper"]
 published: true

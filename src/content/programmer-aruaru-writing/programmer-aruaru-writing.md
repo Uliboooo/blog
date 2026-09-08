@@ -1,7 +1,6 @@
 ---
 title: "プログラマあるある? ~writing編~"
 date: 2026-07-28
-writer: "Uliboooo"
 description: "面倒くさい生き物だね"
 tags: ["column"]
 published: true

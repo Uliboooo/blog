@@ -1,7 +1,6 @@
 ---
 title: "Helixは中途半端では"
 date: 2026-07-31
-writer: "Uliboooo"
 description: "file pickerすらも廃せば?"
 tags: ["column", "helix"]
 published: false

@@ -1,23 +1,26 @@
 ---
 title: "About Me"
 date: 2026-03-17
-latest_edit_at: 2026-09-03
-writer: "Uliboooo"
-description: "Ulibooooについて"
+latest_edit_at: 2026-09-08
+description: "senox78について"
 tags: ["me"]
 published: true
 ---
 
-## [Uliboooo](https://github.com/Uliboooo)
+色々あって名前をUliboooo -> せの(senox78)にしました。順次,各種SNS等を更新していくので半年ほど新旧入り乱れます。
+
+---
+
+## [せの (Uliboooo)](https://github.com/Uliboooo)
 
 <a href="../seli-ni-tsuite" class="link--underline link--external" target="_blank" rel="noopener noreferrer">瀬梨(Seli)についてはこちら</a>
 
 ![my draw#small](./logo.png)
 
-(<span class="age"></span>) oは4つです。RustでCLIツールなどを書いてる。最近はGleamとか言語処理系にも興味ある。好きな記号は`|>`。
+(<span class="age"></span>) RustでCLIツールなどを書いてます。最近はGleamとか言語処理系にも興味あったり?。好きな記号は`|>`。
 
 :::details[English]
-(<span class="age"></span>) A college student who loves software and text. There are four o's. I write CLI tools and stuff in Rust. Lately I'm also into Gleam and language processor. Favorite symbol is `|>`.
+(<span class="age"></span>) A college student who loves software and text. I develop CLI tools and stuff in Rust. Lately I'm also into Gleam and language processor. Favorite symbol is `|>`.
 :::
 
 <script>
@@ -39,6 +42,9 @@ published: true
 > 嫌いなもの:
 > 細かいUI, 多機能, 複雑なもの
 
+<a href="../favorite-songs" class="link--underline link--external" target="_blank" rel="noopener noreferrer">好きな曲とか</a>、
+<a href="../favorite-books" class="link--underline link--external" target="_blank" rel="noopener noreferrer">好きな本とか</a>
+
 ## やってること
 
 大体RustとかFP系の言語でCLIとかライブラリとか書いてる。 <a href="../works" class="link--underline link--external" target="_blank" rel="noopener noreferrer">Works(作ったものとか)</a>
@@ -56,12 +62,12 @@ webは苦手ですが最近ちょっとだけ手を出しています。Astro大
 ## SNS/Contact
 
 [GitHub](https://github.com/Uliboooo),
-[Twitter](https://x.com/Uliboooo),
+[Twitter](https://x.com/senox78),
 [Instagram](https://www.instagram.com/uliboooo)
 [マシュマロ](https://marshmallow-qa.com/db8xew1t5oa5l19),
 [Zenn](https://zenn.dev/uliboooo),
 [note](https://note.com/uliboooo),
-<a href="mailto:seli.am2@proton.me" target="_blank" rel="noopener noreferrer" class="link--underline link--external"><span>seli.am2</span>@<span>proton.me</span></a>
+<a href="mailto:senox78.am2@gmail.com" target="_blank" rel="noopener noreferrer" class="link--underline link--external">Mail</a>
 
 <a href="https://x.com/mimifuwacc/status/2078596708804796738"
     target="_blank"
@@ -96,7 +102,7 @@ webは苦手ですが最近ちょっとだけ手を出しています。Astro大
 ╰────────────────────────────────────────╯
 ```
 
-https://x.com/Uliboooo/status/2084895400067313751
+https://x.com/senox78/status/2084895400067313751
 
 [more info](https://github.com/Uliboooo/dotfiles)
 

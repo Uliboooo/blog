@@ -130,7 +130,6 @@ const tags = String(resp.tags ?? "")
 const input_meta_data = {
   title: print_title,
   date: formatted,
-  writer: "Uliboooo",
   description: resp.desc ?? "",
   tags: tags,
   published: resp.is_public,
@@ -140,7 +139,6 @@ const frontmatter = [
   "---",
   `title: "${input_meta_data.title}"`,
   `date: ${input_meta_data.date}`,
-  `writer: "${input_meta_data.writer}"`,
   `description: "${input_meta_data.description}"`,
   `tags: [${input_meta_data.tags.map((t) => `"${t}"`).join(", ")}]`,
   `published: ${input_meta_data.published}`,

@@ -1,7 +1,7 @@
 ---
 title: "Focus the Window Under the Cursor in GNOME"
 date: 2026-03-16
-description: "最初の投稿"
+description: ""
 tags: ["gnome", "how2"]
 published: true
 ---

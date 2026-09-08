@@ -1,7 +1,6 @@
 ---
 title: "キーボードが買えない"
 date: 2026-07-28
-writer: "Uliboooo"
 description: "ラップトップに慣れすぎた"
 tags: ["keyboard"]
 published: true

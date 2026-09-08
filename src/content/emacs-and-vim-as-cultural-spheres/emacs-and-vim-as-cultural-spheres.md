@@ -1,7 +1,6 @@
 ---
 title: "文化圏としてのVimとかEmacsとか"
 date: 2026-08-22
-writer: "Uliboooo"
 description: "Emacsは抽象環境ぽさがある"
 tags: ["nvim", "emacs", "lisp", "editor"]
 published: true
@@ -103,4 +102,3 @@ buffer   Magit     xref
 ```
 :::
 ::::
-
